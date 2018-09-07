@@ -13,14 +13,14 @@ def imageSorter(ratedImages):
     with open(ratedImages) as csvDataFile:
         csvReader = csv.reader(csvDataFile)
         for row in csvReader:
-            if int(row[1]) > 4:
+            if int(row[1]) >= 4:
                 highPrefImages.append(row[0])
-                if int(row[2]) > 4:
+                if int(row[2]) >= 4:
                     highFamImages.append(row[0])
                     highPrefHighFamImages.append(row[0])
             else:
                 lowPrefImages.append(row[0])
-                if int(row[2]) > 4:
+                if int(row[2]) >= 4:
                     highFamImages.append(row[0])
                     lowPrefHighFamImages.append(row[0])
 

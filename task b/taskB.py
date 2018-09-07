@@ -507,6 +507,7 @@ for i in range(150):
             core.wait(1)
             choice1Responses[i] = choiceAmount
             break
+        if
         option1Money.draw()
         option1MoneyShape.draw()
         option1Items.draw()
