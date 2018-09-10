@@ -51,8 +51,8 @@ option1MoneyShapeVertices = [(-(d/2 + 156), -156/2), (-(d/2 + 156), 156/2), (-d/
 option1ItemShapeVertices = [((d/2 + 156), -156/2), ((d/2 + 156), 156/2), (d/2, 156/2), (d/2, -156/2)]
 
 # Trial Order Initialization (high pref items, mixed pref items)
-highPrefTrials = [1] * 75
-lowPrefTrials = [2] * 75
+highPrefTrials = [1] * 100
+lowPrefTrials = [2] * 100
 trials = highPrefTrials + lowPrefTrials
 random.shuffle(trials)
 
@@ -507,7 +507,7 @@ def displayResults(): # For debug
     print('computerResponse[' + str(i) + '] = ' + str(computerResponse[i]))
 
 # Main Loop #
-for i in range(3):
+for i in range(len(trials)):
     # Set Up Money Option Choices & Unique Options #
     numberUniqueMoneyOptions = moneyChoiceAmounts[random.randint(0, len(moneyChoiceAmounts)-1)]
     timesMoneyRepeated = 12 / numberUniqueMoneyOptions
@@ -985,7 +985,7 @@ f=open( outputFile ,'w')
 if len(confed_id) > 0: # Check if there is a confederate
     f.write('Subject: ' + subj_id + ',' + 'Confederate: ' + confed_id + '\n')
 f.write('Trial Type, Money Option, Item Option, Trial Options, Choice 1, Choice 1 RT, Choice 2, Choice 2 RT, Decision Rating , Selected Option Rating, PostChoiceRT, Computer Response\n')
-for i in range(3):
+for i in range(len(trials)):
     f.write(str(trials[i]) + ',' + str(monetaryOptions[i]) + ',' + str(itemNumberOptions[i]) + ',' + " ".join(map(str,trialOptions[i]))
         + ',' + str(choice1Responses[i]) +','+ str(choice1ReactionTimes[i]) + ',' + str(choice2Responses[i]) + ',' + str(choice2ReactionTimes[i])
         + ',' + str(postChoiceDecisionRatings[i]) + ',' + str(postChoiceSelectedOptionRatings[i]) + ',' + str(postChoiceReactionTimes[i]) + ',' + str(computerResponse[i]) + "\n" )
