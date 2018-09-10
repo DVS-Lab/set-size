@@ -6,3 +6,6 @@ This study consists of two tasks:
   2) Participants make a series of choices involving money and snack items. Ex. A participant is given the opportunity to choose whether they want $0.50 or a choice amongst a set of items. Participants will also be asked to make decisions for another person.
   
 At the end of the experiment, one of the choices will be selected randomly and the participant will be given the item they chose on that specific trial (e.g. money or a specific snack item).
+
+## Instructions
+  1) Unzip images folder and place into task a
