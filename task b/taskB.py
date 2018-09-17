@@ -35,7 +35,7 @@ tryFasterDuration = 3
 selectionOutlineDuration = 1 # Duration the red border appears around chosen choice box
 
 # Game Parameters
-itemChoiceAmounts = [2,3,4,6,12]
+itemChoiceAmounts = [3,6,12]
 moneyChoiceAmounts = [2,3,4,6]
 moneyList = [0.50, 0.75, 1.00, 1.25, 1.50, 1.75]
 imageList = util.imageSorter(subj_id + ' task a results.csv') # Sort Images into list
