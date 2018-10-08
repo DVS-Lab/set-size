@@ -24,6 +24,7 @@ outputFile = 'subject_' + subj_id + '_confederate_' + confed_id + '_task_b_resul
 #--------------------------------------------------------------------------------------#
 
 # Timing Parameters (s)
+breakDuration = 300 # 5 min or 600s
 choice1Duration = 4.5
 choice2Duration = 4.5
 postChoice2ScaleDuration = 4.5 
@@ -508,6 +509,11 @@ def displayResults(): # For debug
 
 # Main Loop #
 for i in range(len(trials)):
+    
+    if i == 50 || i == 100 || i == 150:
+            while timer.getTime() < breakDuration:
+                win.flip()
+    
     # Set Up Money Option Choices & Unique Options #
     numberUniqueMoneyOptions = moneyChoiceAmounts[random.randint(0, len(moneyChoiceAmounts)-1)]
     timesMoneyRepeated = 12 / numberUniqueMoneyOptions
