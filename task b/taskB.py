@@ -510,7 +510,7 @@ def displayResults(): # For debug
 # Main Loop #
 for i in range(len(trials)):
     
-    if i == 50 || i == 100 || i == 150:
+    if i == 50 | i == 100 | i == 150:
             while timer.getTime() < breakDuration:
                 win.flip()
     
