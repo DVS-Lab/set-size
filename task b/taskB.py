@@ -57,6 +57,12 @@ lowPrefTrials = [2] * 100
 trials = highPrefTrials + lowPrefTrials
 random.shuffle(trials)
 
+# ChoosingFor Order Initialization (you items, partner items)
+youTrials = [1] * 100
+personTrials = [2] * 100
+youOrPersonTrials = youTrials + personTrials
+random.shuffle(youOrPersonTrials)
+
 # Data Log Arrays Initialization
 monetaryOptions = [''] * len(trials)
 itemNumberOptions = [''] * len(trials)
@@ -567,11 +573,11 @@ for i in range(len(trials)):
         option1ItemsShape.setVertices(option1ItemShapeVertices)
     
     # Determine Partner Type (Person or PC)
-    if random.random() < 0.5:
-        personChoosingFor = 'Person'
+    if youOrPersonTrials[i] == 1:
+        personChoosingFor = 'You'
         personChoosingForTextBox.setText(personChoosingFor)
     else:
-        personChoosingFor = 'PC'
+        personChoosingFor = 'Partner'
         personChoosingForTextBox.setText(personChoosingFor)
     
     # Set computer response to default value and log options presented to subject
@@ -990,11 +996,12 @@ for i in range(len(trials)):
 f=open( outputFile ,'w')
 if len(confed_id) > 0: # Check if there is a confederate
     f.write('Subject: ' + subj_id + ',' + 'Confederate: ' + confed_id + '\n')
-f.write('Trial Type, Money Option, Item Option, Trial Options, Choice 1, Choice 1 RT, Choice 2, Choice 2 RT, Decision Rating , Selected Option Rating, PostChoiceRT, Computer Response\n')
+f.write('Trial Type, Money Option, Item Option, Trial Options, Choice 1, Choice 1 RT, Choice 2, Choice 2 RT, Decision Rating , Selected Option Rating, PostChoiceRT, Computer Response, Choosing For\n')
 for i in range(len(trials)):
     f.write(str(trials[i]) + ',' + str(monetaryOptions[i]) + ',' + str(itemNumberOptions[i]) + ',' + " ".join(map(str,trialOptions[i]))
         + ',' + str(choice1Responses[i]) +','+ str(choice1ReactionTimes[i]) + ',' + str(choice2Responses[i]) + ',' + str(choice2ReactionTimes[i])
-        + ',' + str(postChoiceDecisionRatings[i]) + ',' + str(postChoiceSelectedOptionRatings[i]) + ',' + str(postChoiceReactionTimes[i]) + ',' + str(computerResponse[i]) + "\n" )
+        + ',' + str(postChoiceDecisionRatings[i]) + ',' + str(postChoiceSelectedOptionRatings[i]) + ',' + str(postChoiceReactionTimes[i]) + ',' + str(computerResponse[i]) + "\n"
+        + ',' + str(youOrPersonTrials[i]) + "\n")
 f.close()
 
 win.close()
