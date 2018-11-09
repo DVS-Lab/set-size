@@ -995,7 +995,7 @@ for i in range(len(trials)):
 # Write to .csv file with participants name, subj_id, in file name and/or confederate's id, confed_id
 f=open( outputFile ,'w')
 if len(confed_id) > 0: # Check if there is a confederate
-    f.write('Subject: ' + subj_id + ',' + 'Confederate: ' + confed_id + '\n')
+    f.write('Subject: ' + subj_id + ',' + 'Partner: ' + confed_id + '\n')
 f.write('Trial Type, Money Option, Item Option, Trial Options, Choice 1, Choice 1 RT, Choice 2, Choice 2 RT, Decision Rating , Selected Option Rating, PostChoiceRT, Computer Response, Choosing For\n')
 for i in range(len(trials)):
     f.write(str(trials[i]) + ',' + str(monetaryOptions[i]) + ',' + str(itemNumberOptions[i]) + ',' + " ".join(map(str,trialOptions[i]))
