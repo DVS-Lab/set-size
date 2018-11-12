@@ -5,9 +5,9 @@ import random, glob, util
 # Preperation for trial:
 # -Drag subject's task a results csv file into 'task b' folder
 # -Enter subject's id in Parameters section
-# -Enter confederate's id in Parameters section
+# -Enter partner's id in Parameters section
 # -Run
-# Output: csv file ex. 'subject_999_confederate_John_task_b_results.csv'
+# Output: csv file ex. 'subject_999_partner_998_task_b_results.csv'
 # Matthew Slipenchuk tuf91673@temple.edu (09/2018)
 
 # General Initalization
@@ -19,8 +19,8 @@ mouse = event.Mouse()
 
 #-Subject Parameters-------------------------------------------------------------------#
 subj_id = '999'
-confed_id = '999' 
-outputFile = 'subject_' + subj_id + '_confederate_' + confed_id + '_task_b_results.csv'
+partner_id = '998' 
+outputFile = 'subject_' + subj_id + '_partner_' + partner_id + '_task_b_results.csv'
 #--------------------------------------------------------------------------------------#
 
 # Timing Parameters (s)
