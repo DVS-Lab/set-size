@@ -10,7 +10,7 @@ import random
 directory = os.getcwd()
 
 # Get subjID
-subjDlg=gui.Dlg(title="JOCN paper- rate items")
+subjDlg=gui.Dlg(title="Set Size Study - Task A - Item Ratings")
 subjDlg.addField('Enter Subject ID: ')
 subjDlg.show()
 subj_id=subjDlg.data[0]
@@ -58,7 +58,7 @@ ratingTitle=visual.TextBox(window=win,
                          units='norm',
                          )
 familiarityTitle=visual.TextBox(window=win, 
-                         text='familiarity',
+                         text='Familiarity',
                          font_size=40,
                          font_color=[1,1,1], 
                          size=(1.9,.3),
