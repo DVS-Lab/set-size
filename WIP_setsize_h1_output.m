@@ -63,13 +63,13 @@ for s = 1:length(sublist)
             then hv_choosing_self_RT == mean(Choice_1_RT);
             
         if C{1} == 1, and C{13} == partner; % if high-value and choosing for partner
-            then hv_choosing_partner_RT = mean(Choice_1_RT);
+            then hv_choosing_partner_RT == mean(Choice_1_RT);
             
         if C{1} == 2, and C{13} == self; % if mixed-value and choosing for self
-            then mv_choosing_self_RT = mean(Choice_1_RT);
+            then mv_choosing_self_RT == mean(Choice_1_RT);
             
         if C{1} == 2, and C{13} == partner % if mixed-value and choosing for partner
-            then mv_choosing_partner_RT = mean(Choice_1_RT);
+            then mv_choosing_partner_RT == mean(Choice_1_RT);
   
     end
     % subnum,high-value,hv_choosing_for_self,hv_self_choice1,hv_self_RT,hv_choosing_for_partner,hv_partner_choice1,hv_partner_RT,mixed_value,mv_choosing_for_self
