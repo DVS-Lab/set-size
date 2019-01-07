@@ -20,7 +20,7 @@ for s = 1:length(sublist)
         fclose(fid);
         
         % omit computer responses
-        if C{12} = 1
+        C(C(:,12)~=1,:);
             
         % create variables for coding below
         Choice_1_RT = C{6};
