@@ -15,16 +15,21 @@ sublist = [009]
 for s = 1:length(sublist)
     
     subj = sublist(s);
-    runs = 1;
+    run = 1;
     
-    tmp_data = zeros(run,66); % change 66 to 180 after example run. Our example was cut down to 66 runs.
-    for r = 1:runs
-        fname = fullfile(maindir,'psychopy','logs',num2str(subj),sprintf('sub-%03_partner_%03_task_b_results.csv',subj,r-1)); %creates variable to store the path to a given subject's data
-        fid = fopen(fname,'r');
-        C = textscan(fid,(repmat('%f',1,14)),'Delimiter',',','HeaderLines',1,'EmptyValue',NaN); %creates a cell array C reading in the .csv file with the header rows
+    tmp_data = zeros(run,1); % change 66 to 180 after example run. Our example was cut down to 66 runs.
+    for r = 1:run
+        %fname = fullfile(maindir,'psychopy','logs',num2str(subj),sprintf('sub-%03_partner_%03_task_b_results.csv',subj,r-1)); %creates variable to store the path to a given subject's data
+        fname = "output/subject_009_partner_008_task_b_results.csv";
+        fid = fopen(fname);
+        %C = textscan(fid,(repmat('%f',1,13)),'Delimiter',',','HeaderLines',1,'EmptyValue',NaN); %creates a cell array C reading in the .csv file with the header rows
+        C = textscan(fid,"%s %s %s %s %s %s %s %s %s %s %s %s %s",'Delimiter',',','HeaderLines',2);
         fclose(fid);
+        whos C
         
-        % omit computer responses
+        % omit computer responses - when adding new pc generated responses
+        % check column 11 for 'n/a' as indicator
+        % C(~strcmp(C(:,11),"n/a"),:);
         C(C(:,12)~=1,:);
             
         % create variables for coding below
@@ -97,3 +102,4 @@ for s = 1:length(sublist)
     
 end
 fclose(fid_run);
+
