@@ -12,7 +12,7 @@ import random, glob, util
 
 
 # Subject Parameters-------------------------------------------------------------------#
-subj_id = '999'
+subj_id = '005'
 partner_id = '998' 
 outputFile = 'subject_' + subj_id + '_partner_' + partner_id + '_task_b_results.csv'
 # End Subject Parameters---------------------------------------------------------------#
@@ -545,6 +545,7 @@ selectedOptionRatingTitle=visual.TextBox(window=win,
 for i in range(len(trials)):
     # Check if break needed before trial starts
     if i == 50 | i == 100 | i == 150:
+        timer.reset()
         while timer.getTime() < breakDuration:
             win.flip()
     
