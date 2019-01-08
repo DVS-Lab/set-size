@@ -12,7 +12,7 @@ import random, glob, util
 
 
 # Subject Parameters-------------------------------------------------------------------#
-subj_id = '005'
+subj_id = '999'
 partner_id = '998' 
 outputFile = 'subject_' + subj_id + '_partner_' + partner_id + '_task_b_results.csv'
 # End Subject Parameters---------------------------------------------------------------#
