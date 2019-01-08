@@ -10,21 +10,26 @@ import random, glob, util
 # Output: csv file ex. 'subject_999_partner_998_task_b_results.csv'
 # Matthew Slipenchuk tuf91673@temple.edu (09/2018)
 
-# General Initalization
+
+# Subject Parameters-------------------------------------------------------------------#
+subj_id = '005'
+partner_id = '998' 
+outputFile = 'subject_' + subj_id + '_partner_' + partner_id + '_task_b_results.csv'
+# End Subject Parameters---------------------------------------------------------------#
+
+
+# General Initalization----------------------------------------------------------------#
 directory = os.getcwd()
 timer = core.Clock()
 win = visual.Window(fullscr=True, units='pix', monitor='testMonitor',
         color = [-.9,-.9,-.9])
 mouse = event.Mouse()
+# End General Initialization-----------------------------------------------------------#
 
-#-Subject Parameters-------------------------------------------------------------------#
-subj_id = '999'
-partner_id = '998' 
-outputFile = 'subject_' + subj_id + '_partner_' + partner_id + '_task_b_results.csv'
-#--------------------------------------------------------------------------------------#
 
+# Task Parameter Initalization---------------------------------------------------------#
 # Timing Parameters (s)
-breakDuration = 300 # 5 min or 600s
+breakDuration = 300 # 5 min or 300s
 choice1Duration = 4.5
 choice2Duration = 4.5
 postChoice2ScaleDuration = 4.5 
@@ -34,34 +39,33 @@ postChoiceDisplayDuration = 2 # Display subject's choice
 interTrialInterval = 1 
 tryFasterDuration = 3
 selectionOutlineDuration = 1 # Duration the red border appears around chosen choice box
+pcSelectionOutlineDuration = 2
 
 # Game Parameters
 itemChoiceAmounts = [2,3,6,12]
-moneyChoiceAmounts = [2,3,4,6,12]
+moneyChoiceAmounts = [2,3,4,6]
 moneyList = [0.50, 0.75, 1.00, 1.25, 1.50, 1.75]
-imageList = util.imageSorter(subj_id + ' task a results.csv') # Sort Images into list
+imageList = util.imageSorter(subj_id + '_task_a_results.csv') # Sort Images into list
                                                               # from task a data
-# GUI Parameters
-d = 20; # distance between ui elements
-xInner = (d/2 + 160/2) # Center of Inner Right Boxs
-xOuter = (d/2 + 160 + d + 160/2) # Center of Outer Right Boxs
-y = (160/2 + d + 160/2) # Center of upper Boxs
-option1MoneyPosition = (-(d/2 + 156/2),0)
-option1ItemPosition = ((d/2 + 156/2),0)
-option1MoneyShapeVertices = [(-(d/2 + 156), -156/2), (-(d/2 + 156), 156/2), (-d/2, 156/2), (-d/2, -156/2)]
-option1ItemShapeVertices = [((d/2 + 156), -156/2), ((d/2 + 156), 156/2), (d/2, 156/2), (d/2, -156/2)]
-
-# Trial Order Initialization (high pref items, mixed pref items)
-highPrefTrials = [1] * 100
-lowPrefTrials = [2] * 100
-trials = highPrefTrials + lowPrefTrials
+# Trial Order Initialization
+# Indicates who is making decision, type of items (high/mixed), and who decision is made for
+highPrefTrialsYou = [1] * 30
+lowPrefTrialsYou = [2] * 30
+pcHighPrefTrialsYou = [3] * 15
+pcLowPrefTrialsYou = [4] * 15
+highPrefTrialsPartner = [5] * 30
+lowPrefTrialsPartner = [6] * 30
+pcHighPrefTrialsPartner = [7] * 15
+pcLowPrefTrialsPartner = [8] * 15
+trials = highPrefTrialsYou + lowPrefTrialsYou + pcHighPrefTrialsYou + pcLowPrefTrialsYou + highPrefTrialsPartner + lowPrefTrialsPartner + pcHighPrefTrialsPartner + pcLowPrefTrialsPartner
 random.shuffle(trials)
 
 # ChoosingFor Order Initialization (you items, partner items)
-youTrials = [1] * 100
-personTrials = [2] * 100
-youOrPersonTrials = youTrials + personTrials
-random.shuffle(youOrPersonTrials)
+#youTrials = [1] * 90
+#personTrials = [2] * 90
+#youOrPersonTrials = youTrials + personTrials
+youOrPersonTrials = [0] * len(trials) # Initialize - used for logging data
+#random.shuffle(youOrPersonTrials)
 
 # Data Log Arrays Initialization
 monetaryOptions = [''] * len(trials)
@@ -75,6 +79,127 @@ postChoiceDecisionRatings = [''] * len(trials)
 postChoiceReactionTimes = [''] * len(trials)
 trialOptions = [''] * len(trials)
 computerResponse = [''] * len(trials)
+# End Task Parameter Initialization----------------------------------------------------#
+
+
+# Function Declerations----------------------------------------------------------------#
+def resetOption2MoneyOptionOutlines(): # Resets GUI Elements after trial
+    option2Pos1Shape.setLineColor(None)
+    option2Pos2Shape.setLineColor(None)
+    option2Pos3Shape.setLineColor(None)
+    option2Pos4Shape.setLineColor(None)
+    option2Pos5Shape.setLineColor(None)
+    option2Pos6Shape.setLineColor(None)
+    option2Pos7Shape.setLineColor(None)
+    option2Pos8Shape.setLineColor(None)
+    option2Pos9Shape.setLineColor(None)
+    option2Pos10Shape.setLineColor(None)
+    option2Pos11Shape.setLineColor(None)
+    option2Pos12Shape.setLineColor(None)
+def drawOption2MoneyTextBoxes(): # Misc. GUI functions for readability
+    option2Money1.draw()
+    option2Money2.draw()
+    option2Money3.draw()
+    option2Money4.draw()
+    option2Money5.draw()
+    option2Money6.draw()
+    option2Money7.draw()
+    option2Money8.draw()
+    option2Money9.draw()
+    option2Money10.draw()
+    option2Money11.draw()
+    option2Money12.draw()
+def drawOption2TargetBoxes():
+    option2Pos1Shape.draw()
+    option2Pos2Shape.draw()
+    option2Pos3Shape.draw()
+    option2Pos4Shape.draw()
+    option2Pos5Shape.draw()
+    option2Pos6Shape.draw()
+    option2Pos7Shape.draw()
+    option2Pos8Shape.draw()
+    option2Pos9Shape.draw()
+    option2Pos10Shape.draw()
+    option2Pos11Shape.draw()
+    option2Pos12Shape.draw()
+def drawOption2ItemBoxes():
+    option2Item1.draw()
+    option2Item2.draw()
+    option2Item3.draw()
+    option2Item4.draw()
+    option2Item5.draw()
+    option2Item6.draw()
+    option2Item7.draw()
+    option2Item8.draw()
+    option2Item9.draw()
+    option2Item10.draw()
+    option2Item11.draw()
+    option2Item12.draw()
+def drawOption2ItemOptionOutlines():
+    option2Pos1Shape.setLineColor('red')
+    option2Pos2Shape.setLineColor('red')
+    option2Pos3Shape.setLineColor('red')
+    option2Pos4Shape.setLineColor('red')
+    option2Pos5Shape.setLineColor('red')
+    option2Pos6Shape.setLineColor('red')
+    option2Pos7Shape.setLineColor('red')
+    option2Pos8Shape.setLineColor('red')
+    option2Pos9Shape.setLineColor('red')
+    option2Pos10Shape.setLineColor('red')
+    option2Pos11Shape.setLineColor('red')
+    option2Pos12Shape.setLineColor('red')
+def setOption2MoneyBoxTexts(): # Sets image/money choices in trial
+    option2Money1.setText('$' + str(trialMoneyOptions[0]))
+    option2Money2.setText('$' + str(trialMoneyOptions[1]))
+    option2Money3.setText('$' + str(trialMoneyOptions[2]))
+    option2Money4.setText('$' + str(trialMoneyOptions[3]))
+    option2Money5.setText('$' + str(trialMoneyOptions[4]))
+    option2Money6.setText('$' + str(trialMoneyOptions[5]))
+    option2Money7.setText('$' + str(trialMoneyOptions[6]))
+    option2Money8.setText('$' + str(trialMoneyOptions[7]))
+    option2Money9.setText('$' + str(trialMoneyOptions[8]))
+    option2Money10.setText('$' + str(trialMoneyOptions[9]))
+    option2Money11.setText('$' + str(trialMoneyOptions[10]))
+    option2Money12.setText('$' + str(trialMoneyOptions[11]))
+def setOption2ItemImages():
+    option2Item1.setImage(trialPics[0])
+    option2Item2.setImage(trialPics[1])
+    option2Item3.setImage(trialPics[2])
+    option2Item4.setImage(trialPics[3])
+    option2Item5.setImage(trialPics[4])
+    option2Item6.setImage(trialPics[5])
+    option2Item7.setImage(trialPics[6])
+    option2Item8.setImage(trialPics[7])
+    option2Item9.setImage(trialPics[8])
+    option2Item10.setImage(trialPics[9])
+    option2Item11.setImage(trialPics[10])
+    option2Item12.setImage(trialPics[11])
+def displayResults(): # For debug
+    print('trials[' + str(i) + '] = ' +  str(trials[i]))
+    print('monetaryOptions[' + str(i) + '] = ' + str(monetaryOptions[i]))
+    print('itemNumberOptions[' + str(i) + '] = ' + str(itemNumberOptions[i]))
+    print('trialOptions[' + str(i) + '] = ' + str(trialOptions[i]))
+    print('choice1Responses[' + str(i) + '] = ' + str(choice1Responses[i]))
+    print('choice1ReactionTimes[' + str(i) + '] = ' + str(choice1ReactionTimes[i]))
+    print('choice2Responses[' + str(i) + '] = ' + str(choice2Responses[i]))
+    print('choice2ReactionTimes[' + str(i) + '] = ' + str(choice2ReactionTimes[i]))
+    print('postChoiceDecisionRatings[' + str(i) + '] = ' + str(postChoiceDecisionRatings[i]))
+    print('postChoiceSelectedOptionRatings[' + str(i) + '] = ' + str(postChoiceSelectedOptionRatings[i]))
+    print('postChoiceReactionTImes[' + str(i) + '] = ' + str(postChoiceReactionTimes[i]))
+    print('computerResponse[' + str(i) + '] = ' + str(computerResponse[i]))
+# End Function Declerations------------------------------------------------------------#
+
+
+# GUI Initalization--------------------------------------------------------------------#
+# Position Parameters
+d = 20; # distance between ui elements
+xInner = (d/2 + 160/2) # Center of Inner Right Boxs
+xOuter = (d/2 + 160 + d + 160/2) # Center of Outer Right Boxs
+y = (160/2 + d + 160/2) # Center of upper Boxs
+option1MoneyPosition = (-(d/2 + 156/2),0)
+option1ItemPosition = ((d/2 + 156/2),0)
+option1MoneyShapeVertices = [(-(d/2 + 156), -156/2), (-(d/2 + 156), 156/2), (-d/2, 156/2), (-d/2, -156/2)]
+option1ItemShapeVertices = [((d/2 + 156), -156/2), ((d/2 + 156), 156/2), (d/2, 156/2), (d/2, -156/2)]
 
 # Choice 1 GUI Element Initalization #
 # Text Boxes
@@ -114,6 +239,15 @@ personChoosingForTextBox=visual.TextBox(window=win,
                          font_color=[1,1,1],
                          size=(1.9,.3),
                          pos=(-.01,.5),
+                         grid_horz_justification='center',
+                         units='norm',
+                         )
+questionMarkTextBox=visual.TextBox(window=win,
+                         text='?',
+                         font_size=80,
+                         font_color=[1,1,1],
+                         size=(1.9,.3),
+                         pos=(-.01,-.5),
                          grid_horz_justification='center',
                          units='norm',
                          )
@@ -364,7 +498,6 @@ option2Item12 = visual.ImageStim(win=win, image=imageList[0][0], units='pix', po
 # Post Choice 2 GUI Element Initalization #
 # Text Box - If money option selected
 postChoiceMoney=visual.TextBox(window=win,
-
                          text=' ',
                          background_color=[1,1,1],
                          bold=False,
@@ -382,9 +515,8 @@ postChoiceMoney=visual.TextBox(window=win,
 # Item Image - If item option selected
 postChoiceItem = visual.ImageStim(win=win, image=imageList[0][0], units='pix', pos=[0,0], size = [156,156])
 
-
 # Rating Scale GUI Element Initialization # 
-# Rating Scales - Decision on Left, Selected Option (money/snack) on right
+# Rating Scales - Decision on Left, Selected Option (money/snack) on right 
 decisionRatingScale = visual.RatingScale(win, name='Decision', choices=['1', '2', '3', '4', '5', '6', '7'], pos=[-400,-200])
 selectedOptionRatingScale = visual.RatingScale(win, name='Selected Option', choices=['1', '2', '3', '4', '5', '6', '7'], pos =[400,-200])
 # Text Boxes - Rating Scale Titles 
@@ -406,119 +538,15 @@ selectedOptionRatingTitle=visual.TextBox(window=win,
                          grid_horz_justification='center',
                          units='norm',
                          )
+# End GUI Initialization---------------------------------------------------------------#
 
-# Functions #
-def resetOption2MoneyOptionOutlines(): # Resets GUI Elements after trial
-    option2Pos1Shape.setLineColor(None)
-    option2Pos2Shape.setLineColor(None)
-    option2Pos3Shape.setLineColor(None)
-    option2Pos4Shape.setLineColor(None)
-    option2Pos5Shape.setLineColor(None)
-    option2Pos6Shape.setLineColor(None)
-    option2Pos7Shape.setLineColor(None)
-    option2Pos8Shape.setLineColor(None)
-    option2Pos9Shape.setLineColor(None)
-    option2Pos10Shape.setLineColor(None)
-    option2Pos11Shape.setLineColor(None)
-    option2Pos12Shape.setLineColor(None)
-def drawOption2MoneyTextBoxes(): # Misc. GUI functions for readability
-    option2Money1.draw()
-    option2Money2.draw()
-    option2Money3.draw()
-    option2Money4.draw()
-    option2Money5.draw()
-    option2Money6.draw()
-    option2Money7.draw()
-    option2Money8.draw()
-    option2Money9.draw()
-    option2Money10.draw()
-    option2Money11.draw()
-    option2Money12.draw()
-def drawOption2TargetBoxes():
-    option2Pos1Shape.draw()
-    option2Pos2Shape.draw()
-    option2Pos3Shape.draw()
-    option2Pos4Shape.draw()
-    option2Pos5Shape.draw()
-    option2Pos6Shape.draw()
-    option2Pos7Shape.draw()
-    option2Pos8Shape.draw()
-    option2Pos9Shape.draw()
-    option2Pos10Shape.draw()
-    option2Pos11Shape.draw()
-    option2Pos12Shape.draw()
-def drawOption2ItemBoxes():
-    option2Item1.draw()
-    option2Item2.draw()
-    option2Item3.draw()
-    option2Item4.draw()
-    option2Item5.draw()
-    option2Item6.draw()
-    option2Item7.draw()
-    option2Item8.draw()
-    option2Item9.draw()
-    option2Item10.draw()
-    option2Item11.draw()
-    option2Item12.draw()
-def drawOption2ItemOptionOutlines():
-    option2Pos1Shape.setLineColor('red')
-    option2Pos2Shape.setLineColor('red')
-    option2Pos3Shape.setLineColor('red')
-    option2Pos4Shape.setLineColor('red')
-    option2Pos5Shape.setLineColor('red')
-    option2Pos6Shape.setLineColor('red')
-    option2Pos7Shape.setLineColor('red')
-    option2Pos8Shape.setLineColor('red')
-    option2Pos9Shape.setLineColor('red')
-    option2Pos10Shape.setLineColor('red')
-    option2Pos11Shape.setLineColor('red')
-    option2Pos12Shape.setLineColor('red')
-def setOption2MoneyBoxTexts(): # Sets image/money choices in trial
-    option2Money1.setText('$' + str(trialMoneyOptions[0]))
-    option2Money2.setText('$' + str(trialMoneyOptions[1]))
-    option2Money3.setText('$' + str(trialMoneyOptions[2]))
-    option2Money4.setText('$' + str(trialMoneyOptions[3]))
-    option2Money5.setText('$' + str(trialMoneyOptions[4]))
-    option2Money6.setText('$' + str(trialMoneyOptions[5]))
-    option2Money7.setText('$' + str(trialMoneyOptions[6]))
-    option2Money8.setText('$' + str(trialMoneyOptions[7]))
-    option2Money9.setText('$' + str(trialMoneyOptions[8]))
-    option2Money10.setText('$' + str(trialMoneyOptions[9]))
-    option2Money11.setText('$' + str(trialMoneyOptions[10]))
-    option2Money12.setText('$' + str(trialMoneyOptions[11]))
-def setOption2ItemImages():
-    option2Item1.setImage(trialPics[0])
-    option2Item2.setImage(trialPics[1])
-    option2Item3.setImage(trialPics[2])
-    option2Item4.setImage(trialPics[3])
-    option2Item5.setImage(trialPics[4])
-    option2Item6.setImage(trialPics[5])
-    option2Item7.setImage(trialPics[6])
-    option2Item8.setImage(trialPics[7])
-    option2Item9.setImage(trialPics[8])
-    option2Item10.setImage(trialPics[9])
-    option2Item11.setImage(trialPics[10])
-    option2Item12.setImage(trialPics[11])
-def displayResults(): # For debug
-    print('trials[' + str(i) + '] = ' +  str(trials[i]))
-    print('monetaryOptions[' + str(i) + '] = ' + str(monetaryOptions[i]))
-    print('itemNumberOptions[' + str(i) + '] = ' + str(itemNumberOptions[i]))
-    print('trialOptions[' + str(i) + '] = ' + str(trialOptions[i]))
-    print('choice1Responses[' + str(i) + '] = ' + str(choice1Responses[i]))
-    print('choice1ReactionTimes[' + str(i) + '] = ' + str(choice1ReactionTimes[i]))
-    print('choice2Responses[' + str(i) + '] = ' + str(choice2Responses[i]))
-    print('choice2ReactionTimes[' + str(i) + '] = ' + str(choice2ReactionTimes[i]))
-    print('postChoiceDecisionRatings[' + str(i) + '] = ' + str(postChoiceDecisionRatings[i]))
-    print('postChoiceSelectedOptionRatings[' + str(i) + '] = ' + str(postChoiceSelectedOptionRatings[i]))
-    print('postChoiceReactionTImes[' + str(i) + '] = ' + str(postChoiceReactionTimes[i]))
-    print('computerResponse[' + str(i) + '] = ' + str(computerResponse[i]))
 
-# Main Loop #
+# Main Loop----------------------------------------------------------------------------#
 for i in range(len(trials)):
-    
+    # Check if break needed before trial starts
     if i == 50 | i == 100 | i == 150:
-            while timer.getTime() < breakDuration:
-                win.flip()
+        while timer.getTime() < breakDuration:
+            win.flip()
     
     # Set Up Money Option Choices & Unique Options #
     numberUniqueMoneyOptions = moneyChoiceAmounts[random.randint(0, len(moneyChoiceAmounts)-1)]
@@ -572,62 +600,97 @@ for i in range(len(trials)):
         option1MoneyShape.setVertices(option1MoneyShapeVertices)
         option1ItemsShape.setVertices(option1ItemShapeVertices)
     
-    # Determine Partner Type (Person or PC)
-    if youOrPersonTrials[i] == 1:
+    # Determine Partner Type (You or Partner)
+    if trials[i] < 5:
+        youOrPersonTrials[i] = 1;
         personChoosingFor = 'You'
         personChoosingForTextBox.setText(personChoosingFor)
     else:
+        youOrPersonTrials[i] = 2;
         personChoosingFor = 'Partner'
         personChoosingForTextBox.setText(personChoosingFor)
     
     # Set computer response to default value and log options presented to subject
-    computerResponse[i] = 0 # Will switch to 1 during trial if no response from subject
+    if trials[i] in [1,2,5,6]:
+        computerResponse[i] = 0 # Will switch to 1 during trial if no response from subject
+    else:
+        computerResponse[i] = 1 # Set to 1 for PC response trial types 
     monetaryOptions[i] = monetaryAmount
     itemNumberOptions[i] = choiceAmount
     
     # Choice 1 Loop
     timer.reset()
     while timer.getTime() < choice1Duration:
-        # Monetary Option Chosen
-        if mouse.isPressedIn(option1MoneyShape):
-            choice1ReactionTimes[i] = timer.getTime() ## assign reation time
-            option1Money.setBorderColor('red')
-            option1Money.draw()
-            option1Items.draw()
-            personChoosingForTextBox.draw()
-            # Display Respective Arrow(s)
-            if trials[i] == 1: # High Preference High Familiarity Images Trial
-                highPrefHighFameArrow.draw()
-            else: # Mixed Preference High Familiarity Images Trial
-                mixedPrefHighFamLeftArrow.draw()
-                mixedPrefHighFamRightArrow.draw()
-            win.flip()
-            core.wait(selectionOutlineDuration) # Display border around selected option
-            choice1Responses[i] = monetaryAmount # Log response
-            break
-        
-        # Choice option Chosen
-        elif mouse.isPressedIn(option1ItemsShape):
-            choice1ReactionTimes[i] = timer.getTime()
-            option1Items.setBorderColor('red')
-            option1Items.draw()
-            option1Money.draw()
-            personChoosingForTextBox.draw()
-            if trials[i] == 1:
-                highPrefHighFameArrow.draw()
-            else:
-                mixedPrefHighFamLeftArrow.draw()
-                mixedPrefHighFamRightArrow.draw()
-            win.flip()
-            core.wait(selectionOutlineDuration)
-            choice1Responses[i] = choiceAmount
-            break
-        
-        if trials[i] == 1:
-            highPrefHighFameArrow.draw()
+        if trials[i] in [1,2,5,6]: # Check if current trial is a player response trial
+            # Player Choice--------------------------------------------------#
+            if mouse.isPressedIn(option1MoneyShape): # Monetary Option Chosen
+                choice1ReactionTimes[i] = timer.getTime() # assign reaction time
+                option1Money.setBorderColor('red')
+                option1Money.draw()
+                option1Items.draw()
+                personChoosingForTextBox.draw()
+                # Display Respective Arrow(s)
+                if trials[i] in [1,5]:
+                    highPrefHighFameArrow.draw()
+                elif trials[i] in [2,6]:
+                    mixedPrefHighFamLeftArrow.draw()
+                    mixedPrefHighFamRightArrow.draw()
+                win.flip()
+                core.wait(selectionOutlineDuration) # Display border around selected option
+                choice1Responses[i] = monetaryAmount # Log response
+                break
+            elif mouse.isPressedIn(option1ItemsShape): # Choice option Chosen
+                choice1ReactionTimes[i] = timer.getTime()
+                option1Items.setBorderColor('red')
+                option1Items.draw()
+                option1Money.draw()
+                personChoosingForTextBox.draw()
+                # Display Respective Arrow(s)
+                if trials[i] in [1,5]:
+                    highPrefHighFameArrow.draw()
+                elif trials[i] in [2,6]:
+                    mixedPrefHighFamLeftArrow.draw()
+                    mixedPrefHighFamRightArrow.draw()
+                win.flip()
+                core.wait(selectionOutlineDuration)
+                choice1Responses[i] = choiceAmount
+                break
+            # End Player Choice------------------------------------------------#
         else:
+            # PC Choice--------------------------------------------------------#
+            if random.random() < .5:
+                choice1ReactionTimes[i] = timer.getTime() # assign reaction time
+                option1Money.setBorderColor('red')
+                option1Money.draw()
+                option1Items.draw()
+                personChoosingForTextBox.draw()
+                # Display Question Mark indicating PC is choosing this trial
+                questionMarkTextBox.draw()
+                win.flip()
+                core.wait(pcSelectionOutlineDuration) # Display border around selected option
+                choice1Responses[i] = monetaryAmount # Log response
+                break
+            else:
+                choice1ReactionTimes[i] = timer.getTime()
+                option1Items.setBorderColor('red')
+                option1Items.draw()
+                option1Money.draw()
+                personChoosingForTextBox.draw()
+                # Display Question Mark indicating PC is choosing this trial
+                questionMarkTextBox.draw()
+                win.flip()
+                core.wait(pcSelectionOutlineDuration)
+                choice1Responses[i] = choiceAmount
+                break
+            break
+            # End PC Choice----------------------------------------------------#
+        if trials[i] in [1,5]:
+            highPrefHighFameArrow.draw()
+        elif trials[i] in [2,6]:
             mixedPrefHighFamLeftArrow.draw()
             mixedPrefHighFamRightArrow.draw()
+        else: # PC Response trial type
+            questionMarkTextBox.draw()
         personChoosingForTextBox.draw()
         option1Money.draw()
         option1MoneyShape.draw()
@@ -683,116 +746,136 @@ for i in range(len(trials)):
         # Subject Response Collection Loop
         timer.reset()
         while timer.getTime() < choice2Duration:
-            ## item1 Chosen
-            if mouse.isPressedIn(option2Pos1Shape):
+            if trials[i] in [1,2,5,6]: # Check if current trial is a player response trial
+                # Player Choice--------------------------------------------------#
+                if mouse.isPressedIn(option2Pos1Shape):
+                    choice2ReactionTimes[i] = timer.getTime() 
+                    option2Pos1Shape.setLineColor('red')
+                    option2Pos1Shape.draw()
+                    drawOption2MoneyTextBoxes()
+                    win.flip()
+                    core.wait(selectionOutlineDuration)
+                    choice2Responses[i] = option2Money1.getDisplayedText()
+                    break
+                elif mouse.isPressedIn(option2Pos2Shape):
+                    choice2ReactionTimes[i] = timer.getTime() 
+                    option2Pos2Shape.setLineColor('red')
+                    option2Pos2Shape.draw()
+                    drawOption2MoneyTextBoxes()
+                    win.flip()
+                    core.wait(selectionOutlineDuration)
+                    choice2Responses[i] = option2Money2.getDisplayedText()
+                    break
+                elif mouse.isPressedIn(option2Pos3Shape):
+                    choice2ReactionTimes[i] = timer.getTime() 
+                    option2Pos3Shape.setLineColor('red')
+                    option2Pos3Shape.draw()
+                    drawOption2MoneyTextBoxes()
+                    win.flip()
+                    core.wait(selectionOutlineDuration)
+                    choice2Responses[i] = option2Money3.getDisplayedText()
+                    break
+                elif mouse.isPressedIn(option2Pos4Shape):
+                    choice2ReactionTimes[i] = timer.getTime() 
+                    option2Pos4Shape.setLineColor('red')
+                    option2Pos4Shape.draw()
+                    drawOption2MoneyTextBoxes()
+                    win.flip()
+                    core.wait(selectionOutlineDuration)
+                    choice2Responses[i] = option2Money4.getDisplayedText()
+                    break
+                elif mouse.isPressedIn(option2Pos5Shape):
+                    choice2ReactionTimes[i] = timer.getTime() 
+                    option2Pos5Shape.setLineColor('red')
+                    option2Pos5Shape.draw()
+                    drawOption2MoneyTextBoxes()
+                    win.flip()
+                    core.wait(selectionOutlineDuration)
+                    choice2Responses[i] = option2Money5.getDisplayedText()
+                    break
+                elif mouse.isPressedIn(option2Pos6Shape):
+                    choice2ReactionTimes[i] = timer.getTime() 
+                    option2Pos6Shape.setLineColor('red')
+                    option2Pos6Shape.draw()
+                    drawOption2MoneyTextBoxes()
+                    win.flip()
+                    core.wait(selectionOutlineDuration)
+                    choice2Responses[i] = option2Money6.getDisplayedText()
+                    break
+                elif mouse.isPressedIn(option2Pos7Shape):
+                    choice2ReactionTimes[i] = timer.getTime() 
+                    option2Pos7Shape.setLineColor('red')
+                    option2Pos7Shape.draw()
+                    drawOption2MoneyTextBoxes()
+                    win.flip()
+                    core.wait(selectionOutlineDuration)
+                    choice2Responses[i] = option2Money7.getDisplayedText()
+                    break
+                elif mouse.isPressedIn(option2Pos8Shape):
+                    choice2ReactionTimes[i] =  timer.getTime() 
+                    option2Pos8Shape.setLineColor('red')
+                    option2Pos8Shape.draw()
+                    drawOption2MoneyTextBoxes()
+                    win.flip()
+                    core.wait(selectionOutlineDuration)
+                    choice2Responses[i] = option2Money8.getDisplayedText()
+                    break
+                elif mouse.isPressedIn(option2Pos9Shape):
+                    choice2ReactionTimes[i] = timer.getTime() 
+                    option2Pos9Shape.setLineColor('red')
+                    option2Pos9Shape.draw()
+                    drawOption2MoneyTextBoxes()
+                    win.flip()
+                    core.wait(selectionOutlineDuration)
+                    choice2Responses[i] = option2Money9.getDisplayedText()
+                    break
+                elif mouse.isPressedIn(option2Pos10Shape):
+                    choice2ReactionTimes[i] = timer.getTime() 
+                    option2Pos10Shape.setLineColor('red')
+                    option2Pos10Shape.draw()
+                    drawOption2MoneyTextBoxes()
+                    win.flip()
+                    core.wait(selectionOutlineDuration)
+                    choice2Responses[i] = option2Money10.getDisplayedText()
+                    break
+                elif mouse.isPressedIn(option2Pos11Shape):
+                    choice2ReactionTimes[i] = timer.getTime()
+                    option2Pos11Shape.setLineColor('red')
+                    option2Pos11Shape.draw()
+                    drawOption2MoneyTextBoxes()
+                    win.flip()
+                    core.wait(selectionOutlineDuration)
+                    choice2Responses[i] = option2Money11.getDisplayedText()
+                    break
+                elif mouse.isPressedIn(option2Pos12Shape):
+                    choice2ReactionTimes[i] = timer.getTime()
+                    option2Pos12Shape.setLineColor('red')
+                    option2Pos12Shape.draw()
+                    drawOption2MoneyTextBoxes()
+                    win.flip()
+                    core.wait(selectionOutlineDuration)
+                    choice2Responses[i] = option2Money12.getDisplayedText()
+                    break
+                # End Player Choice----------------------------------------------#
+            else:
+                # PC Choice------------------------------------------------------#
                 choice2ReactionTimes[i] = timer.getTime() 
-                option2Pos1Shape.setLineColor('red')
-                option2Pos1Shape.draw()
+                # Randomly choose optioon2Pos_ shape and option2Money_ textbox
+                pcChoice = random.choice([(option2Pos1Shape,option2Money1),
+                    (option2Pos2Shape,option2Money2),(option2Pos3Shape,option2Money3),
+                    (option2Pos4Shape,option2Money4),(option2Pos5Shape,option2Money5),
+                    (option2Pos6Shape,option2Money6),(option2Pos7Shape,option2Money7),
+                    (option2Pos8Shape,option2Money8),(option2Pos9Shape,option2Money9),
+                    (option2Pos10Shape,option2Money10),(option2Pos11Shape,option2Money11),
+                    (option2Pos12Shape,option2Money12)])
+                pcChoice[0].setLineColor('red')
+                pcChoice[0].draw()
                 drawOption2MoneyTextBoxes()
                 win.flip()
-                core.wait(selectionOutlineDuration)
-                choice2Responses[i] = option2Money1.getDisplayedText()
+                core.wait(pcSelectionOutlineDuration)
+                choice2Responses[i] = pcChoice[1].getDisplayedText()
                 break
-            elif mouse.isPressedIn(option2Pos2Shape):
-                choice2ReactionTimes[i] = timer.getTime() 
-                option2Pos2Shape.setLineColor('red')
-                option2Pos2Shape.draw()
-                drawOption2MoneyTextBoxes()
-                win.flip()
-                core.wait(selectionOutlineDuration)
-                choice2Responses[i] = option2Money2.getDisplayedText()
-                break
-            elif mouse.isPressedIn(option2Pos3Shape):
-                choice2ReactionTimes[i] = timer.getTime() 
-                option2Pos3Shape.setLineColor('red')
-                option2Pos3Shape.draw()
-                drawOption2MoneyTextBoxes()
-                win.flip()
-                core.wait(selectionOutlineDuration)
-                choice2Responses[i] = option2Money3.getDisplayedText()
-                break
-            elif mouse.isPressedIn(option2Pos4Shape):
-                choice2ReactionTimes[i] = timer.getTime() 
-                option2Pos4Shape.setLineColor('red')
-                option2Pos4Shape.draw()
-                drawOption2MoneyTextBoxes()
-                win.flip()
-                core.wait(selectionOutlineDuration)
-                choice2Responses[i] = option2Money4.getDisplayedText()
-                break
-            elif mouse.isPressedIn(option2Pos5Shape):
-                choice2ReactionTimes[i] = timer.getTime() 
-                option2Pos5Shape.setLineColor('red')
-                option2Pos5Shape.draw()
-                drawOption2MoneyTextBoxes()
-                win.flip()
-                core.wait(selectionOutlineDuration)
-                choice2Responses[i] = option2Money5.getDisplayedText()
-                break
-            elif mouse.isPressedIn(option2Pos6Shape):
-                choice2ReactionTimes[i] = timer.getTime() 
-                option2Pos6Shape.setLineColor('red')
-                option2Pos6Shape.draw()
-                drawOption2MoneyTextBoxes()
-                win.flip()
-                core.wait(selectionOutlineDuration)
-                choice2Responses[i] = option2Money6.getDisplayedText()
-                break
-            elif mouse.isPressedIn(option2Pos7Shape):
-                choice2ReactionTimes[i] = timer.getTime() 
-                option2Pos7Shape.setLineColor('red')
-                option2Pos7Shape.draw()
-                drawOption2MoneyTextBoxes()
-                win.flip()
-                core.wait(selectionOutlineDuration)
-                choice2Responses[i] = option2Money7.getDisplayedText()
-                break
-            elif mouse.isPressedIn(option2Pos8Shape):
-                choice2ReactionTimes[i] =  timer.getTime() 
-                option2Pos8Shape.setLineColor('red')
-                option2Pos8Shape.draw()
-                drawOption2MoneyTextBoxes()
-                win.flip()
-                core.wait(selectionOutlineDuration)
-                choice2Responses[i] = option2Money8.getDisplayedText()
-                break
-            elif mouse.isPressedIn(option2Pos9Shape):
-                choice2ReactionTimes[i] = timer.getTime() 
-                option2Pos9Shape.setLineColor('red')
-                option2Pos9Shape.draw()
-                drawOption2MoneyTextBoxes()
-                win.flip()
-                core.wait(selectionOutlineDuration)
-                choice2Responses[i] = option2Money9.getDisplayedText()
-                break
-            elif mouse.isPressedIn(option2Pos10Shape):
-                choice2ReactionTimes[i] = timer.getTime() 
-                option2Pos10Shape.setLineColor('red')
-                option2Pos10Shape.draw()
-                drawOption2MoneyTextBoxes()
-                win.flip()
-                core.wait(selectionOutlineDuration)
-                choice2Responses[i] = option2Money10.getDisplayedText()
-                break
-            elif mouse.isPressedIn(option2Pos11Shape):
-                choice2ReactionTimes[i] = timer.getTime()
-                option2Pos11Shape.setLineColor('red')
-                option2Pos11Shape.draw()
-                drawOption2MoneyTextBoxes()
-                win.flip()
-                core.wait(selectionOutlineDuration)
-                choice2Responses[i] = option2Money11.getDisplayedText()
-                break
-            elif mouse.isPressedIn(option2Pos12Shape):
-                choice2ReactionTimes[i] = timer.getTime()
-                option2Pos12Shape.setLineColor('red')
-                option2Pos12Shape.draw()
-                drawOption2MoneyTextBoxes()
-                win.flip()
-                core.wait(selectionOutlineDuration)
-                choice2Responses[i] = option2Money12.getDisplayedText()
-                break
-            
+                # End PC Choice----------------------------------------------------#
             drawOption2MoneyTextBoxes()
             drawOption2TargetBoxes()
             win.flip()
@@ -808,106 +891,128 @@ for i in range(len(trials)):
         setOption2ItemImages()
         
         # Subject Response Collection Loop
+        # TO DO: add check if it is a pcLowPrefTrials or pcHighPrefTrials, and generate random choice 
+        #  between all boxes, look for 1/12 chance for each choice. 
         timer.reset()
         while timer.getTime() < choice2Duration:
-            if mouse.isPressedIn(option2Item1):
+            if trials[i] in [1,2,5,6]: # Check if current trial is a player response trial
+                # Player Choice--------------------------------------------------#
+                if mouse.isPressedIn(option2Item1):
+                    choice2ReactionTimes[i] = timer.getTime() 
+                    option2Pos1Shape.draw()
+                    drawOption2ItemBoxes()
+                    win.flip()
+                    core.wait(selectionOutlineDuration)
+                    choice2Responses[i] = trialPics[0]
+                    break
+                elif mouse.isPressedIn(option2Item2):
+                    choice2ReactionTimes[i] = timer.getTime() 
+                    option2Pos2Shape.draw()
+                    drawOption2ItemBoxes()
+                    win.flip()
+                    core.wait(selectionOutlineDuration)
+                    choice2Responses[i] = trialPics[1]
+                    computerResponse[i] == 0
+                    break
+                elif mouse.isPressedIn(option2Item3):
+                    choice2ReactionTimes[i] = timer.getTime() 
+                    option2Pos3Shape.draw()
+                    drawOption2ItemBoxes()
+                    win.flip()
+                    core.wait(selectionOutlineDuration)
+                    choice2Responses[i] = trialPics[2]
+                    break
+                elif mouse.isPressedIn(option2Item4):
+                    choice2ReactionTimes[i] = timer.getTime() 
+                    option2Pos4Shape.draw()
+                    drawOption2ItemBoxes()
+                    win.flip()
+                    core.wait(selectionOutlineDuration)
+                    choice2Responses[i] = trialPics[3]
+                    break
+                elif mouse.isPressedIn(option2Item5):
+                    choice2ReactionTimes[i] = timer.getTime() 
+                    option2Pos5Shape.draw()
+                    drawOption2ItemBoxes()
+                    win.flip()
+                    core.wait(selectionOutlineDuration)
+                    choice2Responses[i] = trialPics[4]
+                    break
+                elif mouse.isPressedIn(option2Item6):
+                    choice2ReactionTimes[i] = timer.getTime() 
+                    option2Pos6Shape.draw()
+                    drawOption2ItemBoxes()
+                    win.flip()
+                    core.wait(selectionOutlineDuration)
+                    choice2Responses[i] = trialPics[5]
+                    break
+                elif mouse.isPressedIn(option2Item7):
+                    choice2ReactionTimes[i] = timer.getTime() 
+                    option2Pos7Shape.draw()
+                    drawOption2ItemBoxes()
+                    win.flip()
+                    core.wait(selectionOutlineDuration)
+                    choice2Responses[i] = trialPics[6]
+                    break
+                elif mouse.isPressedIn(option2Item8):
+                    choice2ReactionTimes[i] =  timer.getTime() 
+                    option2Pos8Shape.draw()
+                    drawOption2ItemBoxes()
+                    win.flip()
+                    core.wait(selectionOutlineDuration)
+                    choice2Responses[i] = trialPics[7]
+                    break
+                elif mouse.isPressedIn(option2Item9):
+                    choice2ReactionTimes[i] = timer.getTime() 
+                    option2Pos9Shape.draw()
+                    drawOption2ItemBoxes()
+                    win.flip()
+                    core.wait(selectionOutlineDuration)
+                    choice2Responses[i] = trialPics[8]
+                    break
+                elif mouse.isPressedIn(option2Item10):
+                    choice2ReactionTimes[i] = timer.getTime() 
+                    option2Pos10Shape.draw()
+                    drawOption2ItemBoxes()
+                    win.flip()
+                    core.wait(selectionOutlineDuration)
+                    choice2Responses[i] = trialPics[9]
+                    break
+                elif mouse.isPressedIn(option2Item11):
+                    choice2ReactionTimes[i] = timer.getTime() 
+                    option2Pos11Shape.draw()
+                    drawOption2ItemBoxes()
+                    win.flip()
+                    core.wait(selectionOutlineDuration)
+                    choice2Responses[i] = trialPics[10]
+                    break
+                elif mouse.isPressedIn(option2Item12):
+                    choice2ReactionTimes[i] = timer.getTime() 
+                    option2Pos12Shape.draw()
+                    drawOption2ItemBoxes()
+                    win.flip()
+                    core.wait(selectionOutlineDuration)
+                    choice2Responses[i] = trialPics[11]
+                    break
+                # End Player Choice----------------------------------------------#
+            else:
+                # PC Choice------------------------------------------------------#
                 choice2ReactionTimes[i] = timer.getTime() 
-                option2Pos1Shape.draw()
+                # randomly choose optioon2Pos_ shape and corresponding trialPic index
+                pcChoice = random.choice([(option2Pos1Shape,0),
+                    (option2Pos2Shape,1),(option2Pos3Shape,2),
+                    (option2Pos4Shape,3),(option2Pos5Shape,4),
+                    (option2Pos6Shape,5),(option2Pos7Shape,6),
+                    (option2Pos8Shape,7),(option2Pos9Shape,8),
+                    (option2Pos10Shape,9),(option2Pos11Shape,10),
+                    (option2Pos12Shape,11)])
+                pcChoice[0].draw()
                 drawOption2ItemBoxes()
                 win.flip()
-                core.wait(selectionOutlineDuration)
-                choice2Responses[i] = trialPics[0]
+                core.wait(pcSelectionOutlineDuration)
+                choice2Responses[i] = trialPics[pcChoice[1]]
                 break
-            elif mouse.isPressedIn(option2Item2):
-                choice2ReactionTimes[i] = timer.getTime() 
-                option2Pos2Shape.draw()
-                drawOption2ItemBoxes()
-                win.flip()
-                core.wait(selectionOutlineDuration)
-                choice2Responses[i] = trialPics[1]
-                computerResponse[i] == 0
-                break
-            elif mouse.isPressedIn(option2Item3):
-                choice2ReactionTimes[i] = timer.getTime() 
-                option2Pos3Shape.draw()
-                drawOption2ItemBoxes()
-                win.flip()
-                core.wait(selectionOutlineDuration)
-                choice2Responses[i] = trialPics[2]
-                break
-            elif mouse.isPressedIn(option2Item4):
-                choice2ReactionTimes[i] = timer.getTime() 
-                option2Pos4Shape.draw()
-                drawOption2ItemBoxes()
-                win.flip()
-                core.wait(selectionOutlineDuration)
-                choice2Responses[i] = trialPics[3]
-                break
-            elif mouse.isPressedIn(option2Item5):
-                choice2ReactionTimes[i] = timer.getTime() 
-                option2Pos5Shape.draw()
-                drawOption2ItemBoxes()
-                win.flip()
-                core.wait(selectionOutlineDuration)
-                choice2Responses[i] = trialPics[4]
-                break
-            elif mouse.isPressedIn(option2Item6):
-                choice2ReactionTimes[i] = timer.getTime() 
-                option2Pos6Shape.draw()
-                drawOption2ItemBoxes()
-                win.flip()
-                core.wait(selectionOutlineDuration)
-                choice2Responses[i] = trialPics[5]
-                break
-            elif mouse.isPressedIn(option2Item7):
-                choice2ReactionTimes[i] = timer.getTime() 
-                option2Pos7Shape.draw()
-                drawOption2ItemBoxes()
-                win.flip()
-                core.wait(selectionOutlineDuration)
-                choice2Responses[i] = trialPics[6]
-                break
-            elif mouse.isPressedIn(option2Item8):
-                choice2ReactionTimes[i] =  timer.getTime() 
-                option2Pos8Shape.draw()
-                drawOption2ItemBoxes()
-                win.flip()
-                core.wait(selectionOutlineDuration)
-                choice2Responses[i] = trialPics[7]
-                break
-            elif mouse.isPressedIn(option2Item9):
-                choice2ReactionTimes[i] = timer.getTime() 
-                option2Pos9Shape.draw()
-                drawOption2ItemBoxes()
-                win.flip()
-                core.wait(selectionOutlineDuration)
-                choice2Responses[i] = trialPics[8]
-                break
-            elif mouse.isPressedIn(option2Item10):
-                choice2ReactionTimes[i] = timer.getTime() 
-                option2Pos10Shape.draw()
-                drawOption2ItemBoxes()
-                win.flip()
-                core.wait(selectionOutlineDuration)
-                choice2Responses[i] = trialPics[9]
-                break
-            elif mouse.isPressedIn(option2Item11):
-                choice2ReactionTimes[i] = timer.getTime() 
-                option2Pos11Shape.draw()
-                drawOption2ItemBoxes()
-                win.flip()
-                core.wait(selectionOutlineDuration)
-                choice2Responses[i] = trialPics[10]
-                break
-            elif mouse.isPressedIn(option2Item12):
-                choice2ReactionTimes[i] = timer.getTime() 
-                option2Pos12Shape.draw()
-                drawOption2ItemBoxes()
-                win.flip()
-                core.wait(selectionOutlineDuration)
-                choice2Responses[i] = trialPics[11]
-                break
-            
+                # End PC Choice----------------------------------------------------#
             drawOption2ItemBoxes()
             win.flip()
 
@@ -957,23 +1062,27 @@ for i in range(len(trials)):
     decisionRatingScale.reset(); selectedOptionRatingScale.reset()
     event.clearEvents()
     timer.reset()
-    while timer.getTime() < postChoice2ScaleDuration: # JOCN duration: 3 seconds
-        if not decisionRatingScale.noResponse and not selectedOptionRatingScale.noResponse:
-            postChoiceReactionTimes[i] = timer.getTime()
-            postChoiceDecisionRatings[i] = decisionRatingScale.getRating()
-            postChoiceSelectedOptionRatings[i] = selectedOptionRatingScale.getRating()
+    if trials[i] in [1,2,5,6]:
+        while timer.getTime() < postChoice2ScaleDuration: # JOCN duration: 3 seconds
+            if not decisionRatingScale.noResponse and not selectedOptionRatingScale.noResponse:
+                postChoiceReactionTimes[i] = timer.getTime()
+                postChoiceDecisionRatings[i] = decisionRatingScale.getRating()
+                postChoiceSelectedOptionRatings[i] = selectedOptionRatingScale.getRating()
+                decisionRatingTitle.draw()
+                selectedOptionRatingTitle.draw()
+                decisionRatingScale.draw()
+                selectedOptionRatingScale.draw();
+                win.flip()
+                core.wait(interTrialInterval)
+                break
             decisionRatingTitle.draw()
             selectedOptionRatingTitle.draw()
             decisionRatingScale.draw()
             selectedOptionRatingScale.draw();
             win.flip()
-            core.wait(interTrialInterval)
-            break
-        decisionRatingTitle.draw()
-        selectedOptionRatingTitle.draw()
-        decisionRatingScale.draw()
-        selectedOptionRatingScale.draw();
-        win.flip()
+    else: # Executes if PC response trial
+        postChoiceDecisionRatings[i] = "n/a"
+        postChoiceSelectedOptionRatings[i] = "n/a"
     
     # Subject Response Check - Selects random responses if no response given
     if postChoiceDecisionRatings[i] == '' or postChoiceSelectedOptionRatings[i] == '':
@@ -991,6 +1100,7 @@ for i in range(len(trials)):
         continue
     
     displayResults()
+# End Main Loop------------------------------------------------------------------------#
 
 # Write to .csv file with participants name, subj_id, in file name and/or confederate's id, confed_id
 f=open( outputFile ,'w')
