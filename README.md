@@ -9,3 +9,4 @@ At the end of the experiment, one of the choices will be selected randomly and t
 
 ## Instructions
   1) Unzip images folder and place into task a
+  2) Before running, anything, rename main file from set-size to JOCN-master
