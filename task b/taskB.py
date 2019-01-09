@@ -13,29 +13,24 @@ import util
 # Matthew Slipenchuk tuf91673@temple.edu (09/2018)
 
 
-# Subject
-# Parameters-------------------------------------------------------------------#
+# Subject Parameters-------------------------------------------------------------------#
 subj_id = '005'
 partner_id = '998'
 outputFile = 'subject_' + subj_id + '_partner_' + \
     partner_id + '_task_b_results.csv'
-# End Subject
-# Parameters---------------------------------------------------------------#
+# End Subject Parameters---------------------------------------------------------------#
 
 
-# General
-# Initalization----------------------------------------------------------------#
+# General Initalization----------------------------------------------------------------#
 directory = os.getcwd()
 timer = core.Clock()
 win = visual.Window(fullscr=True, units='pix', monitor='testMonitor',
                     color=[-.9, -.9, -.9])
 mouse = event.Mouse()
-# End General
-# Initialization-----------------------------------------------------------#
+# End General Initialization-----------------------------------------------------------#
 
 
-# Task Parameter
-# Initalization---------------------------------------------------------#
+# Task Parameter Initalization---------------------------------------------------------#
 # Timing Parameters (s)
 breakDuration = 300  # 5 min or 300s
 choice1Duration = 4.5
@@ -68,9 +63,8 @@ highPrefTrialsPartner = [5] * 30
 lowPrefTrialsPartner = [6] * 30
 pcHighPrefTrialsPartner = [7] * 15
 pcLowPrefTrialsPartner = [8] * 15
-trials = highPrefTrialsYou + lowPrefTrialsYou + pcHighPrefTrialsYou + pcLowPrefTrialsYou + \
-    highPrefTrialsPartner + lowPrefTrialsPartner + \
-    pcHighPrefTrialsPartner + pcLowPrefTrialsPartner
+trials = highPrefTrialsYou + lowPrefTrialsYou + pcHighPrefTrialsYou + pcLowPrefTrialsYou +
+    highPrefTrialsPartner + lowPrefTrialsPartner + pcHighPrefTrialsPartner + pcLowPrefTrialsPartner
 random.shuffle(trials)
 
 # ChoosingFor Order Initialization (choosing for yourself or partner)
@@ -87,12 +81,10 @@ postChoiceDecisionRatings = [''] * len(trials)
 postChoiceReactionTimes = [''] * len(trials)
 trialOptions = [''] * len(trials)
 computerResponse = [''] * len(trials)
-# End Task Parameter
-# Initialization----------------------------------------------------#
+# End Task Parameter Initialization----------------------------------------------------#
 
 
-# Function
-# Declerations----------------------------------------------------------------#
+# Function Declerations----------------------------------------------------------------#
 def resetOption2MoneyOptionOutlines():  # Resets GUI Elements after trial
     option2Pos1Shape.setLineColor(None)
     option2Pos2Shape.setLineColor(None)
@@ -106,7 +98,6 @@ def resetOption2MoneyOptionOutlines():  # Resets GUI Elements after trial
     option2Pos10Shape.setLineColor(None)
     option2Pos11Shape.setLineColor(None)
     option2Pos12Shape.setLineColor(None)
-
 
 def drawOption2MoneyTextBoxes():
     option2Money1.draw()
@@ -122,7 +113,6 @@ def drawOption2MoneyTextBoxes():
     option2Money11.draw()
     option2Money12.draw()
 
-
 def drawOption2TargetBoxes():
     option2Pos1Shape.draw()
     option2Pos2Shape.draw()
@@ -136,7 +126,6 @@ def drawOption2TargetBoxes():
     option2Pos10Shape.draw()
     option2Pos11Shape.draw()
     option2Pos12Shape.draw()
-
 
 def drawOption2ItemBoxes():
     option2Item1.draw()
@@ -152,7 +141,6 @@ def drawOption2ItemBoxes():
     option2Item11.draw()
     option2Item12.draw()
 
-
 def drawOption2ItemOptionOutlines():
     option2Pos1Shape.setLineColor('red')
     option2Pos2Shape.setLineColor('red')
@@ -166,7 +154,6 @@ def drawOption2ItemOptionOutlines():
     option2Pos10Shape.setLineColor('red')
     option2Pos11Shape.setLineColor('red')
     option2Pos12Shape.setLineColor('red')
-
 
 def setOption2MoneyBoxTexts():  # Sets image/money choices in trial
     option2Money1.setText('$' + str(trialMoneyOptions[0]))
@@ -182,7 +169,6 @@ def setOption2MoneyBoxTexts():  # Sets image/money choices in trial
     option2Money11.setText('$' + str(trialMoneyOptions[10]))
     option2Money12.setText('$' + str(trialMoneyOptions[11]))
 
-
 def setOption2ItemImages():
     option2Item1.setImage(trialPics[0])
     option2Item2.setImage(trialPics[1])
@@ -196,7 +182,6 @@ def setOption2ItemImages():
     option2Item10.setImage(trialPics[9])
     option2Item11.setImage(trialPics[10])
     option2Item12.setImage(trialPics[11])
-
 
 def displayResults():  # For debug
     print('trials[' + str(i) + '] = ' + str(trials[i]))
@@ -216,8 +201,7 @@ def displayResults():  # For debug
     print('postChoiceReactionTImes[' + str(i) +
           '] = ' + str(postChoiceReactionTimes[i]))
     print('computerResponse[' + str(i) + '] = ' + str(computerResponse[i]))
-# End Function
-# Declerations------------------------------------------------------------#
+# End Function Declerations------------------------------------------------------------#
 
 
 # GUI Initalization--------------------------------------------------------------------#
@@ -387,12 +371,10 @@ decisionRatingTitle = visual.TextBox(window=win,text='Decision Rating',font_size
     size=(1.9, .3),pos=(-.51, -.3),grid_horz_justification='center',units='norm')
 selectedOptionRatingTitle = visual.TextBox(window=win,text='Snack Rating',font_size=30,font_color=[1, 1, 1],
     size=(1.9, .3),pos=(.52, -.3),grid_horz_justification='center',units='norm')
-# End GUI
-# Initialization---------------------------------------------------------------#
+# End GUI Initialization---------------------------------------------------------------#
 
 
-# Main
-# Loop----------------------------------------------------------------------------#
+# Main Loop----------------------------------------------------------------------------#
 for i in range(len(trials)):
     # Check if break needed before trial starts
     if i == 50 | i == 100 | i == 150:
@@ -519,11 +501,9 @@ for i in range(len(trials)):
                 core.wait(selectionOutlineDuration)
                 choice1Responses[i] = choiceAmount
                 break
-            # End Player
-            # Choice------------------------------------------------#
+            # End Player Choice------------------------------------------------#
         else:
-            # PC
-            # Choice--------------------------------------------------------#
+            # PC Choice--------------------------------------------------------#
             if random.random() < .5:
                 # assign reaction time
                 choice1ReactionTimes[i] = timer.getTime()
@@ -555,8 +535,7 @@ for i in range(len(trials)):
                 choice1Responses[i] = choiceAmount
                 break
             break
-            # End PC
-            # Choice----------------------------------------------------#
+            # End PC Choice----------------------------------------------------#
         if trials[i] in [1, 5]:
             highPrefHighFameArrow.draw()
         elif trials[i] in [2, 6]:
@@ -622,8 +601,7 @@ for i in range(len(trials)):
         timer.reset()
         while timer.getTime() < choice2Duration:
             if trials[i] in [1, 2, 5, 6]:  # Check if current trial is a player response trial
-                # Player
-                # Choice--------------------------------------------------#
+                # Player Choice--------------------------------------------------#
                 if mouse.isPressedIn(option2Pos1Shape):
                     choice2ReactionTimes[i] = timer.getTime()
                     option2Pos1Shape.setLineColor('red')
@@ -732,11 +710,9 @@ for i in range(len(trials)):
                     core.wait(selectionOutlineDuration)
                     choice2Responses[i] = option2Money12.getDisplayedText()
                     break
-                # End Player
-                # Choice----------------------------------------------#
+                # End Player Choice----------------------------------------------#
             else:
-                # PC
-                # Choice------------------------------------------------------#
+                # PC Choice------------------------------------------------------#
                 choice2ReactionTimes[i] = timer.getTime()
                 # Randomly choose optioon2Pos_ shape and option2Money_ textbox
                 pcChoice = random.choice([(option2Pos1Shape, option2Money1),
@@ -758,8 +734,7 @@ for i in range(len(trials)):
                 core.wait(pcSelectionOutlineDuration)
                 choice2Responses[i] = pcChoice[1].getDisplayedText()
                 break
-                # End PC
-                # Choice----------------------------------------------------#
+                # End PC Choice----------------------------------------------------#
             drawOption2MoneyTextBoxes()
             drawOption2TargetBoxes()
             win.flip()
@@ -780,8 +755,7 @@ for i in range(len(trials)):
         timer.reset()
         while timer.getTime() < choice2Duration:
             if trials[i] in [1, 2, 5, 6]:  # Check if current trial is a player response trial
-                # Player
-                # Choice--------------------------------------------------#
+                # Player Choice--------------------------------------------------#
                 if mouse.isPressedIn(option2Item1):
                     choice2ReactionTimes[i] = timer.getTime()
                     option2Pos1Shape.draw()
@@ -879,11 +853,9 @@ for i in range(len(trials)):
                     core.wait(selectionOutlineDuration)
                     choice2Responses[i] = trialPics[11]
                     break
-                # End Player
-                # Choice----------------------------------------------#
+                # End Player Choice----------------------------------------------#
             else:
-                # PC
-                # Choice------------------------------------------------------#
+                # PC Choice------------------------------------------------------#
                 choice2ReactionTimes[i] = timer.getTime()
                 # randomly choose optioon2Pos_ shape and corresponding trialPic
                 # index
@@ -905,8 +877,7 @@ for i in range(len(trials)):
                 core.wait(pcSelectionOutlineDuration)
                 choice2Responses[i] = trialPics[pcChoice[1]]
                 break
-                # End PC
-                # Choice----------------------------------------------------#
+                # End PC Choice----------------------------------------------------#
             drawOption2ItemBoxes()
             win.flip()
 
@@ -998,8 +969,7 @@ for i in range(len(trials)):
         continue
 
     displayResults()
-# End Main
-# Loop------------------------------------------------------------------------#
+# End Main Loop------------------------------------------------------------------------#
 
 # Write to .csv file with participants name, subj_id, in file name and/or
 # confederate's id, confed_id
