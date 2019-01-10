@@ -40,8 +40,8 @@ for s = 1:length(sublist)
         %fname = fullfile(maindir,'psychopy','logs',num2str(subj),sprintf('sub-%03_partner_%03_task_b_results.csv',subj,r-1)); %creates variable to st|e the path to a given subject's data
         C = textscan(fid,"%d %f %d %s %f %f %s %f %d %d %s %d %s",'Delimiter',',','HeaderLines',1);
         
-        % omit computer responses - when adding new pc generated responses
-        if C{12} == 1
+        % omit computer responses
+        if C{12} == 0
             continue
         end
         
