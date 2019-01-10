@@ -20,13 +20,17 @@ for s = 1:length(sublist)
     
     choice1 = string.empty(0,run);
     
+    % turns these values into 8-bit integers in the string 
     highValue = int8.empty(0,run);
     
+    % these are double.empty because the options are binary; they're either
+    % 1 or 0
     you_high_RT = double.empty(0,run);
     partner_high_RT = double.empty(0,run);
     you_mixed_RT = double.empty(0,run);
     partner_mixed_RT = double.empty(0,run);
     
+    % turns these values into 8-bit integers in the string
     choosing_for_vals = int8.empty(0,run);
     
     tmp_data = zeros(run,1);
