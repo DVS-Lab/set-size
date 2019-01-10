@@ -977,10 +977,8 @@ f = open(outputFile, 'w')
 f.write('Trial Type, Money Option, Item Option, Trial Options, Choice 1, Choice 1 RT, Choice 2, Choice 2 RT, Decision Rating , Selected Option Rating, PostChoiceRT, Computer Response, Choosing For\n')
 for i in range(len(trials)):
     f.write(str(trials[i]) + ',' + str(monetaryOptions[i]) + ',' + str(itemNumberOptions[i]) + ',' + " ".join(map(str, trialOptions[i]))
-            + ',' + str(choice1Responses[i]) + ',' + str(choice1ReactionTimes[i]) + ',' + str(
-                choice2Responses[i]) + ',' + str(choice2ReactionTimes[i])
-            + ',' + str(postChoiceDecisionRatings[i]) + ',' + str(postChoiceSelectedOptionRatings[
-                i]) + ',' + str(postChoiceReactionTimes[i]) + ',' + str(computerResponse[i])
+            + ',' + str(choice1Responses[i]) + ',' + str(choice1ReactionTimes[i]) + ',' + str(choice2Responses[i]) + ',' + str(choice2ReactionTimes[i])
+            + ',' + str(postChoiceDecisionRatings[i]) + ',' + str(postChoiceSelectedOptionRatings[i]) + ',' + str(postChoiceReactionTimes[i]) + ',' + str(computerResponse[i])
             + ',' + str(youOrPersonTrials[i]) + "\n")
 f.close()
 
