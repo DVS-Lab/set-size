@@ -377,7 +377,7 @@ selectedOptionRatingTitle = visual.TextBox(window=win,text='Snack Rating',font_s
 # Main Loop----------------------------------------------------------------------------#
 for i in range(len(trials)):
     # Check if break needed before trial starts
-    if i == 50 | i == 100 | i == 150:
+    if i == 45 | i == 90 | i == 135:
         timer.reset()
         while timer.getTime() < breakDuration:
             win.flip()
