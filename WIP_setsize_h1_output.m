@@ -10,9 +10,9 @@ fprintf(fid_run,'subject_id\tChoosingForYou\tChoice1\tHighValue\tRT1\n');
 % that everything works properly
 sublist = [999];
 
-beginning_part = "999\t";
-fname = "output/subject_999_partner_998_task_b_results.csv";
-fid = fopen(fname,'r+');
+beginning_part = '999\t';
+fname = 'output/subject_999_partner_998_task_b_results.csv';
+fid = fopen(fname,'r');
 for s = 1:length(sublist)
     
     subj = sublist(s);
@@ -20,7 +20,7 @@ for s = 1:length(sublist)
     
     choice1 = string.empty(0,run);
     
-    % turns these values into 8-bit integers in the string 
+    %turns these values into 8-bit integers in the string
     highValue = int8.empty(0,run);
     
     % these are double.empty because the options are binary; they're either
@@ -30,15 +30,16 @@ for s = 1:length(sublist)
     you_mixed_RT = double.empty(0,run);
     partner_mixed_RT = double.empty(0,run);
     
-    % turns these values into 8-bit integers in the string
+    %turns these values into 8-bit integers in the string
     choosing_for_vals = int8.empty(0,run);
     
     tmp_data = zeros(run,1);
     % run each line of each participant's output file through this code
     for r = 1:run
         trial_data = beginning_part;
-        %fname = fullfile(maindir,'psychopy','logs',num2str(subj),sprintf('sub-%03_partner_%03_task_b_results.csv',subj,r-1)); %creates variable to st|e the path to a given subject's data
-        C = textscan(fid,"%d %f %d %s %f %f %s %f %d %d %s %d %s",'Delimiter',',','HeaderLines',1);
+        % fname = fullfile(maindir,'psychopy','logs',num2str(subj),sprintf('sub-%03_partner_%03_task_b_results.csv',subj,r-1)); %creates variable to st|e the path to a given subject's data
+        C = textscan(fid,'%s%s%s%s%s%s%s%s%s%s%s%s%s','Delimiter',',','HeaderLines',1);
+        fclose(fid);
         
         % omit computer responses
         if C{12} == 0
@@ -48,10 +49,10 @@ for s = 1:length(sublist)
         % ChoosingForYou    
         if isequal(C{13},1)
             choosing_for_vals(r) = 1;
-            %trial_data = strcat(trial_data,"1","\t");
+            % trial_data = strcat(trial_data,"1","\t");
         else
             choosing_for_vals(r) = 0;
-            %trial_data = strcat(trial_data,"0","\t");
+            % trial_data = strcat(trial_data,"0","\t");
         end
         
         % Choice1
@@ -69,7 +70,7 @@ for s = 1:length(sublist)
                 rt = C{6};
                 partner_high_RT(r) = rt(end);
             end
-            %trial_data = strcat(trial_data,"1","\t");
+            % trial_data = strcat(trial_data,"1","\t");
         else % is mixed value
             highValue(r) = 0; 
             if choosing_for_vals(r) == 1 % you choosing
