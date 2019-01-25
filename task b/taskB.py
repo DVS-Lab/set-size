@@ -14,7 +14,7 @@ import util
 
 
 # Subject Parameters-------------------------------------------------------------------#
-subj_id = '005'
+subj_id = '999'
 partner_id = '998'
 outputFile = 'subject_' + subj_id + '_partner_' + \
     partner_id + '_task_b_results.csv'
@@ -50,7 +50,7 @@ itemChoiceAmounts = [2, 3, 6, 12]
 moneyChoiceAmounts = [2, 3, 4, 6]
 moneyList = [0.50, 0.75, 1.00, 1.25, 1.50, 1.75]
 imageList = util.imageSorter(
-    subj_id + '_task_a_results.csv')  # Sort Images into list
+    subj_id + ' task a results.csv')  # Sort Images into list
 # from task a data
 # Trial Order Initialization
 # Indicates who is making decision, type of items (high/mixed), and who
@@ -63,8 +63,7 @@ highPrefTrialsPartner = [5] * 30
 lowPrefTrialsPartner = [6] * 30
 pcHighPrefTrialsPartner = [7] * 15
 pcLowPrefTrialsPartner = [8] * 15
-trials = highPrefTrialsYou + lowPrefTrialsYou + pcHighPrefTrialsYou + pcLowPrefTrialsYou +
-    highPrefTrialsPartner + lowPrefTrialsPartner + pcHighPrefTrialsPartner + pcLowPrefTrialsPartner
+trials = highPrefTrialsYou + lowPrefTrialsYou + pcHighPrefTrialsYou + pcLowPrefTrialsYou + highPrefTrialsPartner + lowPrefTrialsPartner + pcHighPrefTrialsPartner + pcLowPrefTrialsPartner
 random.shuffle(trials)
 
 # ChoosingFor Order Initialization (choosing for yourself or partner)
