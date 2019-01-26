@@ -38,7 +38,7 @@ for s = 1:length(sublist)
     for r = 1:run
         trial_data = beginning_part;
         % fname = fullfile(maindir,'psychopy','logs',num2str(subj),sprintf('sub-%03_partner_%03_task_b_results.csv',subj,r-1)); %creates variable to st|e the path to a given subject's data
-        C = textscan(fid,'%s%s%s%s%s%s%s%s%s%s%s%s%s','Delimiter',',','HeaderLines',1);
+        C = textscan(fid,'%d%d%f%s%d%d%s%d%s%s%s%f%f','Delimiter',',','HeaderLines',1);
         fclose(fid);
         
         % omit computer responses
@@ -83,9 +83,7 @@ for s = 1:length(sublist)
             %trial_data = strcat(trial_data,"0","\t");
         end
             
-        
         % fprintf(fid_run,trial_data(end));
-        % fprintf(fid_run,'%d,%f,%f,%f,%f,%f,%f,%f,%f,%d,%f,%f,%f,%f,%f,%f,%f,%f\n',subj);
     end
     
 end
