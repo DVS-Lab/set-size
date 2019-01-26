@@ -3,7 +3,7 @@ maindir = pwd;
 
 % open output files
 fname = fullfile(maindir,'setsize_h1_output.tsv');
-fid_run = fopen(fname,'w'); % csv uses commans (,) & tsv uses tabs (\t)
+fid_run = fopen(fname,'w');
 fprintf(fid_run,'subject_id\tChoosingForYou\tChoice1\tHighValue\tRT1\n');
 
 % participants ran with latest task code. 009 is our test code to make sure
