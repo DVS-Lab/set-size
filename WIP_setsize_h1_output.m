@@ -1,9 +1,10 @@
-clear;
+clc
+clear all;
 maindir = pwd;
 
 % open output files
 fname = fullfile(maindir,'setsize_h1_output.tsv');
-fid_run = fopen(fname,'w');
+fid_run = fopen(fname,'w'); % csv uses commans (,) & tsv uses tabs (\t)
 fprintf(fid_run,'subject_id\tChoosingForYou\tChoice1\tHighValue\tRT1\n');
 
 % participants ran with latest task code. 009 is our test code to make sure
@@ -38,16 +39,16 @@ for s = 1:length(sublist)
     for r = 1:run
         trial_data = beginning_part;
         % fname = fullfile(maindir,'psychopy','logs',num2str(subj),sprintf('sub-%03_partner_%03_task_b_results.csv',subj,r-1)); %creates variable to st|e the path to a given subject's data
-        C = textscan(fid,'%d%d%f%s%d%d%s%d%s%s%s%f%f','Delimiter',',','HeaderLines',1);
+        C = textscan(fid,'%s%s%s%s%s%s%s%s%s%s%s%s%s','Delimiter',',','HeaderLines',1);
         fclose(fid);
         
         % omit computer responses
-        if C{12} == 0
+        if ismember(C{12}(r),{'0'})
             continue
         end
         
         % ChoosingForYou    
-        if isequal(C{13},1)
+        if isequal(C{13}(r),1)
             choosing_for_vals(r) = 1;
             % trial_data = strcat(trial_data,"1","\t");
         else
@@ -56,34 +57,36 @@ for s = 1:length(sublist)
         end
         
         % Choice1
-        choice = num2str(C{5});
-        choice1(r) = choice(end);
+        choice = (C{5}(r));
+        choice1(r) = choice{:};
         %trial_data = strcat(trial_data,num2str(C{5}),"\t");
                     
         % HighValue
-        if C{1} == 1 | C{1} == 3 | C{1} == 5 | C{1} == 7
+        if isequal(C{1}(r),1) | isequal(C{1}(r),3) | isequal(C{1}(r),5) | isequal(C{1}(r),7)
             highValue(r) = 1;
             if choosing_for_vals(r) == 1 % you choosing
-                rt = C{6};
-                you_high_RT(r) = rt(end);
+                rt = C{6}(r);
+                you_high_RT(r) = rt{:};
             else 
-                rt = C{6};
-                partner_high_RT(r) = rt(end);
+                rt = C{6}(r);
+                partner_high_RT(r) = rt{:};
             end
             % trial_data = strcat(trial_data,"1","\t");
         else % is mixed value
             highValue(r) = 0; 
             if choosing_for_vals(r) == 1 % you choosing
-                rt = C{6};
-                you_mixed_RT(r) = rt(end);
+                rt = C{6}(r);
+                you_mixed_RT(r) = rt{:};
             else 
-                rt = C{6};
-                partner_mixed_RT(r) = rt(end);
+                rt = C{6}(r);
+                partner_mixed_RT(r) = rt{:};
             end
             %trial_data = strcat(trial_data,"0","\t");
         end
             
-        % fprintf(fid_run,trial_data(end));
+        
+         fprintf(fid_run,trial_data);
+        % fprintf(fid_run,'%d,%f,%f,%f,%f,%f,%f,%f,%f,%d,%f,%f,%f,%f,%f,%f,%f,%f\n',subj);
     end
     
 end
