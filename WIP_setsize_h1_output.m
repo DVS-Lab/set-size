@@ -17,34 +17,35 @@ fid = fopen(fname,'r');
 for s = 1:length(sublist)
     
     subj = sublist(s);
-    
-    % turns these values into 8-bit integers in the string
-    % highValue = int8.empty(0,run);
-    
-    % only include non-computer responses
-    for i=1:180
-        x(i) = isequal(C{12}(i),{'0'});
-    end
-    
-    % define run
-    run = length(find(x==1))
-    
-    % creates empty array for data to be stored
-    you_high_RT = zeros(1,run);
-    partner_high_RT = zeros(1,run);
-    you_mixed_RT = zeros(1,run);
-    partner_mixed_RT = zeros(1,run);
 
-    % more empty arrays for data to be stored
-    choosing_for_vals = zeros(1,run);
-    tmp_data = zeros(run,1);
+    % fname = fullfile(maindir,'psychopy','logs',num2str(subj),sprintf('sub-%03_partner_%03_task_b_results.csv',subj,r-1)); %creates variable to st|e the path to a given subject's data
+    C = textscan(fopen(fname,'r'),'%s%s%s%s%s%s%s%s%s%s%s%s%s','Delimiter',',','HeaderLines',1);
+    fclose(fid);
+        
+        % only include non-computer responses
+        for i=1:180
+            x(i) = isequal(C{12}(i),{'0'});
+        end
+        
+        % run each line of each participant's output file through this code
+        for r=find(x==1)
+            trial_data = beginning_part;
+        
+        % turns these values into 8-bit integers in the string
+        % highValue = int8.empty(0,run);
+
+        % define r
+        r = length(find(x==1))
     
-    % run each line of each participant's output file through this code
-    for r=find(x==1)
-        trial_data = beginning_part;
-        % fname = fullfile(maindir,'psychopy','logs',num2str(subj),sprintf('sub-%03_partner_%03_task_b_results.csv',subj,r-1)); %creates variable to st|e the path to a given subject's data
-        C = textscan(fopen(fname,'r'),'%s%s%s%s%s%s%s%s%s%s%s%s%s','Delimiter',',','HeaderLines',1);
-        fclose(fid);
+        % creates empty array for data to be stored
+        you_high_RT = zeros(1,r);
+        partner_high_RT = zeros(1,r);
+        you_mixed_RT = zeros(1,r);
+        partner_mixed_RT = zeros(1,r);
+
+        % more empty arrays for data to be stored
+        choosing_for_vals = zeros(1,r);
+        tmp_data = zeros(r,1);
         
         % ChoosingForYou    
         if isequal(C{13}(r),{'1'})
@@ -63,19 +64,19 @@ for s = 1:length(sublist)
             highValue(r) = 1;
             if choosing_for_vals(r) == 1 % choosing for yourself
                 rt = C{6}(r);
-                you_high_RT(r) = str2double(rt{:});
+                you_high_RT(r) = mean(str2double(rt{:}));
             else % choosing for your partner
                 rt = C{6}(r);
-                partner_high_RT(r) = str2double(rt{:});
+                partner_high_RT(r) = mean(str2double(rt{:}));
             end
         else % is mixed value
             highValue(r) = 0; 
             if choosing_for_vals(r) == 1 % choosing for yourself
                 rt = C{6}(r);
-                you_mixed_RT(r) = str2double(rt{:});
+                you_mixed_RT(r) = mean(str2double(rt{:}));
             else % choosing for your partner
                 rt = C{6}(r);
-                partner_mixed_RT(r) = str2double(rt{:});
+                partner_mixed_RT(r) = mean(str2double(rt{:}));
             end
         end
         
@@ -85,4 +86,3 @@ for s = 1:length(sublist)
     
 end
 fclose(fid_run);
-
