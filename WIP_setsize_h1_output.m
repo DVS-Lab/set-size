@@ -55,8 +55,8 @@ for s = 1:length(sublist)
         end
        
         % Choice1
-        choice = (C{5}(r));
-        choice1(r) = choice{:};
+        choice1(r) = (C{5}(r));
+        % choice1(r) = choice{:};
         choice1 = string(C{5});
                     
         % HighValue
@@ -81,7 +81,8 @@ for s = 1:length(sublist)
         end
         
         % write data to output file 'setsize_h1_output.tsv'
-        fprintf(fid_run,trial_data);
+        % fprintf(fid_run,trial_data);
+        fprintf('setsize_h1_output.tsv')
     end
     
 end
