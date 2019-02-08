@@ -1,24 +1,23 @@
 clc
-clear all;
+clear;
 maindir = pwd;
 
 % open output files
-fname = fullfile(maindir,'setsize_h1_output.tsv');
+fname = fullfile(maindir,'setsize_h1_output.csv');
 fid_run = fopen(fname,'w'); % csv uses commans (,) & tsv uses tabs (\t)
-fprintf(fid_run,'subject_id\tChoosingForYou\tChoice1\tHighValue\tRT1\n');
+fprintf(fid_run,'subject_id,ChoosingForYou,Choice1,highValue,RT1\n');
 
-% participants ran with latest task code. 999 is our test code to make sure
-% that everything works properly
-sublist = [999];
+% fake subject_ID (999 is to practice with)
+sublist = (999);
 
-beginning_part = '999\t';
-fname = 'output/subject_999_partner_998_task_b_results.csv';
-fid = fopen(fname,'r');
 for s = 1:length(sublist)
     
     subj = sublist(s);
-
-    % fname = fullfile(maindir,'psychopy','logs',num2str(subj),sprintf('sub-%03_partner_%03_task_b_results.csv',subj,r-1)); %creates variable to st|e the path to a given subject's data
+   
+    beginning_part = '999\t';
+    fname = fullfile(maindir,'output/subject_999_partner_998_task_b_results.csv');
+    fid = fopen(fname,'r');
+    % defines what "C" (column) is from data output file
     C = textscan(fopen(fname,'r'),'%s%s%s%s%s%s%s%s%s%s%s%s%s','Delimiter',',','HeaderLines',1);
     fclose(fid);
         
@@ -27,16 +26,20 @@ for s = 1:length(sublist)
             x(i) = isequal(C{12}(i),{'0'});
         end
         
-        % run each line of each participant's output file through this code
-        for r=find(x==1)
-            trial_data = beginning_part;
+        % define runs
+        runs = find(x==1);
+    
+        trial_data = beginning_part;
         
         % turns these values into 8-bit integers in the string
         % highValue = int8.empty(0,run);
 
         % define r
         r = length(find(x==1))
-    
+        
+        % empty array to store data in
+        tmp_data = zeros(r,1);
+
         % creates empty array for data to be stored
         you_high_RT = zeros(1,r);
         partner_high_RT = zeros(1,r);
@@ -45,21 +48,19 @@ for s = 1:length(sublist)
 
         % more empty arrays for data to be stored
         choosing_for_vals = zeros(1,r);
-        tmp_data = zeros(r,1);
-        
+
         % ChoosingForYou    
         if isequal(C{13}(r),{'1'})
             choosing_for_vals(r) = 1;
         else
             choosing_for_vals(r) = 0;
         end
-       
-        % Choice1
+
+        % defines Choice1
         choice1(r) = (C{5}(r));
-        % choice1(r) = choice{:};
         choice1 = string(C{5});
-                    
-        % HighValue
+
+        % defines Value
         if isequal(C{1}(r),{'1'}) | isequal(C{1}(r),{'3'}) | isequal(C{1}(r),{'5'}) | isequal(C{1}(r),{'7'})
             highValue(r) = 1;
             if choosing_for_vals(r) == 1 % choosing for yourself
@@ -79,11 +80,10 @@ for s = 1:length(sublist)
                 partner_mixed_RT(r) = mean(str2double(rt{:}));
             end
         end
-        
+
         % write data to output file 'setsize_h1_output.tsv'
-        % fprintf(fid_run,trial_data);
-        fprintf('setsize_h1_output.tsv')
-    end
-    
+        fprintf(fid_run,trial_data);
+        fprintf('setsize_h1_output.tsv');
 end
+fprintf(fid_run,'%s,%s,%s,%s,%s/t%s,%s,%s,%s/t%s,%s,%s,%s/t%s,%s,%s,%s/n',subj,mean(tmp_data));
 fclose(fid_run);
