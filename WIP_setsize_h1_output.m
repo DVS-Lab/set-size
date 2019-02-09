@@ -1,19 +1,18 @@
-clc
 clear;
 maindir = pwd;
 
 % open output files
 fname = fullfile(maindir,'setsize_h1_output.csv');
 fid_run = fopen(fname,'w'); % csv uses commans (,) & tsv uses tabs (\t)
-fprintf(fid_run,'subject_id,ChoosingForYou,Choice1,highValue,RT1\n');
+fprintf(fid_run,'subject_id,ChoosingForYou,highValue,Choice1,RT1\n');
 
 % fake subject_ID (999 is to practice with)
 sublist = (999);
-
+        
 for s = 1:length(sublist)
     
     subj = sublist(s);
-   
+    
     beginning_part = '999\t';
     fname = fullfile(maindir,'output/subject_999_partner_998_task_b_results.csv');
     fid = fopen(fname,'r');
@@ -22,24 +21,21 @@ for s = 1:length(sublist)
     fclose(fid);
         
         % only include non-computer responses
-        for i=1:180
-            x(i) = isequal(C{12}(i),{'0'});
+        for r = 1:180
+            x(r) = isequal(C{12}(r),{'0'});
         end
         
-        % define runs
-        runs = find(x==1);
+        % define r
+        r = length(find(x==1));
+        
+        % empty array to store data in
+        tmp_data = zeros(r,4);
     
         trial_data = beginning_part;
         
         % turns these values into 8-bit integers in the string
-        % highValue = int8.empty(0,run);
-
-        % define r
-        r = length(find(x==1))
+        % highValue = int8.empty(0,run)
         
-        % empty array to store data in
-        tmp_data = zeros(r,1);
-
         % creates empty array for data to be stored
         you_high_RT = zeros(1,r);
         partner_high_RT = zeros(1,r);
@@ -83,7 +79,6 @@ for s = 1:length(sublist)
 
         % write data to output file 'setsize_h1_output.tsv'
         fprintf(fid_run,trial_data);
-        fprintf('setsize_h1_output.tsv');
+        fprintf(fid_run,'%s,%s,%s,%s,%s/t%s,%s,%s,%s/t%s,%s,%s,%s/t%s,%s,%s,%s/n',subj,mean(tmp_data));
 end
-fprintf(fid_run,'%s,%s,%s,%s,%s/t%s,%s,%s,%s/t%s,%s,%s,%s/t%s,%s,%s,%s/n',subj,mean(tmp_data));
 fclose(fid_run);
