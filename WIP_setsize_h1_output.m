@@ -4,7 +4,7 @@ maindir = pwd;
 % open output files
 fname = fullfile(maindir,'setsize_h1_output.csv');
 fid_run = fopen(fname,'w'); % csv uses commans (,) & tsv uses tabs (\t)
-fprintf(fid_run,'subject_id,ChoosingForYou,highValue,Choice1,RT1\n');
+fprintf(fid_run,'subject_id,Condition,2RT,3RT,6RT,12RT,monRT\n');
 
 % fake subject_ID (999 is to practice with)
 sublist = (999);
@@ -21,61 +21,75 @@ for s = 1:length(sublist)
     fclose(fid);
         
         % only include non-computer responses
-        for r = 1:180
+        for r = 1:length(C{12})
             x(r) = isequal(C{12}(r),{'0'});
         end
         
-        % define r
+        % defines for later use
         r = length(find(x==1));
+        Choice1RT = isequal(C{6}(r))
         
         % empty array to store data in
         tmp_data = zeros(r,4);
     
         trial_data = beginning_part;
         
-        % turns these values into 8-bit integers in the string
-        % highValue = int8.empty(0,run)
-        
         % creates empty array for data to be stored
-        you_high_RT = zeros(1,r);
-        partner_high_RT = zeros(1,r);
-        you_mixed_RT = zeros(1,r);
-        partner_mixed_RT = zeros(1,r);
+        if isequal(C{1}(r),{'1'})     
+            you_high = zeros(1,r);
+        if isequal(C{1}(r),{'2'})
+            you_mixed = zeros(1,r);
+        if isequal(C{1}(r),{'5'})  
+            partner_high = zeros(1,r);
+        if isequal(C{1}(r),{'6'})
+            partner_mixed = zeros(1,r);
 
-        % more empty arrays for data to be stored
-        choosing_for_vals = zeros(1,r);
-
-        % ChoosingForYou    
-        if isequal(C{13}(r),{'1'})
-            choosing_for_vals(r) = 1;
-        else
-            choosing_for_vals(r) = 0;
-        end
-
-        % defines Choice1
-        choice1(r) = (C{5}(r));
-        choice1 = string(C{5});
-
-        % defines Value
-        if isequal(C{1}(r),{'1'}) | isequal(C{1}(r),{'3'}) | isequal(C{1}(r),{'5'}) | isequal(C{1}(r),{'7'})
-            highValue(r) = 1;
-            if choosing_for_vals(r) == 1 % choosing for yourself
-                rt = C{6}(r);
-                you_high_RT(r) = mean(str2double(rt{:}));
-            else % choosing for your partner
-                rt = C{6}(r);
-                partner_high_RT(r) = mean(str2double(rt{:}));
+        % defines RT's
+        for you_high
+            if isequal(C{5}(r),{'2'})
+                2RT == mean(str2double(Choice1RT{:}));
+            if isequal(C{5}(r),{'3'})
+                3RT == mean(Choice1RT);
+            if isequal(C{5}(r),{'6'})
+                6RT == mean(str2double(Choice1RT{:}));
+            if isequal(C{5}(r),{'12'})
+                12RT == mean(str2double(Choice1RT{:}));
+            if isequal(C{5}(r),{'0.5'}) | isequal(C{5}(r),{'0.75'}) | isequal(C{5}(r),{'1.25'}) | isequal(C{5}(r),{'1.5'}) | isequal(C{5}(r),{'1.75'})
+                monRT == mean(str2double(Choice1RT{:}));
+        for you_mixed
+            if isequal(C{5}(r),{'2'})
+                2RT == mean(str2double(Choice1RT{:}));
+            if isequal(C{5}(r),{'3'})
+                3RT == mean(Choice1RT);
+            if isequal(C{5}(r),{'6'})
+                6RT == mean(str2double(Choice1RT{:}));
+            if isequal(C{5}(r),{'12'})
+                12RT == mean(str2double(Choice1RT{:}));
+            if isequal(C{5}(r),{'0.5'}) | isequal(C{5}(r),{'0.75'}) | isequal(C{5}(r),{'1.25'}) | isequal(C{5}(r),{'1.5'}) | isequal(C{5}(r),{'1.75'})
+                monRT == mean(str2double(Choice1RT{:}));
+        for partner_high
+            if isequal(C{5}(r),{'2'})
+                2RT == mean(str2double(Choice1RT{:}));
+            if isequal(C{5}(r),{'3'})
+                3RT == mean(Choice1RT);
+            if isequal(C{5}(r),{'6'})
+                6RT == mean(str2double(Choice1RT{:}));
+            if isequal(C{5}(r),{'12'})
+                12RT == mean(str2double(Choice1RT{:}));
+            if isequal(C{5}(r),{'0.5'}) | isequal(C{5}(r),{'0.75'}) | isequal(C{5}(r),{'1.25'}) | isequal(C{5}(r),{'1.5'}) | isequal(C{5}(r),{'1.75'})
+                monRT == mean(str2double(Choice1RT{:}));
+        for partner_mixed
+            if isequal(C{5}(r),{'2'})
+                2RT == mean(str2double(Choice1RT{:}));
+            if isequal(C{5}(r),{'3'})
+                3RT == mean(Choice1RT);
+            if isequal(C{5}(r),{'6'})
+                6RT == mean(str2double(Choice1RT{:}));
+            if isequal(C{5}(r),{'12'})
+                12RT == mean(str2double(Choice1RT{:}));
+            if isequal(C{5}(r),{'0.5'}) | isequal(C{5}(r),{'0.75'}) | isequal(C{5}(r),{'1.25'}) | isequal(C{5}(r),{'1.5'}) | isequal(C{5}(r),{'1.75'})
+                monRT == mean(str2double(Choice1RT{:}));
             end
-        else % is mixed value
-            highValue(r) = 0; 
-            if choosing_for_vals(r) == 1 % choosing for yourself
-                rt = C{6}(r);
-                you_mixed_RT(r) = mean(str2double(rt{:}));
-            else % choosing for your partner
-                rt = C{6}(r);
-                partner_mixed_RT(r) = mean(str2double(rt{:}));
-            end
-        end
 
         % write data to output file 'setsize_h1_output.tsv'
         fprintf(fid_run,trial_data);
