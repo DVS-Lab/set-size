@@ -7,6 +7,12 @@ This study consists of two tasks:
   
 At the end of the experiment, one of the choices will be selected randomly and the participant will be given the item they chose on that specific trial (e.g. money or a specific snack item).
 
-## Instructions
+## Instructions for running tasks after downloading repository
   1) Unzip images folder and place into task a
-  2) If running task B using task A data from 2018, rename set-size folder to JOCN-master 
+  2) If running task B using task A data from 2018, rename set-size folder to JOCN-master
+  3) Follow protocol listed here: https://drive.google.com/drive/u/0/folders/0AA06SXLgHKVxUk9PVA (request access through Victoria)
+
+## Instructions for analyzing task B data (Hypothesis 1)
+  1) Note: this is a Matlab script.
+  2) Make sure everything is located in the correct directory (within this repository).
+  3) Once data is in correct area, run script in Matlab.
