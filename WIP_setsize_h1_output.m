@@ -28,6 +28,7 @@ for s = 1:length(sublist)
         % defines for later use
         r = length(find(x==1));
         Choice1RT = isequal(C{6}(r))
+        % Choice1RT = zeros(1,r);
         
         % empty array to store data in
         tmp_data = zeros(r,4);
@@ -37,11 +38,11 @@ for s = 1:length(sublist)
         % defines Condition
         if isequal(C{1}(r),{'1'});
             Condition == you_high;
-        if isequal(C{1}(r),{'2'})
+        if isequal(C{1}(r),{'2'});
             Condition == you_mixed;
-        if isequal(C{1}(r),{'5'})  
+        if isequal(C{1}(r),{'5'});
             Condition == partner_high;
-        if isequal(C{1}(r),{'6'})
+        if isequal(C{1}(r),{'6'});
             Condition == partner_mixed;
             
         % creates empty array for data to be stored
@@ -51,7 +52,19 @@ for s = 1:length(sublist)
         % partner_mixed = zeros(1,r);
         
         % defines RT's
-        for you_high
+        for Condition = you_high
+            if isequal(C{5}(r),{'2'})
+                2RT == mean(str2double(Choice1RT{:}));
+            if isequal(C{5}(r),{'3'})
+                3RT == mean(str2double(Choice1RT{:}));
+            if isequal(C{5}(r),{'6'})
+                6RT == mean(str2double(Choice1RT{:});
+            if isequal(C{5}(r),{'12'})
+                12RT == mean(str2double(Choice1RT{:}));
+            if isequal(C{5}(r),{'0.5'}) | isequal(C{5}(r),{'0.75'}) | isequal(C{5}(r),{'1.25'}) | isequal(C{5}(r),{'1.5'}) | isequal(C{5}(r),{'1.75'})
+                monRT == mean(str2double(Choice1RT{:}));
+            end
+        for Condition = you_mixed
             if isequal(C{5}(r),{'2'})
                 2RT == mean(str2double(Choice1RT{:}));
             if isequal(C{5}(r),{'3'})
@@ -63,7 +76,7 @@ for s = 1:length(sublist)
             if isequal(C{5}(r),{'0.5'}) | isequal(C{5}(r),{'0.75'}) | isequal(C{5}(r),{'1.25'}) | isequal(C{5}(r),{'1.5'}) | isequal(C{5}(r),{'1.75'})
                 monRT == mean(str2double(Choice1RT{:}));
             end
-        for you_mixed
+        for Condition = partner_high
             if isequal(C{5}(r),{'2'})
                 2RT == mean(str2double(Choice1RT{:}));
             if isequal(C{5}(r),{'3'})
@@ -75,19 +88,7 @@ for s = 1:length(sublist)
             if isequal(C{5}(r),{'0.5'}) | isequal(C{5}(r),{'0.75'}) | isequal(C{5}(r),{'1.25'}) | isequal(C{5}(r),{'1.5'}) | isequal(C{5}(r),{'1.75'})
                 monRT == mean(str2double(Choice1RT{:}));
             end
-        for partner_high
-            if isequal(C{5}(r),{'2'})
-                2RT == mean(str2double(Choice1RT{:}));
-            if isequal(C{5}(r),{'3'})
-                3RT == mean(Choice1RT);
-            if isequal(C{5}(r),{'6'})
-                6RT == mean(str2double(Choice1RT{:}));
-            if isequal(C{5}(r),{'12'})
-                12RT == mean(str2double(Choice1RT{:}));
-            if isequal(C{5}(r),{'0.5'}) | isequal(C{5}(r),{'0.75'}) | isequal(C{5}(r),{'1.25'}) | isequal(C{5}(r),{'1.5'}) | isequal(C{5}(r),{'1.75'})
-                monRT == mean(str2double(Choice1RT{:}));
-            end
-        for partner_mixed
+        for Condition = partner_mixed
             if isequal(C{5}(r),{'2'})
                 2RT == mean(str2double(Choice1RT{:}));
             if isequal(C{5}(r),{'3'})
