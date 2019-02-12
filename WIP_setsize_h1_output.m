@@ -32,18 +32,24 @@ for s = 1:length(sublist)
         % empty array to store data in
         tmp_data = zeros(r,4);
     
-        trial_data = beginning_part;
+        % trial_data = beginning_part;
         
-        % creates empty array for data to be stored
-        if isequal(C{1}(r),{'1'})     
-            you_high = zeros(1,r);
+        % defines Condition
+        if isequal(C{1}(r),{'1'});
+            Condition == you_high;
         if isequal(C{1}(r),{'2'})
-            you_mixed = zeros(1,r);
+            Condition == you_mixed;
         if isequal(C{1}(r),{'5'})  
-            partner_high = zeros(1,r);
+            Condition == partner_high;
         if isequal(C{1}(r),{'6'})
-            partner_mixed = zeros(1,r);
-
+            Condition == partner_mixed;
+            
+        % creates empty array for data to be stored
+        % you_high = zeros(1,r);
+        % you_mixed = zeros(1,r);
+        % partner_high = zeros(1,r);
+        % partner_mixed = zeros(1,r);
+        
         % defines RT's
         for you_high
             if isequal(C{5}(r),{'2'})
@@ -56,6 +62,7 @@ for s = 1:length(sublist)
                 12RT == mean(str2double(Choice1RT{:}));
             if isequal(C{5}(r),{'0.5'}) | isequal(C{5}(r),{'0.75'}) | isequal(C{5}(r),{'1.25'}) | isequal(C{5}(r),{'1.5'}) | isequal(C{5}(r),{'1.75'})
                 monRT == mean(str2double(Choice1RT{:}));
+            end
         for you_mixed
             if isequal(C{5}(r),{'2'})
                 2RT == mean(str2double(Choice1RT{:}));
@@ -67,6 +74,7 @@ for s = 1:length(sublist)
                 12RT == mean(str2double(Choice1RT{:}));
             if isequal(C{5}(r),{'0.5'}) | isequal(C{5}(r),{'0.75'}) | isequal(C{5}(r),{'1.25'}) | isequal(C{5}(r),{'1.5'}) | isequal(C{5}(r),{'1.75'})
                 monRT == mean(str2double(Choice1RT{:}));
+            end
         for partner_high
             if isequal(C{5}(r),{'2'})
                 2RT == mean(str2double(Choice1RT{:}));
@@ -78,6 +86,7 @@ for s = 1:length(sublist)
                 12RT == mean(str2double(Choice1RT{:}));
             if isequal(C{5}(r),{'0.5'}) | isequal(C{5}(r),{'0.75'}) | isequal(C{5}(r),{'1.25'}) | isequal(C{5}(r),{'1.5'}) | isequal(C{5}(r),{'1.75'})
                 monRT == mean(str2double(Choice1RT{:}));
+            end
         for partner_mixed
             if isequal(C{5}(r),{'2'})
                 2RT == mean(str2double(Choice1RT{:}));
@@ -90,7 +99,8 @@ for s = 1:length(sublist)
             if isequal(C{5}(r),{'0.5'}) | isequal(C{5}(r),{'0.75'}) | isequal(C{5}(r),{'1.25'}) | isequal(C{5}(r),{'1.5'}) | isequal(C{5}(r),{'1.75'})
                 monRT == mean(str2double(Choice1RT{:}));
             end
-
+        end
+            
         % write data to output file 'setsize_h1_output.tsv'
         fprintf(fid_run,trial_data);
         fprintf(fid_run,'%s,%s,%s,%s,%s/t%s,%s,%s,%s/t%s,%s,%s,%s/t%s,%s,%s,%s/n',subj,mean(tmp_data));
