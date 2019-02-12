@@ -4,7 +4,7 @@ maindir = pwd;
 % open output files
 fname = fullfile(maindir,'setsize_h1_output.csv');
 fid_run = fopen(fname,'w'); % csv uses commans (,) & tsv uses tabs (\t)
-fprintf(fid_run,'subject_id,Condition,2RT,3RT,6RT,12RT,monRT\n');
+fprintf(fid_run,'subject_id,you_high2RT,you_high3RT,you_high6RT,you_high12RT,you_highmonRT,you_mixed2RT,you_mixed3RT,you_mixed6RT,you_mixed12RT,you_mixedmonRT,partner_high2RT,partner_high3RT,partner_high6RT,partner_high12RT,partner_highmonRT,partner_mixed2RT,partner_mixed3RT,partner_mixed6RT,partner_mixed12RT,partner_mixedmonRT\n');
 
 % fake subject_ID (999 is to practice with)
 sublist = (999);
@@ -27,83 +27,73 @@ for s = 1:length(sublist)
         
         % defines for later use
         r = length(find(x==1));
-        Choice1RT = isequal(C{6}(r))
+        Choice1RT = C{6};
         % Choice1RT = zeros(1,r);
         
         % empty array to store data in
-        tmp_data = zeros(r,4);
+        tmp_data = zeros(s,21);
+        % tmp_data = zeros(# of subjects,21 rows in the analysis output file)
     
-        % trial_data = beginning_part;
-        
-        % defines Condition
-        if isequal(C{1}(r),{'1'});
-            Condition == you_high;
-        if isequal(C{1}(r),{'2'});
-            Condition == you_mixed;
-        if isequal(C{1}(r),{'5'});
-            Condition == partner_high;
-        if isequal(C{1}(r),{'6'});
-            Condition == partner_mixed;
-            
-        % creates empty array for data to be stored
-        % you_high = zeros(1,r);
-        % you_mixed = zeros(1,r);
-        % partner_high = zeros(1,r);
-        % partner_mixed = zeros(1,r);
+        trial_data = beginning_part;
         
         % defines RT's
-        for Condition = you_high
-            if isequal(C{5}(r),{'2'})
-                2RT == mean(str2double(Choice1RT{:}));
-            if isequal(C{5}(r),{'3'})
-                3RT == mean(str2double(Choice1RT{:}));
-            if isequal(C{5}(r),{'6'})
-                6RT == mean(str2double(Choice1RT{:});
-            if isequal(C{5}(r),{'12'})
-                12RT == mean(str2double(Choice1RT{:}));
-            if isequal(C{5}(r),{'0.5'}) | isequal(C{5}(r),{'0.75'}) | isequal(C{5}(r),{'1.25'}) | isequal(C{5}(r),{'1.5'}) | isequal(C{5}(r),{'1.75'})
-                monRT == mean(str2double(Choice1RT{:}));
-            end
-        for Condition = you_mixed
-            if isequal(C{5}(r),{'2'})
-                2RT == mean(str2double(Choice1RT{:}));
-            if isequal(C{5}(r),{'3'})
-                3RT == mean(Choice1RT);
-            if isequal(C{5}(r),{'6'})
-                6RT == mean(str2double(Choice1RT{:}));
-            if isequal(C{5}(r),{'12'})
-                12RT == mean(str2double(Choice1RT{:}));
-            if isequal(C{5}(r),{'0.5'}) | isequal(C{5}(r),{'0.75'}) | isequal(C{5}(r),{'1.25'}) | isequal(C{5}(r),{'1.5'}) | isequal(C{5}(r),{'1.75'})
-                monRT == mean(str2double(Choice1RT{:}));
-            end
-        for Condition = partner_high
-            if isequal(C{5}(r),{'2'})
-                2RT == mean(str2double(Choice1RT{:}));
-            if isequal(C{5}(r),{'3'})
-                3RT == mean(Choice1RT);
-            if isequal(C{5}(r),{'6'})
-                6RT == mean(str2double(Choice1RT{:}));
-            if isequal(C{5}(r),{'12'})
-                12RT == mean(str2double(Choice1RT{:}));
-            if isequal(C{5}(r),{'0.5'}) | isequal(C{5}(r),{'0.75'}) | isequal(C{5}(r),{'1.25'}) | isequal(C{5}(r),{'1.5'}) | isequal(C{5}(r),{'1.75'})
-                monRT == mean(str2double(Choice1RT{:}));
-            end
-        for Condition = partner_mixed
-            if isequal(C{5}(r),{'2'})
-                2RT == mean(str2double(Choice1RT{:}));
-            if isequal(C{5}(r),{'3'})
-                3RT == mean(Choice1RT);
-            if isequal(C{5}(r),{'6'})
-                6RT == mean(str2double(Choice1RT{:}));
-            if isequal(C{5}(r),{'12'})
-                12RT == mean(str2double(Choice1RT{:}));
-            if isequal(C{5}(r),{'0.5'}) | isequal(C{5}(r),{'0.75'}) | isequal(C{5}(r),{'1.25'}) | isequal(C{5}(r),{'1.5'}) | isequal(C{5}(r),{'1.75'})
-                monRT == mean(str2double(Choice1RT{:}));
+        if isequal(C{1}(:),{'1'}) % you_high
+            if isequal(C{5}(:),{'2'})
+                you_high2RT = mean(str2double(Choice1RT{:}));
+            elseif isequal(C{5}(:),{'3'})
+                you_high3RT = mean(str2double(Choice1RT{:}));
+            elseif isequal(C{5}(:),{'6'})
+                you_high6RT = mean(str2double(Choice1RT{:}));
+            elseif isequal(C{5}(:),{'12'})
+                you_high12RT = mean(str2double(Choice1RT{:}));
+            elseif isequal(C{5}(:),{'0.5'}) || isequal(C{5}(:),{'0.75'}) || isequal(C{5}(:),{'1.25'}) || isequal(C{5}(:),{'1.5'}) || isequal(C{5}(:),{'1.75'})
+                you_highmonRT = mean(str2double(Choice1RT{:}));
             end
         end
-            
+        if isequal(C{1}(:),{'2'}) % you_mixed
+            if isequal(C{5}(:),{'2'})
+                you_mixed2RT = mean(str2double(Choice1RT{:}));
+            elseif isequal(C{5}(:),{'3'})
+                you_mixed3RT = mean(Choice1RT);
+            elseif isequal(C{5}(:),{'6'})
+                you_mixed6RT = mean(str2double(Choice1RT{:}));
+            elseif isequal(C{5}(:),{'12'})
+                you_mixed12RT = mean(str2double(Choice1RT{:}));
+            elseif isequal(C{5}(:),{'0.5'}) || isequal(C{5}(:),{'0.75'}) || isequal(C{5}(:),{'1.25'}) || isequal(C{5}(:),{'1.5'}) || isequal(C{5}(:),{'1.75'})
+                you_mixedmonRT = mean(str2double(Choice1RT{:}));
+            end
+        end
+        if isequal(C{1}(:),{'5'}) % partner_high
+            if isequal(C{5}(:),{'2'})
+                partner_high2RT = mean(str2double(Choice1RT{:}));
+            elseif isequal(C{5}(:),{'3'})
+                partner_high3RT = mean(Choice1RT);
+            elseif isequal(C{5}(:),{'6'})
+                partner_high6RT = mean(str2double(Choice1RT{:}));
+            elseif isequal(C{5}(:),{'12'})
+                partner_high12RT = mean(str2double(Choice1RT{:}));
+            elseif isequal(C{5}(:),{'0.5'}) || isequal(C{5}(r),{'0.75'}) || isequal(C{5}(:),{'1.25'}) || isequal(C{5}(:),{'1.5'}) || isequal(C{5}(:),{'1.75'})
+                partner_highmonRT = mean(str2double(Choice1RT{:}));
+            end
+        end
+        if isequal(C{1}(:),{'6'}) % partner_mixed
+            if isequal(C{5}(:),{'2'})
+                partner_mixed2RT = mean(str2double(Choice1RT{:}));
+            elseif isequal(C{5}(:),{'3'})
+                partner_mixed3RT = mean(str2double(Choice1RT{:}));
+            elseif isequal(C{5}(:),{'6'})
+                partner_mixed6RT = mean(str2double(Choice1RT{:}));
+            elseif isequal(C{5}(:),{'12'})
+                partner_mixed12RT = mean(str2double(Choice1RT{:}));
+            elseif isequal(C{5}(:),{'0.5'}) || isequal(C{5}(:),{'0.75'}) || isequal(C{5}(:),{'1.25'}) || isequal(C{5}(:),{'1.5'}) || isequal(C{5}(:),{'1.75'})
+                partner_mixedmonRT = mean(str2double(Choice1RT{:}));
+            end
+        end
+        
+        % write in tmp_data
+        tmp_data(r,:) = [you_high2RT you_high3RT you_high6RT you_high12RT you_highmonRT you_mixed2RT you_mixed3RT you_mixed6RT you_mixed12RT you_mixedmonRT partner_high2RT partner_high3RT partner_high6RT partner_high12RT partner_highmonRT partner_mixed2RT partner_mixed3RT partner_mixed6RT partner_mixed12RT partner_mixedmonRT];
+        
         % write data to output file 'setsize_h1_output.tsv'
-        fprintf(fid_run,trial_data);
-        fprintf(fid_run,'%s,%s,%s,%s,%s/t%s,%s,%s,%s/t%s,%s,%s,%s/t%s,%s,%s,%s/n',subj,mean(tmp_data));
+        fprintf(fid_run,'%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s/n',subj,tmp_data);
 end
 fclose(fid_run);
