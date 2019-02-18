@@ -162,9 +162,9 @@ for s = 1:length(sublist)
         partner_mixedmonRT_mean = mean(partner_mixedmonRT_means);
         
         % write in tmp_data
-        tmp_data = [you_high2RT_mean you_high3RT_mean you_high6RT_mean you_high12RT_mean you_highmonRT_mean you_mixed2RT_mean you_mixed3RT_mean you_mixed6RT_mean you_mixed12RT_mean you_mixedmonRT_mean partner_high2RT_mean partner_high3RT_mean partner_high6RT_mean partner_high12RT_mean partner_highmonRT_mean partner_mixed2RT_mean partner_mixed3RT_mean partner_mixed6RT_mean partner_mixed12RT_mean partner_mixedmonRT_mean];
+        tmp_data = [999 you_high2RT_mean you_high3RT_mean you_high6RT_mean you_high12RT_mean you_highmonRT_mean you_mixed2RT_mean you_mixed3RT_mean you_mixed6RT_mean you_mixed12RT_mean you_mixedmonRT_mean partner_high2RT_mean partner_high3RT_mean partner_high6RT_mean partner_high12RT_mean partner_highmonRT_mean partner_mixed2RT_mean partner_mixed3RT_mean partner_mixed6RT_mean partner_mixed12RT_mean partner_mixedmonRT_mean];
         
         % write data to output file 'setsize_h1_output.tsv'
-        fprintf(fid_run,'%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s/n',subj,tmp_data);
+        fprintf(fid_run,'%d,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s/n',tmp_data);
 end
 fclose(fid_run);
