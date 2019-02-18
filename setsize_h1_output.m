@@ -4,7 +4,7 @@ maindir = pwd;
 % open output files
 fname = fullfile(maindir,'setsize_h1_output.csv');
 fid_run = fopen(fname,'w'); % csv uses commans (,) & tsv uses tabs (\t)
-fprintf(fid_run,'subject_id,you_high2RT,you_high3RT,you_high6RT,you_high12RT,you_highmonRT,you_mixed2RT,you_mixed3RT,you_mixed6RT,you_mixed12RT,you_mixedmonRT,partner_high2RT,partner_high3RT,partner_high6RT,partner_high12RT,partner_highmonRT,partner_mixed2RT,partner_mixed3RT,partner_mixed6RT,partner_mixed12RT,partner_mixedmonRT\n');
+fprintf(fid_run,'subject_id,you_high2RT_mean,you_high3RT_mean,you_high6RT_mean,you_high12RT_mean,you_highmonRT_mean,you_mixed2RT_mean,you_mixed3RT_mean,you_mixed6RT_mean,you_mixed12RT_mean,you_mixedmonRT_mean,partner_high2RT_mean,partner_high3RT_mean,partner_high6RT_mean,partner_high12RT_mean,partner_highmonRT_mean,partner_mixed2RT_mean,partner_mixed3RT_mean,partner_mixed6RT_mean,partner_mixed12RT_mean,partner_mixedmonRT_mean\n');
 
 % fake subject_ID (999 is to practice with)
 sublist = (999);
@@ -24,74 +24,145 @@ for s = 1:length(sublist)
         for r = 1:length(C{12})
             x(r) = isequal(C{12}(r),{'0'});
         end
-        
-        % defines for later use
-        r = length(find(x==1));
-        Choice1RT = C{6};
-        % Choice1RT = zeros(1,r);
-        
-        % empty array to store data in
-        tmp_data = zeros(s,21);
-        % tmp_data = zeros(# of subjects,21 rows in the analysis output file)
-    
+
         trial_data = beginning_part;
         
+        % define you_high means
+        you_high2RT_means = [];
+        you_high3RT_means = [];
+        you_high6RT_means = [];
+        you_high12RT_means = [];
+        you_highmonRT_means = [];
+        
+        % define you_mixed means
+        you_mixed2RT_means = [];
+        you_mixed3RT_means = [];
+        you_mixed6RT_means = [];
+        you_mixed12RT_means = [];
+        you_mixedmonRT_means = [];
+        
+        % define partner_high means
+        partner_high2RT_means = [];
+        partner_high3RT_means = [];
+        partner_high6RT_means = [];
+        partner_high12RT_means = [];
+        partner_highmonRT_means = [];
+        
+        % define partner_mixed means
+        partner_mixed2RT_means = [];
+        partner_mixed3RT_means = [];
+        partner_mixed6RT_means = [];
+        partner_mixed12RT_means = [];
+        partner_mixedmonRT_means = [];
+        
         % defines RT's
-        if isequal(C{1}(:),{'1'}) % you_high
-            if isequal(C{5}(:),{'2'})
-                you_high2RT = mean(str2double(Choice1RT{:}));
-            elseif isequal(C{5}(:),{'3'})
-                you_high3RT = mean(str2double(Choice1RT{:}));
-            elseif isequal(C{5}(:),{'6'})
-                you_high6RT = mean(str2double(Choice1RT{:}));
-            elseif isequal(C{5}(:),{'12'})
-                you_high12RT = mean(str2double(Choice1RT{:}));
-            elseif isequal(C{5}(:),{'0.5'}) || isequal(C{5}(:),{'0.75'}) || isequal(C{5}(:),{'1.25'}) || isequal(C{5}(:),{'1.5'}) || isequal(C{5}(:),{'1.75'})
-                you_highmonRT = mean(str2double(Choice1RT{:}));
-            end
-        end
-        if isequal(C{1}(:),{'2'}) % you_mixed
-            if isequal(C{5}(:),{'2'})
-                you_mixed2RT = mean(str2double(Choice1RT{:}));
-            elseif isequal(C{5}(:),{'3'})
-                you_mixed3RT = mean(Choice1RT);
-            elseif isequal(C{5}(:),{'6'})
-                you_mixed6RT = mean(str2double(Choice1RT{:}));
-            elseif isequal(C{5}(:),{'12'})
-                you_mixed12RT = mean(str2double(Choice1RT{:}));
-            elseif isequal(C{5}(:),{'0.5'}) || isequal(C{5}(:),{'0.75'}) || isequal(C{5}(:),{'1.25'}) || isequal(C{5}(:),{'1.5'}) || isequal(C{5}(:),{'1.75'})
-                you_mixedmonRT = mean(str2double(Choice1RT{:}));
-            end
-        end
-        if isequal(C{1}(:),{'5'}) % partner_high
-            if isequal(C{5}(:),{'2'})
-                partner_high2RT = mean(str2double(Choice1RT{:}));
-            elseif isequal(C{5}(:),{'3'})
-                partner_high3RT = mean(Choice1RT);
-            elseif isequal(C{5}(:),{'6'})
-                partner_high6RT = mean(str2double(Choice1RT{:}));
-            elseif isequal(C{5}(:),{'12'})
-                partner_high12RT = mean(str2double(Choice1RT{:}));
-            elseif isequal(C{5}(:),{'0.5'}) || isequal(C{5}(r),{'0.75'}) || isequal(C{5}(:),{'1.25'}) || isequal(C{5}(:),{'1.5'}) || isequal(C{5}(:),{'1.75'})
-                partner_highmonRT = mean(str2double(Choice1RT{:}));
-            end
-        end
-        if isequal(C{1}(:),{'6'}) % partner_mixed
-            if isequal(C{5}(:),{'2'})
-                partner_mixed2RT = mean(str2double(Choice1RT{:}));
-            elseif isequal(C{5}(:),{'3'})
-                partner_mixed3RT = mean(str2double(Choice1RT{:}));
-            elseif isequal(C{5}(:),{'6'})
-                partner_mixed6RT = mean(str2double(Choice1RT{:}));
-            elseif isequal(C{5}(:),{'12'})
-                partner_mixed12RT = mean(str2double(Choice1RT{:}));
-            elseif isequal(C{5}(:),{'0.5'}) || isequal(C{5}(:),{'0.75'}) || isequal(C{5}(:),{'1.25'}) || isequal(C{5}(:),{'1.5'}) || isequal(C{5}(:),{'1.75'})
-                partner_mixedmonRT = mean(str2double(Choice1RT{:}));
+        for i = 1:length(C{12})
+            if isequal(C{12}(i),{'0'}) % non-computer responses
+                if isequal(C{1}(i),{'1'}) % you_high
+                    if isequal(C{5}(i),{'2'}) % set size 2
+                        you_high2RT = str2double(C{6}(i));
+                        you_high2RT_means = [you_high2RT_means,you_high2RT];
+                    elseif isequal(C{5}(i),{'3'}) % set size 3
+                        you_high3RT = str2double(C{6}(i));
+                        you_high3RT_means = [you_high3RT_means,you_high3RT];
+                    elseif isequal(C{5}(i),{'6'}) % set size 6
+                        you_high6RT = str2double(C{6}(i));
+                        you_high6RT_means = [you_high6RT_means,you_high6RT];
+                    elseif isequal(C{5}(i),{'12'}) % set size 12
+                        you_high12RT = str2double(C{6}(i));
+                        you_high12RT_means = [you_high12RT_means,you_high12RT];
+                    else % monetary values
+                        you_highmonRT = str2double(C{6}(i));
+                        you_highmonRT_means = [you_highmonRT_means,you_highmonRT];
+                    end
+                end
+                if isequal(C{1}(i),{'2'}) % you_mixed
+                    if isequal(C{5}(i),{'2'}) % set size 2
+                        you_mixed2RT = str2double(C{6}(i));
+                        you_mixed2RT_means = [you_mixed2RT_means,you_mixed2RT];
+                    elseif isequal(C{5}(i),{'3'}) % set size 3
+                        you_mixed3RT = str2double(C{6}(i));
+                        you_mixed3RT_means = [you_mixed3RT_means,you_mixed3RT];
+                    elseif isequal(C{5}(i),{'6'}) % set size 6
+                        you_mixed6RT = str2double(C{6}(i));
+                        you_mixed6RT_means = [you_mixed6RT_means,you_mixed6RT];
+                    elseif isequal(C{5}(i),{'12'}) % set size 12
+                        you_mixed12RT = str2double(C{6}(i));
+                        you_mixed12RT_means = [you_mixed12RT_means,you_mixed12RT];
+                    else % monetary values
+                        you_mixedmonRT = str2double(C{6}(i));
+                        you_mixedmonRT_means = [you_mixedmonRT_means,you_mixedmonRT];
+                    end
+                end
+                if isequal(C{1}(i),{'5'}) % partner_high
+                    if isequal(C{5}(i),{'2'}) % set size 2
+                        partner_high2RT = str2double(C{6}(i));
+                        partner_high2RT_means = [partner_high2RT_means,partner_high2RT];
+                    elseif isequal(C{5}(i),{'3'}) % set size 3
+                        partner_high3RT = str2double(C{6}(i));
+                        partner_high3RT_means = [partner_high3RT_means,partner_high3RT];
+                    elseif isequal(C{5}(i),{'6'}) % set size 6
+                        partner_high6RT = str2double(C{6}(i));
+                        partner_high6RT_means = [partner_high6RT_means,partner_high6RT];
+                    elseif isequal(C{5}(i),{'12'}) % set size 12
+                        partner_high12RT = str2double(C{6}(i));
+                        partner_high12RT_means = [partner_high12RT_means,partner_high12RT];
+                    else % monetary values
+                        partner_highmonRT = str2double(C{6}(i));
+                        partner_highmonRT_means = [partner_highmonRT_means,partner_highmonRT];
+                    end
+                end
+                if isequal(C{1}(i),{'6'}) % partner_mixed
+                    if isequal(C{5}(i),{'2'}) % set size 2
+                        partner_mixed2RT = str2double(C{6}(i));
+                        partner_mixed2RT_means = [partner_mixed2RT_means,partner_mixed2RT];
+                    elseif isequal(C{5}(i),{'3'}) % set size 3
+                        partner_mixed3RT = str2double(C{6}(i));
+                        partner_mixed3RT_means = [partner_mixed3RT_means,partner_mixed3RT];
+                    elseif isequal(C{5}(i),{'6'}) % set size 6
+                        partner_high6RT = str2double(C{6}(i));
+                        partner_high6RT_means = [partner_high6RT_means,partner_high6RT];
+                    elseif isequal(C{5}(i),{'12'}) % set size 12
+                        partner_high12RT = str2double(C{6}(i));
+                        partner_high12RT_means = [partner_high12RT_means,partner_high12RT];
+                    else % monetary values
+                        partner_highmonRT = str2double(C{6}(i));
+                        partner_highmonRT_means = [partner_highmonRT_means,partner_highmonRT];
+                    end
+                end
             end
         end
         
+        % find you_high means
+        you_high2RT_mean = mean(you_high2RT_means);
+        you_high3RT_mean = mean(you_high3RT_means);
+        you_high6RT_mean = mean(you_high6RT_means);
+        you_high12RT_mean = mean(you_high12RT_means);
+        you_highmonRT_mean = mean(you_highmonRT_means);
+        
+        % find you_mixed means
+        you_mixed2RT_mean = mean(you_mixed2RT_means);
+        you_mixed3RT_mean = mean(you_mixed3RT_means);
+        you_mixed6RT_mean = mean(you_mixed6RT_means);
+        you_mixed12RT_mean = mean(you_mixed12RT_means);
+        you_mixedmonRT_mean = mean(you_mixedmonRT_means);
+        
+        % find partner_high means
+        partner_high2RT_mean = mean(partner_high2RT_means);
+        partner_high3RT_mean = mean(partner_high3RT_means);
+        partner_high6RT_mean = mean(partner_high6RT_means);
+        partner_high12RT_mean = mean(partner_high12RT_means);
+        partner_highmonRT_mean = mean(partner_highmonRT_means);
+        
+        % find partner_mixed means
+        partner_mixed2RT_mean = mean(partner_mixed2RT_means);
+        partner_mixed3RT_mean = mean(partner_mixed3RT_means);
+        partner_mixed6RT_mean = mean(partner_mixed6RT_means);
+        partner_mixed12RT_mean = mean(partner_mixed12RT_means);
+        partner_mixedmonRT_mean = mean(partner_mixedmonRT_means);
+        
         % write in tmp_data
-        tmp_data(r,:) = [you_high2RT you_high3RT you_high6RT you_high12RT you_highmonRT you_mixed2RT you_mixed3RT you_mixed6RT you_mixed12RT you_mixedmonRT partner_high2RT partner_high3RT partner_high6RT partner_high12RT partner_highmonRT partner_mixed2RT partner_mixed3RT partner_mixed6RT partner_mixed12RT partner_mixedmonRT];
+        tmp_data = [you_high2RT_mean you_high3RT_mean you_high6RT_mean you_high12RT_mean you_highmonRT_mean you_mixed2RT_mean you_mixed3RT_mean you_mixed6RT_mean you_mixed12RT_mean you_mixedmonRT_mean partner_high2RT_mean partner_high3RT_mean partner_high6RT_mean partner_high12RT_mean partner_highmonRT_mean partner_mixed2RT_mean partner_mixed3RT_mean partner_mixed6RT_mean partner_mixed12RT_mean partner_mixedmonRT_mean];
         
         % write data to output file 'setsize_h1_output.tsv'
         fprintf(fid_run,'%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s/n',subj,tmp_data);
