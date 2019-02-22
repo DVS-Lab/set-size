@@ -1,7 +1,7 @@
 clear;
 maindir = pwd;
 
-% Get participant output files
+% get participant output files
 myFiles = dir('*results.csv');
 
 % open output files
@@ -9,8 +9,7 @@ fname = fullfile(maindir,'setsize_h1_output.csv');
 fid_run = fopen(fname,'w'); % csv uses commans (,) & tsv uses tabs (\t)
 fprintf(fid_run,'subject_id,you_high2RT_mean,you_high3RT_mean,you_high6RT_mean,you_high12RT_mean,you_highmonRT_mean,you_mixed2RT_mean,you_mixed3RT_mean,you_mixed6RT_mean,you_mixed12RT_mean,you_mixedmonRT_mean,partner_high2RT_mean,partner_high3RT_mean,partner_high6RT_mean,partner_high12RT_mean,partner_highmonRT_mean,partner_mixed2RT_mean,partner_mixed3RT_mean,partner_mixed6RT_mean,partner_mixed12RT_mean,partner_mixedmonRT_mean\n');
 
-% fake subject_ID (999 is to practice with)
-sublist = [100 101 102 109 110 111 113 115 117 118 119 120 121];
+sublist = [102 109 110 111 113 115 117 118 119 120 121];
 
 for s = 1:length(myFiles)   
     subj_id = sublist(s);
@@ -21,11 +20,6 @@ for s = 1:length(myFiles)
     % defines what "C" (column) is from data output file
     C = textscan(fopen(fname,'r'),'%s%s%s%s%s%s%s%s%s%s%s%s%s','Delimiter',',','HeaderLines',1);
     fclose(fid);
-        
-    % only include non-computer responses
-    for r = 1:length(C{12})
-        x(r) = isequal(C{12}(r),{'0'});
-    end
 
     trial_data = '';
 
