@@ -34,7 +34,7 @@ for s = 1:length(myFiles)
                 partner_choice_means = [partner_choice_means,partner_choice];
             end
         end
-        %H2B:
+        %H2B: attach to this statement?
         
     
     % somehow compare intial ratings and post-ratings
