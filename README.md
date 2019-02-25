@@ -15,5 +15,6 @@ At the end of the experiment, one of the choices will be selected randomly and t
 ## Instructions for analyzing task B data (Hypothesis 1)
   1) Note: this is a Matlab script.
   2) Make sure everything is located in the correct directory (within this repository).
+    Note: we currently store data outside of GitHub.
   3) List sub ID's in the correct order within the code.
   4) Run script in Matlab.
