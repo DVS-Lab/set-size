@@ -9,7 +9,7 @@ fname = fullfile(maindir,'setsize_h1_output.csv');
 fid_run = fopen(fname,'w'); % csv uses commans (,) & tsv uses tabs (\t)
 fprintf(fid_run,'subject_id,you_high2RT_mean,you_high3RT_mean,you_high6RT_mean,you_high12RT_mean,you_highmonRT_mean,you_mixed2RT_mean,you_mixed3RT_mean,you_mixed6RT_mean,you_mixed12RT_mean,you_mixedmonRT_mean,partner_high2RT_mean,partner_high3RT_mean,partner_high6RT_mean,partner_high12RT_mean,partner_highmonRT_mean,partner_mixed2RT_mean,partner_mixed3RT_mean,partner_mixed6RT_mean,partner_mixed12RT_mean,partner_mixedmonRT_mean\n');
 
-sublist = [102 109 110 111 113 115 117 118 119 120 121];
+sublist = [102 109 110 111 113 115 117 118 119 120 121 122 123 124 125 126 127 128 129 130 131 132 133 134];
 
 for s = 1:length(myFiles)   
     subj_id = sublist(s);
@@ -116,14 +116,14 @@ for s = 1:length(myFiles)
                     partner_mixed3RT = str2double(C{6}(i));
                     partner_mixed3RT_means = [partner_mixed3RT_means,partner_mixed3RT];
                 elseif isequal(C{5}(i),{'6'}) % set size 6
-                    partner_high6RT = str2double(C{6}(i));
-                    partner_high6RT_means = [partner_high6RT_means,partner_high6RT];
+                    partner_mixed6RT = str2double(C{6}(i));
+                    partner_mixed6RT_means = [partner_mixed6RT_means,partner_mixed6RT];
                 elseif isequal(C{5}(i),{'12'}) % set size 12
-                    partner_high12RT = str2double(C{6}(i));
-                    partner_high12RT_means = [partner_high12RT_means,partner_high12RT];
+                    partner_mixed12RT = str2double(C{6}(i));
+                    partner_mixed12RT_means = [partner_mixed12RT_means,partner_mixed12RT];
                 else % monetary values
-                    partner_highmonRT = str2double(C{6}(i));
-                    partner_highmonRT_means = [partner_highmonRT_means,partner_highmonRT];
+                    partner_mixedmonRT = str2double(C{6}(i));
+                    partner_mixedmonRT_means = [partner_mixedmonRT_means,partner_mixedmonRT];
                 end
             end
         end
