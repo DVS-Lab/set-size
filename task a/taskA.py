@@ -103,7 +103,7 @@ for image in imageList:
 
 
 # Write to .csv file with participants name, subj_id, in file name
-f=open( subj_id + ' task a results.csv','w')
+f=open( subj_id + '_task_a_results.csv','w')
 for i in range(0,len(imageList)):
     # Remove filepath from imageList[i] string
     picName = os.path.relpath(imageList[i], '..\..\JOCN\task a\images\\') #..\..\JOCN\task a\images\
