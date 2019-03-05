@@ -2,7 +2,7 @@ clear;
 maindir = pwd;
 
 % get participant output files
-myFiles = dir('*results.csv');
+myFiles = dir('*_task_b_results.csv');
 
 % open output files
 fname = fullfile(maindir,'setsize_choice2rt_output.csv');
