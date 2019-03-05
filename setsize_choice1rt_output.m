@@ -5,7 +5,7 @@ maindir = pwd;
 myFiles = dir('*results.csv');
 
 % open output files
-fname = fullfile(maindir,'setsize_h1_output.csv');
+fname = fullfile(maindir,'setsize_choice1rt_output.csv');
 fid_run = fopen(fname,'w'); % csv uses commans (,) & tsv uses tabs (\t)
 fprintf(fid_run,'subject_id,you_high2RT_mean,you_high3RT_mean,you_high6RT_mean,you_high12RT_mean,you_highmonRT_mean,you_mixed2RT_mean,you_mixed3RT_mean,you_mixed6RT_mean,you_mixed12RT_mean,you_mixedmonRT_mean,partner_high2RT_mean,partner_high3RT_mean,partner_high6RT_mean,partner_high12RT_mean,partner_highmonRT_mean,partner_mixed2RT_mean,partner_mixed3RT_mean,partner_mixed6RT_mean,partner_mixed12RT_mean,partner_mixedmonRT_mean\n');
 
@@ -160,7 +160,7 @@ for s = 1:length(myFiles)
     % write in tmp_data
     tmp_data = [subj_id you_high2RT_mean you_high3RT_mean you_high6RT_mean you_high12RT_mean you_highmonRT_mean you_mixed2RT_mean you_mixed3RT_mean you_mixed6RT_mean you_mixed12RT_mean you_mixedmonRT_mean partner_high2RT_mean partner_high3RT_mean partner_high6RT_mean partner_high12RT_mean partner_highmonRT_mean partner_mixed2RT_mean partner_mixed3RT_mean partner_mixed6RT_mean partner_mixed12RT_mean partner_mixedmonRT_mean];
 
-    % write data to output file 'setsize_h1_output.tsv'
+    % write data to output file 'setsize_choice1rt_output.tsv'
     fprintf(fid_run,'%d,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s\n',tmp_data);
 end
 fclose(fid_run);
