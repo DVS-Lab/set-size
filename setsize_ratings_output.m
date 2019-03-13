@@ -1,19 +1,39 @@
 clear;
 maindir = pwd;
 
-% Get participant output files
-myFiles = dir('*results.csv');
+% get participant output files
+RatingsTask = dir('*_task_a_results.csv');
+ChoiceTask = dir('*_task_b_results.csv');
 
 % open output files
-fname = fullfile(maindir,'setsize_h2_output.csv');
+fname = fullfile(maindir,'setsize_ratings_output.csv');
 fid_run = fopen(fname,'w'); % csv uses commans (,) & tsv uses tabs (\t)
-fprintf(fid_run,'subject_id,partner_choice_means,\n');
+fprintf(fid_run,'subject_id,INSERTSTUFFHERE\n');
 
-sublist = [103 109 117];
+sublist = [102 109 110 111 113 115 117 118 119 120 121 122 123 124 125 126 127 128 129 130 131 132 133 134];
 
-for s = 1:length(myFiles)   
+% pulling from Ratings Task--------------------------------------------------------------------------------
+for s = 1:200(RatingsTask)
     subj_id = sublist(s);
-    file_name = myFiles(s).name;
+    file_name = RatingsTask(s).name;
+    fname = fullfile(maindir,file_name);
+    fid = fopen(fname);
+    
+    % defines what "C" (column) is from data output files
+    C = textscan(fopen(fname,'r'),'%s,%s,%s','Delimiter',',');
+    fclose(fid);
+    
+    trial_data = '';
+    
+    % put more here
+    
+
+end
+
+% pulling from Choice Task---------------------------------------------------------------------------------
+for s = 1:length(ChoiceTask)   
+    subj_id = sublist(s);
+    file_name = ChoiceTask(s).name;
     fname = fullfile(maindir,file_name);
     fid = fopen(fname);
     
@@ -22,19 +42,7 @@ for s = 1:length(myFiles)
     fclose(fid);
 
     trial_data = '';
-    
-    % define partner_choice_means
-    partner_choice_means = [];
-    
-    % H2A: find partner_choice_means
-    for i = 1:length(C{12})
-        if isequal(C{12}(i),{'0'}) % non-computer responses
-            if isequal(C{13}(i),{'2'}) % choosing for partner
-                partner_choice = str2double(C{10}(i));
-                partner_choice_means = [partner_choice_means,partner_choice];
-            end
-        end
-        %H2B: attach to this statement?
-        
-    
-    % somehow compare intial ratings and post-ratings
+
+
+
+end
