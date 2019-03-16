@@ -15,7 +15,7 @@ taskBFiles = dir('*_task_b_results.csv');
 % open output files
 fname = fullfile(maindir,'setsize_ratings_output.csv');
 fid_run = fopen(fname,'w'); % csv uses commans (,) & tsv uses tabs (\t)
-fprintf(fid_run,'snackNames,preRatings_means,choosing_for_self_means,choosing_for_partner_means,\n');
+fprintf(fid_run,'snackNames,preRatings_means,rating_You_means,rating_Partner_means,\n');
 
 sublist = [103 109 117];
 preRatings = [];
@@ -54,10 +54,14 @@ for s = 1:length(sublist)
     for i = 1:length(snackNames) % for each snack
         subjectData.Choices = [];
         for j = 1:length(subjectData.Choices) % for however many choices were made
-            if snackNames == subjectData(j).Choices
+            if snackNames == subjectData.Choices % place choices in temporary bracket
                 if subjectData(j)ChoosingFor == 1 % if participant was choosing for themselves
-                    rating_You
+                    rating_You.append[subjectData.Choices];
+                else
+                    rating_Partner.append[subjectData.Choices];
+                end
             end
+        subject
         end
     end
 end
