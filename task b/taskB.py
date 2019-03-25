@@ -408,7 +408,10 @@ for i in range(len(trials)):
     if trials[i] == 1:  # Check if trial requires high preference images
         uniquePics = random.sample(imageList[1], numberUniquePics)
     else:  # Select mixed preference images
-        uniquePics = random.sample(imageList[4], numberUniquePics)
+        lowUniquePics = random.sample(imageList[3], numberUniquePics-1)
+        highUniquePic = random.sample(imageList[3], 1)
+        uniquePics = lowUniquePics + highUniquePic
+        #uniquePics = random.sample(imageList[4], numberUniquePics)
 
     # Assign picture options to trial options array for output
     trialOptions[i] = uniquePics
