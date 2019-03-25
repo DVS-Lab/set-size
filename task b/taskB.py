@@ -928,28 +928,28 @@ for i in range(len(trials)):
     selectedOptionRatingScale.reset()
     event.clearEvents()
     timer.reset()
-    if trials[i] in [1, 2, 5, 6]:
-        while timer.getTime() < postChoice2ScaleDuration:  # JOCN duration: 3 seconds
-            if not decisionRatingScale.noResponse and not selectedOptionRatingScale.noResponse:
-                postChoiceReactionTimes[i] = timer.getTime()
-                postChoiceDecisionRatings[i] = decisionRatingScale.getRating()
-                postChoiceSelectedOptionRatings[
-                    i] = selectedOptionRatingScale.getRating()
-                decisionRatingTitle.draw()
-                selectedOptionRatingTitle.draw()
-                decisionRatingScale.draw()
-                selectedOptionRatingScale.draw()
-                win.flip()
-                core.wait(interTrialInterval)
-                break
+    #if trials[i] in [1, 2, 5, 6]:
+    while timer.getTime() < postChoice2ScaleDuration:  # JOCN duration: 3 seconds
+        if not decisionRatingScale.noResponse and not selectedOptionRatingScale.noResponse:
+            postChoiceReactionTimes[i] = timer.getTime()
+            postChoiceDecisionRatings[i] = decisionRatingScale.getRating()
+            postChoiceSelectedOptionRatings[
+                i] = selectedOptionRatingScale.getRating()
             decisionRatingTitle.draw()
             selectedOptionRatingTitle.draw()
             decisionRatingScale.draw()
             selectedOptionRatingScale.draw()
             win.flip()
-    else:  # Executes if PC response trial
-        postChoiceDecisionRatings[i] = "n/a"
-        postChoiceSelectedOptionRatings[i] = "n/a"
+            core.wait(interTrialInterval)
+            break
+        decisionRatingTitle.draw()
+        selectedOptionRatingTitle.draw()
+        decisionRatingScale.draw()
+        selectedOptionRatingScale.draw()
+        win.flip()
+    #else:  # Executes if PC response trial
+    #    postChoiceDecisionRatings[i] = "n/a"
+    #    postChoiceSelectedOptionRatings[i] = "n/a"
 
     # Subject Response Check - Selects random responses if no response given
     if postChoiceDecisionRatings[i] == '' or postChoiceSelectedOptionRatings[i] == '':
