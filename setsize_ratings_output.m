@@ -53,15 +53,27 @@ for s = 1:length(sublist)
     
     for i = 1:length(snackNames) % for each snack
         subjectData.Choices = [];
+        rating_You = [];
+        rating_Partner = [];
         for j = 1:length(subjectData.Choices) % for however many choices were made
             if snackNames == subjectData.Choices % place choices in temporary bracket
                 if subjectData(j)ChoosingFor == 1 % if participant was choosing for themselves
-                    rating_You.append[subjectData.Choices];
-                else
-                    rating_Partner.append[subjectData.Choices];
+                    rating_You.append(subjectData.Choices);
+                    rating_You = str2double(C{10},(j));
+                else % if participant was choosing for partner
+                    rating_Partner.append(subjectData.Choices);
+                    rating_Partner = str2double(C{10},(j));
                 end
             end
-        subject
         end
     end
+    rating_You_means = [rating_You_means,rating_You];
+    rating_Partner_means = [rating_Partner_means,rating_Partner];
+    
+    % write in tmp_data
+    tmp_data = [snackNames preRatings_means rating_You_means rating_Partner_means];
+
+    % write data to output file 'setsize_ratings_output.tsv'
+    fprintf(fid_run,'%s,%s,%s,%s\n',tmp_data);
 end
+fclose(fid_run);
