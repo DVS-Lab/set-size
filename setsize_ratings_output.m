@@ -11,12 +11,13 @@ end
 % list subject ID's
 sublist = [103 109 117];
 baseoutput = fullfile(maindir,'output');
+
 % get participant output files
 for s = sublist
-    
 taskAFiles = dir(fullfile(baseoutput,[num2str(s) '*_task_a_results.csv']));
-%taskBFiles = dir('*_task_b_results.csv');
+taskBFiles = dir('*_task_b_results.csv');
 end
+
 % open output files
 fname = fullfile(maindir,'setsize_ratings_output.csv');
 fid_run = fopen(fname,'w'); % csv uses commans (,) & tsv uses tabs (\t)
@@ -80,4 +81,5 @@ for s = 1:length(sublist)
     % write data to output file 'setsize_ratings_output.tsv'
     fprintf(fid_run,'%s,%s,%s,%s\n',tmp_data);
 end
+
 fclose(fid_run);
