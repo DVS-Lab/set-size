@@ -406,10 +406,10 @@ for i in range(len(trials)):
     # Check for trial type, 1 or 2, and require images in list than unique
     # pics needed.
     if trials[i] == 1:  # Check if trial requires high preference images
-        uniquePics = random.sample(imageList[1], numberUniquePics)
+        uniquePics = random.sample(imageList[0], numberUniquePics)
     else:  # Select mixed preference images
-        lowUniquePics = random.sample(imageList[3], numberUniquePics-1)
-        highUniquePic = random.sample(imageList[3], 1)
+        lowUniquePics = random.sample(imageList[1], numberUniquePics-1) # numberUniquePics-1 low rated images
+        highUniquePic = random.sample(imageList[0], 1) # 1 high rated image
         uniquePics = lowUniquePics + highUniquePic
         #uniquePics = random.sample(imageList[4], numberUniquePics)
 
