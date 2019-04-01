@@ -1,35 +1,33 @@
 import os, glob, random, csv
+import pandas as pd
 # Returns list containing sorted images
 # Index: 0 = highPrefImages, 1 = highPrefHighFamImages, 2 = lowPrefImages, 3 = lowPrefHighFamImages, 4 = highFamImages
 # Example Input: 'fgdf task a results.csv'
 
 def imageSorter(ratedImages):
-    highPrefImages = []
-    lowPrefImages = []
-    highFamImages = []
-    highPrefHighFamImages = []
-    lowPrefHighFamImages = []
+    df=pd.read_csv('103_task_a_results.csv',
+               names = ["Image", "Preference", "Familiarity"])
 
-    with open(ratedImages) as csvDataFile:
-        csvReader = csv.reader(csvDataFile)
-        for row in csvReader:
-            if int(row[1]) >= 4:
-                highPrefImages.append(row[0])
-                if int(row[2]) >= 4:
-                    highFamImages.append(row[0])
-                    highPrefHighFamImages.append(row[0])
-            else:
-                lowPrefImages.append(row[0])
-                if int(row[2]) >= 4:
-                    highFamImages.append(row[0])
-                    lowPrefHighFamImages.append(row[0])
+    #FINDING MAX AND MIN
+    max_rating = df['Preference'].max()
+    min_rating = df['Preference'].min()
 
-    sortedImages= []
-    sortedImages.append(highPrefImages)
-    sortedImages.append(highPrefHighFamImages)
-    sortedImages.append(lowPrefImages)
-    sortedImages.append(lowPrefHighFamImages)
-    sortedImages.append(highFamImages)
+    high_pref_fam_images= df.loc[df['Preference'].isin([max_rating]) & df['Familiarity'].isin([4,5,6,7]), 'Image']
+    high_pref_fam_images_list = high_pref_fam_images.tolist()
+    offset = 1;
+    while len(high_pref_fam_images_list) < 12:
+        high_pref_fam_images= df.loc[df['Preference'].isin([max_rating]) & df['Familiarity'].isin([4,5,6,7]), 'Image']
+        high_pref_fam_images_list += high_pref_fam_images.tolist()
 
-    sortedImagesFiltered = filter(None, sortedImages)
-    return sortedImagesFiltered
+    low_pref_fam_images= df.loc[df['Preference'].isin([min_rating]) & df['Familiarity'].isin([4,5,6,7]), 'Image']
+    low_pref_fam_images_list = low_pref_fam_images.tolist()
+    offset = 1;
+    while len(low_pref_fam_images_list) < 12:
+        low_pref_fam_images= df.loc[df['Preference'].isin([min_rating+offset]) & df['Familiarity'].isin([4,5,6,7]), 'Image']
+        low_pref_fam_images_list += low_pref_fam_images.tolist()
+
+    images = []
+    images.append(high_pref_fam_images_list)
+    images.append(low_pref_fam_images_list)
+
+    return images
