@@ -50,7 +50,7 @@ itemChoiceAmounts = [2, 3, 6, 12]
 moneyChoiceAmounts = [2, 3, 4, 6]
 moneyList = [0.50, 0.75, 1.00, 1.25, 1.50, 1.75]
 imageList = util.imageSorter(
-    subj_id + ' task a results.csv')  # Sort Images into list
+    subj_id + '_task_a_results.csv')  # Sort Images into list
 # from task a data
 # Trial Order Initialization
 # Indicates who is making decision, type of items (high/mixed), and who
