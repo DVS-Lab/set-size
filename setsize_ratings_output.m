@@ -9,29 +9,30 @@ for i = 1:length(mySnacks)
 end
 
 % list subject ID's
-sublist = [103 109 117];
+sublist = [102 109 117];
 baseoutput = fullfile(maindir,'output');
-
-% get participant output files
-for s = sublist
-taskAFiles = dir(fullfile(baseoutput,[num2str(s) '*_task_a_results.csv']));
-taskBFiles = dir('*_task_b_results.csv');
-end
 
 % open output files
 fname = fullfile(maindir,'setsize_ratings_output.csv');
 fid_run = fopen(fname,'w'); % csv uses commans (,) & tsv uses tabs (\t)
-fprintf(fid_run,'snackNames,preRatings_means,rating_You_means,rating_Partner_means,\n');
+fprintf(fid_run,'snackNames,preRatings_means,you_means,partner_means\n');
 
-preRatings = [];
+% set up empty brackets
+preRatings_means = [];
+you_means = [];
+partner_means = [];
 
-% Get Ratings
-for s = 1:length(sublist)
-    % Get PreRatings
-    subjectPreRatings = [];
+% get participant output files
+for s = sublist
+    taskAFile = dir(fullfile(baseoutput,[num2str(s) '_task_a_results.csv']));
+    taskBFile = dir(fullfile(baseoutput,['subject_' num2str(s) '_partner*_task_b_results.csv']));
     
-    taskAFile = taskAFiles(s).name;
-    fname = fullfile(maindir,taskAFile);
+% get PreRatings
+    subjectPreRatings = [];
+    subjectYouRatings = [];
+    subjectPartnerRatings = [];
+
+    fname = taskAFile.name;
     fid = fopen(fname);
     taskAData = textscan(fopen(fname,'r'),'%s%d%d','Delimiter',',');
     fclose(fid);
@@ -44,42 +45,40 @@ for s = 1:length(sublist)
               snackRating = [snackRating, taskAData{1, 2}(j)];
            end
         end
-        subjectPreRatings = [subjectPreRatings,snackRating];
+        subjectPreRatings = [subjectPreRatings,mean(snackRating)];
     end
-    preRatings = [preRatings; subjectPreRatings];
-    preRatings_means = [preRatings_means,preRatings];
+    preRatings_means = [preRatings_means,subjectPreRatings];
     
-    % Get PostRatings
-    taskBFile = taskBFiles(s).name;
-    fname = fullfile(maindir,taskBFile);
+    % get PostRatings
+    fname = taskBFile.name;
     fid = fopen(fname);
     taskBData = textscan(fopen(fname,'r'),'%s%s%s%s%s%s%s%s%s%s%s%s%s','Delimiter',',','HeaderLines',1);
     fclose(fid);
     
-    for i = 1:length(snackNames) % for each snack
-        subjectData.Choices = [];
+    for i = 1:length(snackNames)
         rating_You = [];
         rating_Partner = [];
-        for j = 1:length(subjectData.Choices) % for however many choices were made
-            if snackNames == subjectData.Choices % place choices in temporary bracket
-                if subjectData(j)ChoosingFor == 1 % if participant was choosing for themselves
-                    rating_You.append(subjectData.Choices);
-                    rating_You = str2double(C{10},(j));
-                else % if participant was choosing for partner
-                    rating_Partner.append(subjectData.Choices);
-                    rating_Partner = str2double(C{10},(j));
-                end
-            end
+        for j = 1:length(taskBData{1,1})
+           [~,snackName,~] = fileparts(taskBData{1, 7}{j, 1});
+           if isequal(snackNames{i},snackName)
+              if taskBData{1,13}{j,1} == '1'
+                rating_You = [rating_You, str2num(taskBData{1, 10}{j, 1})];
+              else
+                rating_Partner = [rating_Partner, str2num(taskBData{1, 10}{j, 1})];
+              end 
+           end
         end
+        subjectYouRatings = [subjectYouRatings,mean(rating_You)];
+        subjectPartnerRatings = [subjectPartnerRatings,mean(rating_Partner)];
     end
-    rating_You_means = [rating_You_means,rating_You];
-    rating_Partner_means = [rating_Partner_means,rating_Partner];
-    
-    % write in tmp_data
-    tmp_data = [snackNames preRatings_means rating_You_means rating_Partner_means];
-
-    % write data to output file 'setsize_ratings_output.tsv'
-    fprintf(fid_run,'%s,%s,%s,%s\n',tmp_data);
+    you_means = [you_means,subjectYouRatings];
+    partner_means = [partner_means,subjectPartnerRatings];
 end
+
+% write in tmp_data
+tmp_data = [snackNames preRatings_means you_means partner_means];
+
+% write data to output file 'setsize_ratings_output.tsv'
+fprintf(fid_run,'%s,%s,%s,%s\n',tmp_data{:});
 
 fclose(fid_run);
