@@ -55,17 +55,19 @@ for s = sublist
     taskBData = textscan(fopen(fname,'r'),'%s%s%s%s%s%s%s%s%s%s%s%s%s','Delimiter',',','HeaderLines',1);
     fclose(fid);
     
-    for i = 1:length(snackNames)
+    for i = 1:length(snackNames) % for all snack names
         rating_You = [];
         rating_Partner = [];
         for j = 1:length(taskBData{1,1})
            [~,snackName,~] = fileparts(taskBData{1, 7}{j, 1});
            if isequal(snackNames{i},snackName)
-              if taskBData{1,13}{j,1} == '1' % rating for yourself
-                rating_You = [rating_You, str2num(taskBData{1, 10}{j, 1})];
-              else % rating for your partner
-                rating_Partner = [rating_Partner, str2num(taskBData{1, 10}{j, 1})];
-              end 
+               if isequal(taskBData{12}(i),{'0'}) % non-computer responses
+                  if taskBData{1,13}{j,1} == '1' % rating for yourself
+                    rating_You = [rating_You, str2num(taskBData{1, 10}{j, 1})];
+                  else % rating for your partner
+                    rating_Partner = [rating_Partner, str2num(taskBData{1, 10}{j, 1})];
+                  end
+               end
            end
         end
         subjectYouRatings = [subjectYouRatings,mean(rating_You)];
