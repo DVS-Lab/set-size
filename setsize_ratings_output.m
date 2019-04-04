@@ -14,7 +14,7 @@ baseoutput = fullfile(maindir,'output');
 
 % open output files
 fname = fullfile(maindir,'setsize_ratings_output.csv');
-fid_run = fopen(fname,'w'); % csv uses commans (,) & tsv uses tabs (\t)
+fid_run = fopen(fname,'w'); % csv uses commas (,) & tsv uses tabs (\t)
 fprintf(fid_run,'snackNames,preRatings_means,you_means,partner_means\n');
 
 % set up empty brackets
@@ -61,9 +61,9 @@ for s = sublist
         for j = 1:length(taskBData{1,1})
            [~,snackName,~] = fileparts(taskBData{1, 7}{j, 1});
            if isequal(snackNames{i},snackName)
-              if taskBData{1,13}{j,1} == '1'
+              if taskBData{1,13}{j,1} == '1' % rating for yourself
                 rating_You = [rating_You, str2num(taskBData{1, 10}{j, 1})];
-              else
+              else % rating for your partner
                 rating_Partner = [rating_Partner, str2num(taskBData{1, 10}{j, 1})];
               end 
            end
