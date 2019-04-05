@@ -9,11 +9,11 @@ for i = 1:length(mySnacks)
 end
 
 % list subject ID's
-sublist = [102 109 117];
+sublist = [102 109 110 113 115 117 118 119 120 121 122 123 124 125 126 127 128 131 132 135 136 137 138 139 140];
 baseoutput = fullfile(maindir,'output');
 
 % open output files
-fname = fullfile(maindir,'setsize_ratings_output10.csv');
+fname = fullfile(maindir,'setsize_ratings_output.csv');
 fid_run = fopen(fname,'w'); % csv uses commas (,) & tsv uses tabs (\t)
 fprintf(fid_run,'snackNames,preRatings_means,you_means,partner_means\n');
 
@@ -90,9 +90,9 @@ partner_means = nanmean(partner_means)';
 % write in tmp_data
 tmp_data = [snackNames, num2cell(preRatings_means), num2cell(you_means), num2cell(partner_means)];
 
-% cell2csv('testoutput.csv',tmp_data);
-
 % write data to output file 'setsize_ratings_output.tsv'
-fprintf(fid_run,'%s,%f,%f,%f\n',tmp_data{:});
+for i = 1:length(tmp_data)
+    fprintf(fid_run,'%s,%f,%f,%f\n',tmp_data{i,:});
+end
 
 fclose(fid_run);
