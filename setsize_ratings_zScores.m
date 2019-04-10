@@ -32,5 +32,6 @@ for s = 1:length(sublist)
 
     % write data to output file 'setsize_choice1rt_output.tsv'
     fprintf(fid_run,'%d,%s\n',tmp_data);
+
 end
 fclose(fid_run);
