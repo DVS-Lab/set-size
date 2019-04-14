@@ -6,11 +6,12 @@ fid_run = fopen(fname,'w'); % csv uses commas (,) & tsv uses tabs (\t)
 fprintf(fid_run,'subj_id,zScore\n');
 
 sublist = [102 109 110 113 115 117 118 119 120 121 122 123 124 125 126 127 128 131 132 135 136 137 138 139 140];
+s = 1:length(sublist);
 subj_id = sublist(s);
 baseoutput = fullfile(maindir,'output');
 
 % get participant output files
-for s = 1:length(sublist)-1
+for s = 1:length(sublist)
     taskAFile = dir(fullfile(baseoutput,[num2str(sublist(s)) '_task_a_results.csv']));
     
     % get participant output files
