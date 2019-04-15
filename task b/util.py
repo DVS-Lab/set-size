@@ -5,7 +5,7 @@ import pandas as pd
 # Example Input: 'fgdf task a results.csv'
 
 def imageSorter(ratedImages):
-    df=pd.read_csv('103_task_a_results.csv',
+    df=pd.read_csv(ratedImages,
                names = ["Image", "Preference", "Familiarity"])
 
     #FINDING MAX AND MIN
