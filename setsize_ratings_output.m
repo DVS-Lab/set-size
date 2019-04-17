@@ -1,18 +1,19 @@
 % SETSIZE_RATINGS_OUTPUT
-% This program averages the z-scores for each snack item across
-% participants
+% This program:
+% - Loads in z-score converted task a & b data
+% - averages the z-scores for each snack item across all participants
 
-% get main directory path
+%% Initalize
+% Get main directory path
 main_dir_path = pwd;
-% list subject ID's
+% List subject ID's
 sublist = [102 109 110 113 115 117 118 119 120 121 122 123 124 125 126 127 128 131 132 135 136 137 138 139 140];
 output_z_score_folder_path = fullfile(main_dir_path,'output_z_scores');
-
 % Initalize all subject data
 pre_rating_means_all = [];
 you_means_all = [];
 partner_means_all = [];
-
+%% Get Images
 snack_image_files = dir('images/*.jpg');
 snack_names = {};
 
@@ -20,10 +21,7 @@ for i = 1:length(snack_image_files)
     [~,name,~] = fileparts(snack_image_files(i).name);
     snack_names{end+1} = name;
 end
-
-
-
-% get participant output files
+%% Iterate thrrough each participant
 for subject = sublist
     % Initalize single subject only data
     subject_pre_ratings = [];
@@ -39,10 +37,12 @@ for subject = sublist
     task_a_data = textscan(fopen(file_name,'r'),'%s%s','Delimiter',',');
     fclose(fid_task_a);
     
+    %% Iterate through each snack item
     % Get pre-rating z-scores from task a
     for i = 1:length(snack_names)
         % ReInitalize for every snack type
         snack_rating = [];
+        %% Iterate through each participant choice
         for j = 1:length(task_a_data{1,1}) % Iterate through all choices
            [~,snack_name,~] = fileparts(task_a_data{1}{j});
            if isequal(snack_names{i},snack_name) % choice is current snack
@@ -61,11 +61,13 @@ for subject = sublist
     task_b_data = textscan(fopen(file_name,'r'),'%s%s%s%s','Delimiter',',','HeaderLines',1);
     fclose(fid_task_b);
     
+    %% Iterate through each snack item
     % Get you and partner rating z-scores from task b data
     for i = 1:length(snack_names) % for all snack names
         % ReInitalize for every snack type
         rating_you = [];
         rating_partner = [];
+        %% Iterate through each participant choice
         for j = 1:length(task_b_data{1,1}) % Iterate through all choices
            % Get snack name
            [~,snack_name,~] = fileparts(task_b_data{1}{j});
