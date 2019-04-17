@@ -1,0 +1,200 @@
+snack_name,preRatingMean,youRatingMean,partnerRatingMean
+3 musketeers_candy bar,0.527517,0.585355,0.465758
+annie's_cheddar_bunnies,-0.110208,NaN,0.797276
+annie's_chocolate_bunny_grahams,-0.136683,-0.510301,-0.008197
+annie's_chocolate_chip_bunny_grahams,0.098774,-0.318418,0.028776
+annie's_honey_bunny_grahams,0.103390,-0.199539,0.368846
+austin_cheddar cheese_cheese cracker,-0.141328,-2.528786,-0.753650
+austin_choco creme_choc cookies,-0.417275,-0.008197,NaN
+austin_lemon ohs_lemon cookies,-0.566669,0.203033,-0.097280
+austin_peanut butter_cheese cracker,0.220768,0.143698,-0.158924
+austin_peanut_butter,0.015387,0.099315,0.526847
+austin_vanilla creme_vanilla cookies,-0.411293,NaN,NaN
+baked_cheetos_crunchy,0.003272,0.235007,-1.537443
+baked_lays_barbeque,0.257213,0.587738,-0.548398
+baked_lays_classic,0.327656,0.034324,0.057159
+baked_lays_sour cream and onion,0.097059,0.693840,0.148454
+baked_ruffles_cheddar &sour,0.000323,0.599076,-0.317682
+barnum's_animal_crackers,0.278876,-0.447646,0.159168
+basil_vanilla,-0.517200,0.797276,-0.817442
+basils_duplex_sandwich_cremes,-0.669817,NaN,NaN
+basils_lemon,-0.651443,NaN,NaN
+basils_peanut_butter,-0.458587,0.203033,NaN
+belvita_banana_bread,-0.465249,1.097457,-1.062705
+belvita_blueberry,0.108714,0.772985,0.576220
+belvita_golden_oats,0.058444,0.975442,-1.234960
+black_forest_gummies,-0.089427,0.660290,0.774612
+boulder_kettle_hickory_bbq,-0.357592,0.526847,NaN
+boulder_kettle_olive_oil,-0.432560,1.291470,1.291470
+boulder_kettle_sea_salt,-0.414648,-0.037632,NaN
+brookside_fruit and nut_bar,-0.376703,NaN,NaN
+cascadian_farm_granola,-0.377382,-1.106260,-0.680845
+cheetos_crunchy_chips,0.574602,0.448581,-0.256580
+cheez itz_original,0.654459,0.521903,0.065631
+cheez-it_white_cheddar,0.143458,0.646813,-0.035464
+chex mix_original_traditional,0.335117,-0.329171,0.225241
+chips_ahoy_thin_crisps,-0.022013,-1.553049,-0.155110
+clif_z_bar,-0.397990,-0.590938,-0.153970
+cliff_chocolate chip_bar,-0.279442,-0.991836,-0.362659
+cloverhill_cheese_danish,-0.738950,0.106493,-0.697603
+combos_cheddar cheese_pretzel,-0.071419,0.103223,0.008956
+ct_crunch_cereal_bar,0.101026,0.367557,0.143300
+doritos_cool ranch_chips,0.246537,0.079740,-0.466683
+doritos_nacho cheesier_chips,0.243394,1.016073,-0.643205
+eatrageous_bbq,-0.688343,NaN,NaN
+eatrageous_mac_n_cheese,-0.636031,NaN,NaN
+eatrageous_sea_salt,-0.595479,-1.166589,NaN
+eatrageous_wasabi_ranch,-0.722992,NaN,NaN
+emerald_cashews,-0.321774,-0.153970,NaN
+emerald_dark_chocolate_almonds,-0.342454,0.413404,NaN
+emerald_natural_almonds,0.289744,-1.166589,1.001491
+emerald_sriracha_cashews,-0.626188,NaN,-1.957095
+famous_amos_chocolate_chip,0.684956,0.482967,0.491588
+fiber one_chocolate fudge_ brownie,0.086791,-1.581587,NaN
+fiber one_cinamon_coffee cake,-0.246208,-0.991836,NaN
+fiber one_lemon_ bar,-0.506555,-1.564482,NaN
+fiber one_oats and choc_chewy bar,-0.355025,NaN,NaN
+fig_newtons,-0.401199,-0.048926,-1.283206
+fritos_original_corn chips,-0.151478,0.176794,-0.999680
+garden_veggie straws_cheddar,0.169262,0.729911,0.845317
+garden_veggie straws_sea salt,0.315030,0.227570,-0.099976
+garden_veggie straws_zesty ranch,0.096958,0.572358,0.427500
+grandma's_peanut butter_cookies,-0.384872,-0.770753,0.106493
+grandmas_chocolate brownie_cookie,0.222664,-1.345998,-0.049710
+grandmas_chocolate chip_cookies,0.283408,0.189185,-0.071745
+grandmas_oatmeal raisin_cookies,-0.281388,0.253450,-0.538989
+grandmas_vanilla sandwhich creme_cookies,-0.153369,0.555662,0.327489
+haribo_gold_bears,0.652404,0.558642,-0.399370
+hersey_milk_chocolate,1.043293,0.225988,0.312596
+hersheys_milk choc_almond,0.187317,-0.691901,-0.239734
+homefree_chocolatechip_minicookies,-0.313945,NaN,NaN
+homefree_doublechocolatechip_minicookies,-0.371319,NaN,NaN
+homefree_vanilla_minicookies,-0.540168,NaN,NaN
+jacklinks_beef_jerky_original,0.046601,0.564892,0.642027
+jacklinks_beef_steak,-0.281715,0.032112,0.577687
+jacklinks_beef_stick,-0.365402,-0.606454,0.316498
+jacklinks_small_batch,-0.666303,NaN,NaN
+kar's_sweet'n spicy_mix,-0.370164,-0.153970,0.534659
+kar's_yogurt apple_nut mix,-0.618706,NaN,NaN
+kars_all_energy,-0.436463,0.006477,0.534659
+kars_mango pinapple_trail mix,-0.497967,NaN,-1.734200
+kars_raisin_almond_cashew_mix,-0.453694,-0.389475,NaN
+kashi_chocolate almond _bars,-0.269410,0.975442,-0.283860
+keebler_cheese_and_peanut_butter,0.057794,-0.263162,-1.925602
+keebler_chips delux_cookies_crackers,0.085820,0.483767,-1.240952
+keebler_chips_deluxe,0.123740,0.214177,0.545969
+keebler_elfin_cookies,-0.409766,NaN,NaN
+keebler_fudge_stripes,0.451035,-0.080001,0.378080
+keebler_vanilla_sugar_wafers,-0.159667,0.316391,0.202488
+kellogg's_rice krispies_orignal,0.493152,0.171813,-0.281859
+kettle_bbq,0.101625,0.904154,0.485375
+kettle_jalepeno,-0.225559,0.520143,0.149910
+kettle_original,0.340597,0.522717,0.023854
+kettle_salt_pepper,0.049331,0.063670,-0.414616
+kettle_salt_vinegar,0.134741,0.607938,0.822557
+kind bar_peanut butter_bar,-0.162266,0.975442,-1.446435
+kind_almond_butter,-0.289691,NaN,NaN
+kind_dark_chocolate,-0.027852,NaN,NaN
+kitkat_crisp wafers_milk choc,1.028271,-0.094421,0.635553
+krave_jerky_black_cherry_bbq,-0.679994,NaN,NaN
+krave_jerky_chili_lime,-0.656812,NaN,-0.955018
+krave_jerky_original,-0.703356,1.056059,1.056059
+krave_jerky_sweet_chipotle,-0.495606,NaN,-0.502672
+lance_captain_wafers_with_honey_and_pb,-0.367734,0.534659,0.537378
+lance_choc-o_cookies,-0.589351,0.797276,NaN
+lance_toast_cheese_with_pb,0.149566,-0.241145,-0.800838
+lance_toasty_with_pb,-0.120933,0.313081,-2.148650
+lance_van-o_cookies,-0.450631,-0.817442,NaN
+larabar_apple_pie_bar,-0.420685,NaN,NaN
+larabar_cashew_cookie_bar,-0.632656,-0.707987,NaN
+larabar_peanut putter_bar,-0.430712,0.526847,NaN
+larabar_peanut_butter_cookie_bar,-0.535188,-0.770753,-0.572368
+lays_classic_potato chips,0.551959,0.487020,0.623143
+lays_kc masterpiece_barbecue chips,0.540412,0.546925,-0.189549
+luke's_organic_chips,-0.322520,NaN,NaN
+m&m's_milk_chocholate,0.744419,0.471602,0.170998
+m&m's_peanut,0.362502,0.406922,-0.105891
+m&m's_peanut_butter,-0.024792,NaN,0.235385
+milkyway_orginal_candy,0.345734,-0.661965,0.176987
+mini_cheese_nips,-0.127140,1.016073,-1.166589
+mini_fudge_stripes,0.568346,0.541601,0.375952
+nabisco_chips ahhoy_mini,0.594308,-0.078311,-0.715008
+nabisco_mini_ritz,0.336127,-0.007351,0.386470
+nabisco_nutter butter_bites,0.222646,-0.210038,0.648044
+nabisco_nutter butter_cookies and crackers,0.213340,0.171633,-0.494832
+nabisco_oreo_mini,0.986486,0.497658,0.509544
+nabisco_ritz bits_cookies,0.061390,0.556502,-0.384082
+nabisco_teddy graham_honey,0.609902,-0.095658,-0.169227
+nature valley_oats and honey_crunchy,0.532893,NaN,0.359923
+nature_valley_chewy,-0.326514,-0.008197,-0.372858
+nature_valley_granola_cups_almond_butter,-0.480840,0.751144,0.526847
+nature_valley_granola_cups_peanut_butter,-0.264438,NaN,NaN
+nature_valley_sweet_and_salty,-0.074349,0.345833,-0.181355
+nestle_babyruth_bar,-0.667932,0.623690,0.193559
+nestle_butterfinger_bar,-0.333780,NaN,0.394444
+nestle_butterfinger_cups,-0.161512,0.208381,-0.397282
+nestle_crunch_bar,0.469911,0.255691,0.338884
+nutrigrain_apple cinnamon_bar,0.410605,0.360740,0.327489
+nutrigrain_blueberry_bar,0.208558,0.643032,0.951564
+nutrigrain_strawberry_bar,0.278163,0.704338,0.065495
+nuture valley_crunchy_bar,0.533646,NaN,-0.862466
+oreo_thin_crisps,0.224748,-1.547983,-1.204732
+pepperidge farms-goldish-cheddar,0.626226,0.393423,0.302646
+pirates booty_aged white cheddar_ corn puffs,0.018833,0.585731,0.098102
+planters_honey roasted_peanuts,0.019760,0.164862,-0.249825
+planters_salted_cashews,0.223282,-0.111031,-0.005858
+planters_salted_peanuts,0.264192,-0.120939,0.324135
+popchips_barbeque,-0.213260,1.056059,NaN
+popchips_ridges_cheddar_sourcream,-0.825284,NaN,NaN
+popchips_ridges_perfectly_salted,-0.494635,NaN,NaN
+popchips_ridges_tangy_bbq,-0.351338,-0.153970,0.182079
+popchips_sea_salt,-0.270719,-0.051423,-0.505028
+popchips_sour_cream_and_onion,-0.502489,NaN,NaN
+poptarts_brown_sugar,0.287382,0.608352,0.220216
+poptarts_strawberry_frosted,0.073828,-0.526999,0.215826
+pringles_cheddar_potato crisps,0.233857,-0.097352,0.258693
+pringles_sour cream and onion_potato crisps,0.719525,0.270525,0.615887
+pringles_the original_potato crisps,0.688697,0.520584,0.476223
+quaker_chewy_chocolate chip,0.563447,-0.120646,0.582275
+quaker_chewy_dark choc chunk,0.418417,NaN,-0.168873
+quaker_chewy_peanut butter choc chip,0.364111,0.725732,-1.422894
+quakers_popped_rice_crisps,-0.379479,0.646813,-0.817442
+reeses_peanut butter cups_milk choc,0.960423,-0.037296,-0.185657
+ritz_toasted_chips,-0.351544,-0.590938,NaN
+sensible_portions_cinnamon_apple_straws,-0.527231,0.526847,0.526847
+skinny_pop_popcorn,0.070268,0.613824,-0.114424
+skittles_darkside_candy,0.365659,0.430746,0.204646
+skittles_original_candy,0.967804,0.739936,0.335934
+skittles_sour_candy,0.405846,0.139526,0.017791
+skittles_wild berry_candy,0.373875,0.531509,-0.063827
+slim_jim,-0.262210,0.596728,-0.424863
+snickers_almond_bar,-0.131234,0.620223,-0.526999
+snickers_milk chocolate_candy bar,0.681500,0.012650,0.342531
+snyders_mini_pretzels,0.499045,-0.170868,-0.617956
+sourpatch_watermelon_candy,0.718085,0.839070,0.176740
+sourpatchkids_original_candy,0.808035,0.453759,-0.321364
+special_k_cracker_chips,-0.158441,NaN,0.677487
+special_k_pastry_crisps_blueberry,-0.278712,-1.582226,-0.866734
+special_k_pastry_crisps_strawberry,-0.175448,-1.070092,-0.590938
+starburst_favereds_candy,0.613908,0.707113,-0.107202
+starburst_orignal_candy,0.631120,0.640807,0.230152
+starburst_verry berry_candy,-0.155716,0.020383,0.357064
+stonyfield_fruit snacks,-0.095384,-0.691901,-0.651448
+stonyfield_fruit_snacks,-0.309183,-0.590938,0.348796
+sun chips_french onion_chips,0.096621,-0.676710,-0.682033
+sun chips_garden salsa_chips,0.130494,0.290406,-0.465737
+sun chips_original_chips,0.213809,-0.817442,0.440583
+sunchips_harvest cheddar_chips,0.246564,-0.287178,-0.056427
+swedish fish_original_candy,0.742699,0.376744,0.092649
+teddy_grahams_chocolate,0.285882,0.106493,-0.585918
+this_popcorn_is_awesome_aged_white_cheddar,-0.450057,NaN,0.646813
+this_popcorn_is_awesome_crushed_pepper,-0.334778,NaN,NaN
+this_popcorn_is_awesome_olive_oil,-0.282782,NaN,NaN
+this_popcorn_is_awesome_popcorn,-0.459770,NaN,NaN
+twix_milk chocolate_cookie bars,0.889569,0.457547,-0.090287
+walkers_highlander_shortbread,-0.493155,NaN,0.534659
+welch's_berry,0.729323,0.466980,0.407064
+welch's_mixed fruit_fruit snacks,0.968200,0.458754,-0.191536
+welch's_tropical_fruits,0.394383,0.546202,-0.651910
+welch's_white_grape_raspberry,0.532248,-0.233034,-0.067803
+wheat_thins,0.234516,-0.299376,0.692590

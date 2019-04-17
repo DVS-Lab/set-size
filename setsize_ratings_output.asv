@@ -2,26 +2,24 @@
 % This program averages the z-scores for each snack item across
 % participants
 
-% get main directory path
-main_dir_path = pwd;
+maindir = pwd;
+
+mySnacks = dir('images/*.jpg');
+snack_names = {};
+
+for i = 1:length(mySnacks)
+    [~,name,~] = fileparts(mySnacks(i).name);
+    snack_names{end+1} = name;
+end
+
 % list subject ID's
 sublist = [102 109 110 113 115 117 118 119 120 121 122 123 124 125 126 127 128 131 132 135 136 137 138 139 140];
-output_z_score_folder_path = fullfile(main_dir_path,'output_z_scores');
+output_z_score_folder_path = fullfile(maindir,'output_z_scores');
 
 % Initalize all subject data
 pre_rating_means_all = [];
 you_means_all = [];
 partner_means_all = [];
-
-snack_image_files = dir('images/*.jpg');
-snack_names = {};
-
-for i = 1:length(snack_image_files)
-    [~,name,~] = fileparts(snack_image_files(i).name);
-    snack_names{end+1} = name;
-end
-
-
 
 % get participant output files
 for subject = sublist
@@ -65,7 +63,7 @@ for subject = sublist
     for i = 1:length(snack_names) % for all snack names
         % ReInitalize for every snack type
         rating_you = [];
-        rating_partner = [];
+        rating_Partner = [];
         for j = 1:length(task_b_data{1,1}) % Iterate through all choices
            % Get snack name
            [~,snack_name,~] = fileparts(task_b_data{1}{j});
@@ -77,41 +75,38 @@ for subject = sublist
                   if task_b_data{3}{j} == '1' % Chose for self
                     rating_you = [rating_you, str2double(task_b_data{2}{j})];
                   else % Chose for parner
-                    rating_partner = [rating_partner,...
+                    rating_Partner = [rating_Partner,...
                         str2num(task_b_data{2}{j})]; % consider str2fdouble********
                   end
                end
            end
         end
-        subject_you_ratings = [subject_you_ratings, nanmean(rating_you)];
-        subject_partner_ratings = [subject_partner_ratings, nanmean(rating_partner)];
+        subject_you_ratings = [subject_you_ratings,nanmean(rating_you)];
+        subject_partner_ratings = [subject_partner_ratings,nanmean(rating_Partner)];
     end
-    you_means_all = [you_means_all; subject_you_ratings];
-    partner_means_all = [partner_means_all; subject_partner_ratings];
+    you_means_all = [you_means_all;subject_you_ratings];
+    partner_means_all = [partner_means_all;subject_partner_ratings];
     fclose('all');
 end
 
- %% Data formatting
-
-% transpose from 1xn to nx1 
+% format data
 snack_names = snack_names';
+
+% get means across all subjects
 % convert str to double
 pre_rating_means_all_temp = cellfun(@str2double,pre_rating_means_all,'UniformOutput',false);
-% convert cell array to double array
+% convert cell array to d
 pre_rating_means_formatted = cell2mat(pre_rating_means_all_temp);
-
-%% Get Means 
-% get mean of participant
 pre_rating_means = nanmean(pre_rating_means_formatted)';
 you_means_all = nanmean(you_means_all)';
 partner_means_all = nanmean(partner_means_all)';
-%% Write Data to Output File
+
 % Arrange data for writing
 formatted_data = [snack_names, num2cell(pre_rating_means),...
     num2cell(you_means_all), num2cell(partner_means_all)];
 
 % Create output file
-file_name = fullfile(main_dir_path,'setsize_ratings_output.csv');
+file_name = fullfile(maindir,'setsize_ratings_output.csv');
 fid_output = fopen(file_name,'w'); % csv uses commas (,) & tsv uses tabs (\t)
 % Write header
 fprintf(fid_output,'snack_name,preRatingMean,youRatingMean,partnerRatingMean\n');
