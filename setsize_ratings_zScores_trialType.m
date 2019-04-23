@@ -27,6 +27,7 @@ for s = 1:length(sublist)
     chosing_for = task_b_data(13);
     pc_response = task_b_data(12);
     TrialType = task_b_data(1);
+    choice1 = task_b_data(5);
     % Close task B data file
     fclose(input_file);
 
@@ -43,19 +44,19 @@ for s = 1:length(sublist)
     pc_response_formatted = cell2mat(pc_response_temp);
     % Format data to be written
     formatted_data = ...
-        [TrialType{1:end} snack_names{1:end} num2cell(z_scores)...
+        [TrialType{1:end} snack_names{1:end} choice1{1:end} num2cell(z_scores)...
         num2cell(chosing_for_formatted) num2cell(pc_response_formatted)];
 
     % Open output file
     % (file name is same as input file name but with '_formatted' appended)
-    fname = fullfile(maindir,[taskBFile.name(1:end-4) '_z_scoresVK.csv']);
+    fname = fullfile(maindir,[taskBFile.name(1:end-4) '_z_scores_tt.csv']);
     output_file = fopen(fname,'w'); % csv uses commas (,) & tsv uses tabs (\t)
     % Write File Header
-    fprintf(output_file,'TrialType,snackName,rating,choseFor,pcResponse\n');
+    fprintf(output_file,'TrialType,snackName,choice1,rating,choseFor,pcResponse\n');
     
     % write data line by line
     for i = 2:length(formatted_data)
-        fprintf(output_file,'%s,%s,%f,%d,%d\n',formatted_data{i,:});
+        fprintf(output_file,'%s,%s,%s,%f,%d,%d\n',formatted_data{i,:});
     end
     
     % Close output file
