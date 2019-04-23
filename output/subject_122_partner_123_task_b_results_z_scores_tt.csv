@@ -1,0 +1,99 @@
+TrialType,choice2,choice1,preRating,rating,ratingDiff,choseFor,pcResponse
+6,..\..\JOCN-master\task a\images\slim_jim.jpg,12,-1.222147,1.268886,2.491033,2,1
+5,..\..\JOCN-master\task a\images\cliff_chocolate chip_bar.jpg,12,-1.222147,-0.666703,0.555444,2,1
+3,..\..\JOCN-master\task a\images\nestle_babyruth_bar.jpg,6,-0.202410,NaN,NaN,1,1
+7,..\..\JOCN-master\task a\images\sourpatch_watermelon_candy.jpg,2,0.307458,NaN,NaN,2,1
+4,..\..\JOCN-master\task a\images\lays_classic_potato chips.jpg,12,-1.222147,NaN,NaN,1,1
+6,..\..\JOCN-master\task a\images\skittles_sour_candy.jpg,3,-1.222147,-0.021507,1.200640,2,0
+1,..\..\JOCN-master\task a\images\nestle_crunch_bar.jpg,12,0.817327,-1.311899,-2.129226,1,1
+6,..\..\JOCN-master\task a\images\planters_salted_peanuts.jpg,3,0.307458,-0.666703,-0.974161,2,0
+2,..\..\JOCN-master\task a\images\milkyway_orginal_candy.jpg,12,-0.202410,-0.021507,0.180903,1,1
+2,..\..\JOCN-master\task a\images\welch's_white_grape_raspberry.jpg,2,0.307458,-1.957095,-2.264553,1,0
+5,..\..\JOCN-master\task a\images\twix_milk chocolate_cookie bars.jpg,12,-1.222147,1.268886,2.491033,2,1
+2,..\..\JOCN-master\task a\images\kitkat_crisp wafers_milk choc.jpg,3,-0.202410,1.914082,2.116492,1,0
+5,..\..\JOCN-master\task a\images\emerald_sriracha_cashews.jpg,2,0.307458,-1.957095,-2.264553,2,0
+4,..\..\JOCN-master\task a\images\emerald_sriracha_cashews.jpg,3,-1.222147,NaN,NaN,1,1
+5,..\..\JOCN-master\task a\images\reeses_peanut butter cups_milk choc.jpg,12,0.817327,-0.021507,-0.838834,2,0
+2,..\..\JOCN-master\task a\images\m&m's_peanut_butter.jpg,6,1.327196,-0.666703,-1.993899,1,1
+4,..\..\JOCN-master\task a\images\belvita_blueberry.JPG,6,-0.712279,NaN,NaN,1,1
+4,..\..\JOCN-master\task a\images\cliff_chocolate chip_bar.jpg,12,1.837064,NaN,NaN,1,1
+1,..\..\JOCN-master\task a\images\3 musketeers_candy bar.jpg,2,-0.712279,1.914082,2.626361,1,0
+6,..\..\JOCN-master\task a\images\hersey_milk_chocolate.jpg,12,-1.222147,1.268886,2.491033,2,1
+1,..\..\JOCN-master\task a\images\hersheys_milk choc_almond.jpg,3,0.307458,0.623690,0.316232,1,1
+2,..\..\JOCN-master\task a\images\nestle_babyruth_bar.jpg,6,-0.202410,1.268886,1.471296,1,0
+5,..\..\JOCN-master\task a\images\nestle_babyruth_bar.jpg,6,0.307458,-0.021507,-0.328965,2,0
+7,..\..\JOCN-master\task a\images\m&m's_milk_chocholate.jpg,3,0.817327,NaN,NaN,2,1
+8,..\..\JOCN-master\task a\images\welch's_mixed fruit_fruit snacks.jpg,3,1.327196,NaN,NaN,2,1
+5,..\..\JOCN-master\task a\images\grandmas_chocolate chip_cookies.jpg,3,1.837064,-0.021507,-1.858571,2,0
+1,..\..\JOCN-master\task a\images\hersey_milk_chocolate.jpg,12,-1.222147,-0.021507,1.200640,1,0
+2,..\..\JOCN-master\task a\images\nestle_crunch_bar.jpg,2,0.307458,-0.021507,-0.328965,1,0
+7,..\..\JOCN-master\task a\images\fiber one_lemon_ bar.jpg,6,0.307458,NaN,NaN,2,1
+7,..\..\JOCN-master\task a\images\nuture valley_crunchy_bar.jpg,3,1.327196,NaN,NaN,2,1
+5,..\..\JOCN-master\task a\images\poptarts_brown_sugar.jpg,2,-0.712279,-1.311899,-0.599620,2,1
+6,..\..\JOCN-master\task a\images\twix_milk chocolate_cookie bars.jpg,3,-0.202410,-0.021507,0.180903,2,0
+5,..\..\JOCN-master\task a\images\slim_jim.jpg,2,1.327196,-1.311899,-2.639095,2,0
+8,..\..\JOCN-master\task a\images\planters_honey roasted_peanuts.jpg,12,1.837064,NaN,NaN,2,1
+5,..\..\JOCN-master\task a\images\nutrigrain_strawberry_bar.jpg,2,0.307458,-0.021507,-0.328965,2,0
+4,..\..\JOCN-master\task a\images\sun chips_original_chips.jpg,12,0.817327,NaN,NaN,1,1
+7,..\..\JOCN-master\task a\images\grandmas_chocolate chip_cookies.jpg,2,-1.222147,NaN,NaN,2,1
+6,..\..\JOCN-master\task a\images\twix_milk chocolate_cookie bars.jpg,12,-0.202410,-0.666703,-0.464293,2,1
+1,..\..\JOCN-master\task a\images\cheez itz_original.jpg,6,0.817327,1.914082,1.096755,1,1
+7,..\..\JOCN-master\task a\images\lays_classic_potato chips.jpg,2,-1.222147,NaN,NaN,2,1
+2,..\..\JOCN-master\task a\images\snickers_milk chocolate_candy bar.jpg,6,-0.202410,-0.021507,0.180903,1,0
+1,..\..\JOCN-master\task a\images\grandmas_chocolate chip_cookies.jpg,3,-0.202410,-0.666703,-0.464293,1,0
+5,..\..\JOCN-master\task a\images\nutrigrain_strawberry_bar.jpg,2,-0.202410,0.623690,0.826100,2,0
+1,..\..\JOCN-master\task a\images\lays_classic_potato chips.jpg,3,-0.202410,1.914082,2.116492,1,1
+5,..\..\JOCN-master\task a\images\3 musketeers_candy bar.jpg,12,-0.712279,-0.021507,0.690772,2,0
+3,..\..\JOCN-master\task a\images\fritos_original_corn chips.jpg,12,-0.202410,NaN,NaN,1,1
+6,..\..\JOCN-master\task a\images\3 musketeers_candy bar.jpg,3,1.327196,-0.666703,-1.993899,2,0
+7,..\..\JOCN-master\task a\images\garden_veggie straws_sea salt.jpg,2,0.817327,NaN,NaN,2,1
+1,..\..\JOCN-master\task a\images\snickers_milk chocolate_candy bar.jpg,6,0.817327,-0.021507,-0.838834,1,1
+2,..\..\JOCN-master\task a\images\3 musketeers_candy bar.jpg,2,1.837064,-0.021507,-1.858571,1,0
+6,..\..\JOCN-master\task a\images\3 musketeers_candy bar.jpg,12,-1.222147,0.623690,1.845837,2,0
+6,..\..\JOCN-master\task a\images\nestle_babyruth_bar.jpg,3,0.307458,-0.021507,-0.328965,2,0
+2,..\..\JOCN-master\task a\images\nutrigrain_apple cinnamon_bar.jpg,6,1.327196,0.623690,-0.703506,1,1
+6,..\..\JOCN-master\task a\images\m&m's_milk_chocholate.jpg,3,-0.202410,1.268886,1.471296,2,0
+7,..\..\JOCN-master\task a\images\fiber one_cinamon_coffee cake.jpg,12,1.837064,NaN,NaN,2,1
+5,..\..\JOCN-master\task a\images\emerald_natural_almonds.jpg,6,-1.222147,-0.021507,1.200640,2,1
+8,..\..\JOCN-master\task a\images\nestle_crunch_bar.jpg,6,-1.222147,NaN,NaN,2,1
+5,..\..\JOCN-master\task a\images\m&m's_milk_chocholate.jpg,12,0.307458,1.914082,1.606624,2,1
+1,..\..\JOCN-master\task a\images\3 musketeers_candy bar.jpg,6,0.307458,1.914082,1.606624,1,0
+4,..\..\JOCN-master\task a\images\mini_cheese_nips.jpg,12,-0.202410,NaN,NaN,1,1
+5,..\..\JOCN-master\task a\images\milkyway_orginal_candy.jpg,6,0.817327,-0.021507,-0.838834,2,0
+1,..\..\JOCN-master\task a\images\kitkat_crisp wafers_milk choc.jpg,12,-0.712279,1.914082,2.626361,1,0
+5,..\..\JOCN-master\task a\images\nature valley_oats and honey_crunchy.jpg,2,-0.202410,-0.666703,-0.464293,2,0
+5,..\..\JOCN-master\task a\images\nestle_crunch_bar.jpg,6,0.307458,1.914082,1.606624,2,0
+6,..\..\JOCN-master\task a\images\nestle_babyruth_bar.jpg,6,0.817327,0.623690,-0.193637,2,0
+1,..\..\JOCN-master\task a\images\poptarts_brown_sugar.jpg,6,0.307458,1.914082,1.606624,1,0
+2,..\..\JOCN-master\task a\images\grandmas_chocolate chip_cookies.jpg,3,-1.222147,-0.666703,0.555444,1,0
+1,..\..\JOCN-master\task a\images\milkyway_orginal_candy.jpg,6,0.307458,-0.666703,-0.974161,1,0
+5,..\..\JOCN-master\task a\images\cliff_chocolate chip_bar.jpg,12,0.817327,-0.021507,-0.838834,2,1
+5,..\..\JOCN-master\task a\images\hersheys_milk choc_almond.jpg,12,-1.222147,-1.311899,-0.089752,2,0
+5,..\..\JOCN-master\task a\images\fig_newtons.jpg,3,-0.202410,-1.957095,-1.754685,2,0
+7,..\..\JOCN-master\task a\images\skittles_sour_candy.jpg,2,-0.202410,NaN,NaN,2,1
+2,..\..\JOCN-master\task a\images\lays_classic_potato chips.jpg,6,0.307458,-0.666703,-0.974161,1,0
+1,..\..\JOCN-master\task a\images\quaker_chewy_chocolate chip.jpg,2,-0.202410,-0.666703,-0.464293,1,0
+1,..\..\JOCN-master\task a\images\cheez itz_original.jpg,3,-0.712279,-1.957095,-1.244816,1,1
+6,..\..\JOCN-master\task a\images\reeses_peanut butter cups_milk choc.jpg,6,1.837064,-0.021507,-1.858571,2,0
+3,..\..\JOCN-master\task a\images\quaker_chewy_chocolate chip.jpg,2,-1.222147,NaN,NaN,1,1
+3,..\..\JOCN-master\task a\images\skinny_pop_popcorn.jpg,3,-0.712279,NaN,NaN,1,1
+3,..\..\JOCN-master\task a\images\quaker_chewy_dark choc chunk.jpg,2,0.307458,NaN,NaN,1,1
+1,..\..\JOCN-master\task a\images\reeses_peanut butter cups_milk choc.jpg,6,-0.202410,-0.021507,0.180903,1,0
+5,..\..\JOCN-master\task a\images\barnum's_animal_crackers.jpg,3,-0.202410,-0.021507,0.180903,2,1
+1,..\..\JOCN-master\task a\images\quaker_chewy_chocolate chip.jpg,3,-0.712279,-0.021507,0.690772,1,0
+1,..\..\JOCN-master\task a\images\m&m's_milk_chocholate.jpg,2,0.817327,-0.021507,-0.838834,1,0
+7,..\..\JOCN-master\task a\images\starburst_favereds_candy.jpg,3,0.817327,NaN,NaN,2,1
+8,..\..\JOCN-master\task a\images\emerald_cashews.jpg,6,-0.202410,NaN,NaN,2,1
+8,..\..\JOCN-master\task a\images\quaker_chewy_peanut butter choc chip.jpg,12,-1.222147,NaN,NaN,2,1
+1,..\..\JOCN-master\task a\images\planters_salted_peanuts.jpg,12,-0.712279,-0.021507,0.690772,1,1
+3,..\..\JOCN-master\task a\images\cheetos_crunchy_chips.jpg,2,-1.222147,NaN,NaN,1,1
+5,..\..\JOCN-master\task a\images\sourpatch_watermelon_candy.jpg,6,-1.222147,-0.021507,1.200640,2,0
+2,..\..\JOCN-master\task a\images\sunchips_harvest cheddar_chips.jpg,2,-0.202410,-1.311899,-1.109489,1,0
+6,..\..\JOCN-master\task a\images\grandmas_chocolate chip_cookies.jpg,2,-1.222147,-0.666703,0.555444,2,0
+6,..\..\JOCN-master\task a\images\doritos_cool ranch_chips.jpg,2,-1.222147,1.914082,3.136229,2,1
+2,..\..\JOCN-master\task a\images\planters_honey roasted_peanuts.jpg,2,-0.712279,-0.021507,0.690772,1,0
+8,..\..\JOCN-master\task a\images\popchips_sea_salt.jpg,6,-0.202410,NaN,NaN,2,1
+8,..\..\JOCN-master\task a\images\nabisco_chips ahhoy_mini.jpg,3,-0.202410,NaN,NaN,2,1
+6,..\..\JOCN-master\task a\images\doritos_cool ranch_chips.jpg,3,1.837064,-0.666703,-2.503767,2,0
+4,..\..\JOCN-master\task a\images\grandmas_chocolate chip_cookies.jpg,3,1.837064,NaN,NaN,1,1
+1,..\..\JOCN-master\task a\images\nestle_babyruth_bar.jpg,6,0.817327,-0.021507,-0.838834,1,0

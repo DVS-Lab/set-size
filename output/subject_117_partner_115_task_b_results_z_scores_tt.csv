@@ -1,0 +1,125 @@
+TrialType,choice2,choice1,preRating,rating,ratingDiff,choseFor,pcResponse
+2,..\..\JOCN-master\task a\images\keebler_fudge_stripes.jpg,3,-0.366227,-0.985453,-0.619226,1,1
+1,..\..\JOCN-master\task a\images\pringles_cheddar_potato crisps.jpg,2,0.486161,0.797276,0.311115,1,1
+5,..\..\JOCN-master\task a\images\skittles_sour_candy.jpg,6,1.338549,-0.391210,-1.729759,2,0
+1,..\..\JOCN-master\task a\images\basils_peanut_butter.jpg,12,0.486161,0.203033,-0.283128,1,0
+2,..\..\JOCN-master\task a\images\lays_classic_potato chips.jpg,6,-0.366227,0.797276,1.163503,1,0
+5,..\..\JOCN-master\task a\images\kettle_salt_pepper.jpg,3,0.486161,-0.391210,-0.877371,2,0
+7,..\..\JOCN-master\task a\images\austin_peanut_butter.jpg,3,0.486161,NaN,NaN,2,1
+2,..\..\JOCN-master\task a\images\pringles_sour cream and onion_potato crisps.jpg,3,-0.366227,0.797276,1.163503,1,0
+6,..\..\JOCN-master\task a\images\poptarts_strawberry_frosted.jpg,12,0.059967,0.797276,0.737309,2,1
+1,..\..\JOCN-master\task a\images\keebler_fudge_stripes.jpg,3,1.338549,0.797276,-0.541273,1,0
+6,..\..\JOCN-master\task a\images\cheetos_crunchy_chips.jpg,12,-1.218615,0.203033,1.421648,2,1
+4,..\..\JOCN-master\task a\images\swedish fish_original_candy.jpg,2,1.338549,NaN,NaN,1,1
+6,..\..\JOCN-master\task a\images\nabisco_chips ahhoy_mini.jpg,2,0.486161,-1.579695,-2.065856,2,1
+5,..\..\JOCN-master\task a\images\pringles_the original_potato crisps.jpg,12,0.912355,0.797276,-0.115079,2,0
+2,..\..\JOCN-master\task a\images\welch's_berry.jpg,6,0.912355,-0.391210,-1.303565,1,0
+5,..\..\JOCN-master\task a\images\annie's_honey_bunny_grahams.jpg,3,-1.218615,0.203033,1.421648,2,0
+1,..\..\JOCN-master\task a\images\nabisco_teddy graham_honey.jpg,2,-0.366227,0.203033,0.569260,1,0
+5,..\..\JOCN-master\task a\images\larabar_peanut_butter_cookie_bar.jpg,3,0.059967,0.797276,0.737309,2,0
+1,..\..\JOCN-master\task a\images\cheez itz_original.jpg,6,0.059967,0.797276,0.737309,1,0
+6,..\..\JOCN-master\task a\images\sun chips_french onion_chips.jpg,6,0.059967,0.203033,0.143066,2,1
+1,..\..\JOCN-master\task a\images\cheez itz_original.jpg,12,-0.792421,0.797276,1.589697,1,0
+4,..\..\JOCN-master\task a\images\welch's_tropical_fruits.jpg,12,-1.218615,NaN,NaN,1,1
+2,..\..\JOCN-master\task a\images\austin_lemon ohs_lemon cookies.jpg,3,-1.218615,0.203033,1.421648,1,0
+1,..\..\JOCN-master\task a\images\nabisco_nutter butter_cookies and crackers.jpg,3,0.486161,0.797276,0.311115,1,0
+1,..\..\JOCN-master\task a\images\cheetos_crunchy_chips.jpg,3,1.338549,0.203033,-1.135516,1,0
+1,..\..\JOCN-master\task a\images\basil_vanilla.jpg,2,0.912355,0.797276,-0.115079,1,0
+2,..\..\JOCN-master\task a\images\keebler_chips delux_cookies_crackers.jpg,3,-0.792421,0.203033,0.995454,1,0
+2,..\..\JOCN-master\task a\images\pringles_the original_potato crisps.jpg,6,-0.366227,0.797276,1.163503,1,0
+7,..\..\JOCN-master\task a\images\larabar_apple_pie_bar.jpg,12,0.486161,NaN,NaN,2,1
+3,..\..\JOCN-master\task a\images\nestle_butterfinger_bar.jpg,2,-1.218615,NaN,NaN,1,1
+6,..\..\JOCN-master\task a\images\kitkat_crisp wafers_milk choc.jpg,2,-0.792421,0.797276,1.589697,2,0
+2,..\..\JOCN-master\task a\images\nabisco_nutter butter_cookies and crackers.jpg,6,1.338549,0.797276,-0.541273,1,0
+2,..\..\JOCN-master\task a\images\nestle_crunch_bar.jpg,2,1.338549,0.797276,-0.541273,1,0
+5,..\..\JOCN-master\task a\images\austin_lemon ohs_lemon cookies.jpg,6,1.338549,0.797276,-0.541273,2,0
+2,..\..\JOCN-master\task a\images\austin_vanilla creme_vanilla cookies.jpg,2,-1.218615,-0.391210,0.827405,1,1
+8,..\..\JOCN-master\task a\images\doritos_cool ranch_chips.jpg,3,1.338549,NaN,NaN,2,1
+5,..\..\JOCN-master\task a\images\sun chips_original_chips.jpg,2,0.486161,0.797276,0.311115,2,0
+2,..\..\JOCN-master\task a\images\pringles_cheddar_potato crisps.jpg,2,1.338549,0.797276,-0.541273,1,0
+1,..\..\JOCN-master\task a\images\nabisco_oreo_mini.jpg,3,1.338549,0.203033,-1.135516,1,1
+7,..\..\JOCN-master\task a\images\kellogg's_rice krispies_orignal.jpg,12,-0.792421,NaN,NaN,2,1
+2,..\..\JOCN-master\task a\images\snickers_milk chocolate_candy bar.jpg,6,-1.218615,0.797276,2.015891,1,1
+2,..\..\JOCN-master\task a\images\nabisco_oreo_mini.jpg,3,1.338549,0.797276,-0.541273,1,0
+7,..\..\JOCN-master\task a\images\nabisco_ritz bits_cookies.jpg,6,0.059967,NaN,NaN,2,1
+1,..\..\JOCN-master\task a\images\kettle_salt_pepper.jpg,12,-0.792421,-0.391210,0.401211,1,0
+5,..\..\JOCN-master\task a\images\annie's_cheddar_bunnies.jpg,3,-1.218615,0.797276,2.015891,2,0
+1,..\..\JOCN-master\task a\images\cheez itz_original.jpg,3,0.059967,0.797276,0.737309,1,1
+2,..\..\JOCN-master\task a\images\nabisco_nutter butter_cookies and crackers.jpg,3,-1.218615,0.797276,2.015891,1,1
+6,..\..\JOCN-master\task a\images\annie's_chocolate_chip_bunny_grahams.jpg,2,-0.792421,-2.173938,-1.381517,2,1
+7,..\..\JOCN-master\task a\images\swedish fish_original_candy.jpg,6,-0.366227,NaN,NaN,2,1
+1,..\..\JOCN-master\task a\images\nabisco_oreo_mini.jpg,2,-1.218615,0.797276,2.015891,1,0
+1,..\..\JOCN-master\task a\images\lance_choc-o_cookies.jpg,2,0.486161,0.797276,0.311115,1,0
+3,..\..\JOCN-master\task a\images\nestle_babyruth_bar.jpg,3,-0.792421,NaN,NaN,1,1
+3,..\..\JOCN-master\task a\images\grandma's_peanut butter_cookies.jpg,3,-0.792421,NaN,NaN,1,1
+1,..\..\JOCN-master\task a\images\nabisco_teddy graham_honey.jpg,3,1.338549,0.797276,-0.541273,1,0
+6,..\..\JOCN-master\task a\images\grandmas_chocolate chip_cookies.jpg,2,0.912355,0.203033,-0.709322,2,0
+8,..\..\JOCN-master\task a\images\garden_veggie straws_zesty ranch.jpg,12,-0.366227,NaN,NaN,2,1
+5,..\..\JOCN-master\task a\images\annie's_chocolate_chip_bunny_grahams.jpg,2,1.338549,0.797276,-0.541273,2,0
+6,..\..\JOCN-master\task a\images\belvita_banana_bread.jpg,6,-1.218615,-0.391210,0.827405,2,0
+5,..\..\JOCN-master\task a\images\teddy_grahams_chocolate.jpg,2,1.338549,0.797276,-0.541273,2,0
+5,..\..\JOCN-master\task a\images\skinny_pop_popcorn.jpg,12,-0.792421,-0.985453,-0.193032,2,0
+6,..\..\JOCN-master\task a\images\garden_veggie straws_sea salt.jpg,12,0.486161,-1.579695,-2.065856,2,0
+8,..\..\JOCN-master\task a\images\garden_veggie straws_sea salt.jpg,12,1.338549,NaN,NaN,2,1
+2,..\..\JOCN-master\task a\images\pringles_cheddar_potato crisps.jpg,6,-0.366227,0.203033,0.569260,1,0
+1,..\..\JOCN-master\task a\images\nestle_crunch_bar.jpg,3,-0.366227,0.797276,1.163503,1,0
+2,..\..\JOCN-master\task a\images\pirates booty_aged white cheddar_ corn puffs.jpg,6,-0.366227,0.797276,1.163503,1,0
+3,..\..\JOCN-master\task a\images\nabisco_oreo_mini.jpg,6,1.338549,NaN,NaN,1,1
+6,..\..\JOCN-master\task a\images\belvita_blueberry.JPG,3,-1.218615,-1.579695,-0.361080,2,1
+1,..\..\JOCN-master\task a\images\lays_classic_potato chips.jpg,12,1.338549,0.797276,-0.541273,1,0
+1,..\..\JOCN-master\task a\images\baked_lays_classic.jpg,6,-0.792421,0.203033,0.995454,1,0
+5,..\..\JOCN-master\task a\images\nestle_crunch_bar.jpg,2,-0.792421,0.203033,0.995454,2,1
+2,..\..\JOCN-master\task a\images\starburst_orignal_candy.jpg,3,0.486161,0.203033,-0.283128,1,0
+4,..\..\JOCN-master\task a\images\m&m's_peanut_butter.jpg,12,0.059967,NaN,NaN,1,1
+1,..\..\JOCN-master\task a\images\grandmas_chocolate brownie_cookie.jpg,12,1.338549,0.797276,-0.541273,1,1
+8,..\..\JOCN-master\task a\images\nabisco_ritz bits_cookies.jpg,3,1.338549,NaN,NaN,2,1
+5,..\..\JOCN-master\task a\images\chips_ahoy_thin_crisps.jpg,12,0.486161,-0.391210,-0.877371,2,0
+3,..\..\JOCN-master\task a\images\fritos_original_corn chips.jpg,6,-1.218615,NaN,NaN,1,1
+7,..\..\JOCN-master\task a\images\snyders_mini_pretzels.jpg,6,-1.218615,NaN,NaN,2,1
+7,..\..\JOCN-master\task a\images\famous_amos_chocolate_chip.jpg,6,-1.218615,NaN,NaN,2,1
+1,..\..\JOCN-master\task a\images\cheez itz_original.jpg,6,-1.218615,-2.173938,-0.955323,1,1
+6,..\..\JOCN-master\task a\images\3 musketeers_candy bar.jpg,6,1.338549,-1.579695,-2.918244,2,1
+2,..\..\JOCN-master\task a\images\nabisco_oreo_mini.jpg,2,0.912355,-2.768181,-3.680536,1,1
+1,..\..\JOCN-master\task a\images\nabisco_oreo_mini.jpg,12,0.059967,0.797276,0.737309,1,0
+7,..\..\JOCN-master\task a\images\skittles_sour_candy.jpg,3,1.338549,NaN,NaN,2,1
+2,..\..\JOCN-master\task a\images\annie's_honey_bunny_grahams.jpg,3,-0.792421,0.203033,0.995454,1,0
+1,..\..\JOCN-master\task a\images\cheez itz_original.jpg,12,1.338549,0.797276,-0.541273,1,0
+5,..\..\JOCN-master\task a\images\kashi_chocolate almond _bars.jpg,6,1.338549,0.797276,-0.541273,2,0
+7,..\..\JOCN-master\task a\images\twix_milk chocolate_cookie bars.jpg,2,1.338549,NaN,NaN,2,1
+1,..\..\JOCN-master\task a\images\famous_amos_chocolate_chip.jpg,12,0.486161,0.797276,0.311115,1,1
+6,..\..\JOCN-master\task a\images\baked_lays_sour cream and onion.jpg,6,-1.218615,0.797276,2.015891,2,1
+7,..\..\JOCN-master\task a\images\pringles_the original_potato crisps.jpg,3,1.338549,NaN,NaN,2,1
+2,..\..\JOCN-master\task a\images\snyders_mini_pretzels.jpg,6,-1.218615,-0.391210,0.827405,1,0
+5,..\..\JOCN-master\task a\images\haribo_gold_bears.jpg,2,0.059967,0.203033,0.143066,2,1
+3,..\..\JOCN-master\task a\images\keebler_vanilla_sugar_wafers.jpg,2,-1.218615,NaN,NaN,1,1
+8,..\..\JOCN-master\task a\images\welch's_mixed fruit_fruit snacks.jpg,2,1.338549,NaN,NaN,2,1
+8,..\..\JOCN-master\task a\images\snyders_mini_pretzels.jpg,3,1.338549,NaN,NaN,2,1
+5,..\..\JOCN-master\task a\images\planters_salted_cashews.jpg,2,-0.366227,0.797276,1.163503,2,1
+8,..\..\JOCN-master\task a\images\kettle_salt_vinegar.jpg,3,-0.792421,NaN,NaN,2,1
+4,..\..\JOCN-master\task a\images\kellogg's_rice krispies_orignal.jpg,12,-1.218615,NaN,NaN,1,1
+2,..\..\JOCN-master\task a\images\nabisco_nutter butter_bites.jpg,12,0.486161,-2.768181,-3.254342,1,1
+6,..\..\JOCN-master\task a\images\cheez-it_white_cheddar.JPG,12,-1.218615,-2.173938,-0.955323,2,1
+6,..\..\JOCN-master\task a\images\cliff_chocolate chip_bar.jpg,2,0.059967,-0.985453,-1.045420,2,1
+3,..\..\JOCN-master\task a\images\pirates booty_aged white cheddar_ corn puffs.jpg,2,0.059967,NaN,NaN,1,1
+6,..\..\JOCN-master\task a\images\kashi_chocolate almond _bars.jpg,3,1.338549,-0.391210,-1.729759,2,0
+6,..\..\JOCN-master\task a\images\nabisco_nutter butter_cookies and crackers.jpg,6,0.912355,0.797276,-0.115079,2,0
+2,..\..\JOCN-master\task a\images\austin_peanut butter_cheese cracker.jpg,6,-1.218615,-0.391210,0.827405,1,1
+3,..\..\JOCN-master\task a\images\jacklinks_beef_steak.jpg,6,-0.792421,NaN,NaN,1,1
+6,..\..\JOCN-master\task a\images\annie's_honey_bunny_grahams.jpg,3,0.912355,0.203033,-0.709322,2,1
+2,..\..\JOCN-master\task a\images\lays_classic_potato chips.jpg,12,-1.218615,0.203033,1.421648,1,0
+1,..\..\JOCN-master\task a\images\pringles_cheddar_potato crisps.jpg,12,-0.792421,0.203033,0.995454,1,0
+2,..\..\JOCN-master\task a\images\baked_lays_classic.jpg,6,0.059967,0.203033,0.143066,1,0
+5,..\..\JOCN-master\task a\images\snyders_mini_pretzels.jpg,6,0.486161,-0.391210,-0.877371,2,0
+2,..\..\JOCN-master\task a\images\keebler_vanilla_sugar_wafers.jpg,2,-1.218615,0.797276,2.015891,1,1
+4,..\..\JOCN-master\task a\images\doritos_nacho cheesier_chips.jpg,12,-1.218615,NaN,NaN,1,1
+4,..\..\JOCN-master\task a\images\swedish fish_original_candy.jpg,6,1.338549,NaN,NaN,1,1
+8,..\..\JOCN-master\task a\images\keebler_fudge_stripes.jpg,2,0.912355,NaN,NaN,2,1
+5,..\..\JOCN-master\task a\images\mini_fudge_stripes.jpg,6,0.059967,-1.579695,-1.639662,2,1
+2,..\..\JOCN-master\task a\images\poptarts_strawberry_frosted.jpg,12,-1.218615,0.797276,2.015891,1,1
+5,..\..\JOCN-master\task a\images\cheez-it_white_cheddar.JPG,6,0.059967,0.203033,0.143066,2,1
+1,..\..\JOCN-master\task a\images\skittles_original_candy.jpg,3,1.338549,-0.391210,-1.729759,1,1
+2,..\..\JOCN-master\task a\images\fritos_original_corn chips.jpg,6,1.338549,0.797276,-0.541273,1,0
+5,..\..\JOCN-master\task a\images\pringles_cheddar_potato crisps.jpg,12,-0.366227,0.797276,1.163503,2,0
+4,..\..\JOCN-master\task a\images\larabar_peanut_butter_cookie_bar.jpg,6,1.338549,NaN,NaN,1,1
+6,..\..\JOCN-master\task a\images\lance_toast_cheese_with_pb.JPG,2,-1.218615,0.203033,1.421648,2,0
+6,..\..\JOCN-master\task a\images\pirates booty_aged white cheddar_ corn puffs.jpg,3,1.338549,0.203033,-1.135516,2,1
