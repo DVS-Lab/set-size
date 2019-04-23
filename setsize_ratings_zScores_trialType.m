@@ -64,23 +64,27 @@ for s = 1:length(sublist)
        end
     end
     subject_pre_ratings = subject_pre_ratings'; % Put in column
+    
+    rating_differences = z_scores - subject_pre_ratings;
+    
     % Format data to be written
     formatted_data =...
         [TrialType{1:end} choice_2{1:end} choice1{1:end}...
         num2cell(subject_pre_ratings) num2cell(z_scores)...
-        num2cell(chosing_for_formatted) num2cell(pc_response_formatted)];
+        num2cell(rating_differences) num2cell(chosing_for_formatted)...
+        num2cell(pc_response_formatted)];
     
     % Open output file
     % (file name is same as input file name but with '_formatted' appended)
     fname = fullfile(maindir,[taskBFile.name(1:end-4) '_z_scores_tt.csv']);
     output_file = fopen(fname,'w'); % csv uses commas (,) & tsv uses tabs (\t)
     % Write File Header
-    fprintf(output_file,'TrialType,choice2,choice1,preRating,rating,choseFor,pcResponse\n');
+    fprintf(output_file,'TrialType,choice2,choice1,preRating,rating,ratingDiff,choseFor,pcResponse\n');
     
     % write data line by line
     for i = 2:length(formatted_data)
         if strlength(formatted_data{i,2}) > 10
-            fprintf(output_file,'%s,%s,%s,%f,%f,%d,%d\n',formatted_data{i,:});
+            fprintf(output_file,'%s,%s,%s,%f,%f,%f,%d,%d\n',formatted_data{i,:});
         end
     end
     
