@@ -6,7 +6,7 @@
 %% Initialize
 maindir = pwd;
 output_folder_path = fullfile(maindir,'output');
-sublist = [102 109 110 113 115 117 118 119 120 121 122 123 124 125 126 127 128 131 132 135 136 137 138 139 140];
+sublist = [102];
 %% Iterate through all participant files
 % get participant output files
 for s = 1:length(sublist)
@@ -43,12 +43,12 @@ for s = 1:length(sublist)
     pc_response_formatted = cell2mat(pc_response_temp);
     % Format data to be written
     formatted_data = ...
-        [snack_names{1:end} num2cell(z_scores)...
+        [TrialType{1:end} snack_names{1:end} num2cell(z_scores)...
         num2cell(chosing_for_formatted) num2cell(pc_response_formatted)];
 
     % Open output file
     % (file name is same as input file name but with '_formatted' appended)
-    fname = fullfile(maindir,[taskBFile.name(1:end-4) '_z_scores.csv']);
+    fname = fullfile(maindir,[taskBFile.name(1:end-4) '_z_scoresVK.csv']);
     output_file = fopen(fname,'w'); % csv uses commas (,) & tsv uses tabs (\t)
     % Write File Header
     fprintf(output_file,'snackName,rating,TrialType,choseFor,pcResponse\n');
