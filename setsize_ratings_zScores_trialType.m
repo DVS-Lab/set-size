@@ -6,7 +6,7 @@
 %% Initialize
 maindir = pwd;
 output_folder_path = fullfile(maindir,'output');
-sublist = [102];
+sublist = [102 109 110 113 115 117 118 119 120 121 122 123 124 125 126 127 128 131 132 135 136 137 138 139 140];
 %% Iterate through all participant files
 % get participant output files
 for s = 1:length(sublist)
