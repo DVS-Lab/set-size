@@ -51,11 +51,11 @@ for s = 1:length(sublist)
     fname = fullfile(maindir,[taskBFile.name(1:end-4) '_z_scoresVK.csv']);
     output_file = fopen(fname,'w'); % csv uses commas (,) & tsv uses tabs (\t)
     % Write File Header
-    fprintf(output_file,'snackName,rating,TrialType,choseFor,pcResponse\n');
+    fprintf(output_file,'TrialType,snackName,rating,choseFor,pcResponse\n');
     
     % write data line by line
     for i = 2:length(formatted_data)
-        fprintf(output_file,'%s,%f,%d,%d,%d\n',formatted_data{i,:});
+        fprintf(output_file,'%s,%s,%f,%d,%d\n',formatted_data{i,:});
     end
     
     % Close output file
