@@ -8,7 +8,7 @@
 main_dir_path = pwd;
 % List subject ID's
 sublist = [102 109 110 113 115 117 118 119 120 121 122 123 124 125 126 127 128 131 132 135 136 137 138 139 140];
-output_z_score_folder_path = fullfile(main_dir_path,'output_z_scores');
+output_z_score_folder_path = fullfile(main_dir_path,'output');
 % Initalize all subject data
 pre_rating_means_all = [];
 you_means_all = [];
