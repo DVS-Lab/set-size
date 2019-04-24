@@ -75,7 +75,7 @@ for s = 1:length(taskBFile)
                     you_mixed3 = str2double(C{6}(i));
                     you_mixed3_means = [you_mixed3_means,you_mixed3];
                 elseif isequal(C{3}(i),{'6'}) % set size 6
-                    you_mixed6 = str2double(C{3}(i));
+                    you_mixed6 = str2double(C{6}(i));
                     you_mixed6_means = [you_mixed6_means,you_mixed6];
                 elseif isequal(C{3}(i),{'12'}) % set size 12
                     you_mixed12 = str2double(C{6}(i));
